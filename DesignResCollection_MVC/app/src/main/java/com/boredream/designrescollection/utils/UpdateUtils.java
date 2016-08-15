@@ -40,7 +40,9 @@ public class UpdateUtils {
      * 检测版本更新
      *
      * @param context
-     * @param isForceCheck 是否强制检测更新, false-WiFi情况下才提示更新,true-无论什么网络环境都会提示更新
+     * @param isForceCheck 是否强制检测更新
+     *                     true强制 - 无论什么网络环境都会提示更新
+     *                     false非强制 - WiFi情况下才提示更新
      */
     public static void checkUpdate(final BaseActivity context, final boolean isForceCheck) {
         if (!NetUtils.isConnected(context)) {

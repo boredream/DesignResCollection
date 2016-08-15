@@ -101,84 +101,8 @@ public class HttpRequest {
                 .build();
     }
 
-    private interface BaseService {
-        // 登录用户
-        @GET("/1/login")
-        Observable<User> login(
-                @Query("username") String username,
-                @Query("password") String password);
-
-        // 手机获取验证码
-        @POST("/1/requestSmsCode")
-        Observable<Object> requestSmsCode(
-                @Body Map<String, Object> mobilePhoneNumber);
-
-        // 手机验证注册
-        @POST("/1/users")
-        Observable<User> userRegist(
-                @Body User user);
-
-        // 忘记密码重置
-        @PUT("/1/resetPasswordBySmsCode/{smsCode}")
-        Observable<Object> resetPasswordBySmsCode(
-                @Path("smsCode") String smsCode,
-                @Body Map<String, Object> password);
-
-        // 旧密码修改新密码
-        @POST(" /1/updateUserPassword/{objectId}")
-        Observable<User> updateUserPassword(
-                @Path("smsCode") String smsCode,
-                @Body UpdatePswRequest updatePswRequest);
-
-        // 根据昵称搜索用户
-        @GET("/1/classes/_User")
-        Observable<ListResponse<User>> getUserByName(
-                @Query("limit") int perPageCount,
-                @Query("skip") int page,
-                @Query("where") String where);
-
-        // 动态图收藏用户列表
-        @GET("/1/classes/_User")
-        Observable<ListResponse<User>> getGifFavUsers(
-                @Query("where") String where);
-
-        // 获取用户详情
-        @GET("/1/users/{objectId}")
-        Observable<User> getCurrentUser(
-                @Path("objectId") String userId);
-
-        // 获取用户详情
-        @GET("/1/users/{objectId}")
-        Observable<User> getUserById(
-                @Path("objectId") String userId);
-
-        // 修改用户详情(注意, 提交什么参数修改什么参数)
-        @PUT("/1/users/{objectId}")
-        Observable<BaseEntity> updateUserById(
-                @Path("objectId") String userId,
-                @Body Map<String, Object> updateInfo);
-
-        // 上传图片接口
-        @POST("/1/files/{fileName}")
-        Observable<FileUploadResponse> fileUpload(
-                @Path("fileName") String fileName,
-                @Body RequestBody image);
-
-        // 查询app更新信息
-        @GET("/1/classes/AppUpdateInfo")
-        Observable<ListResponse<AppUpdateInfo>> getAppUpdateInfo();
-
-        @Streaming
-        @GET
-        Observable<ResponseBody> downloadFile(@Url String fileUrl);
-
-        // 提交意见反馈
-        @POST("/1/classes/FeedBack")
-        Observable<BaseEntity> addFeedBack(
-                @Body FeedBack feedBack);
-    }
-
-    public interface AppService extends BaseService {
+    public interface AppService {
+        ////////////////////////////// 通用接口 //////////////////////////////
         // 登录用户
         @GET("/1/login")
         Observable<User> login(
@@ -254,7 +178,8 @@ public class HttpRequest {
         Observable<BaseEntity> addFeedBack(
                 @Body FeedBack feedBack);
 
-        ////////
+
+        ////////////////////////////// 业务接口 //////////////////////////////
 
         // 添加设计资源
         @POST("/1/classes/DesignRes")

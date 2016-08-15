@@ -21,7 +21,6 @@
     <string name="github">https://github.com/boredream/DesignResCollection</string>
     <string name="update_info">
         最新版本：%1$s
-        \n新版本大小：%2$s
-        \n\n更新内容：\n%3$s
+        \n\n更新内容：\n%2$s
     </string>
 </resources>

@@ -74,7 +74,6 @@ public class PhoneValidateStep1Activity extends BaseActivity implements View.OnC
 
         // validate success, do something
         requestSmsCode(phone, password);
-
     }
 
     /**

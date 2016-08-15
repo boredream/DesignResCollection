@@ -1,8 +1,7 @@
 package com.boredream.designrescollection.constants;
 
 /**
- * TODO replace your app constants
- * 常用常量
+ * 通用常量
  */
 public class CommonConstants {
 

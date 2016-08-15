@@ -23,6 +23,7 @@ import com.boredream.designrescollection.net.HttpRequest;
 import com.boredream.designrescollection.net.SimpleSubscriber;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import rx.Observable;
 
@@ -86,14 +87,14 @@ public class UpdateUtils {
 
                         AppUpdateInfo newestUpdateInfo = results.get(0);
                         for (AppUpdateInfo updateInfo : results) {
-                            if(updateInfo.getVersion() > newestUpdateInfo.getVersion()) {
+                            if (updateInfo.getVersion() > newestUpdateInfo.getVersion()) {
                                 // 取最大版本号的作为最新版本
                                 newestUpdateInfo = updateInfo;
                             }
                         }
 
                         if (newestUpdateInfo.getVersion() <= AppUtils.getAppVersionCode(context)) {
-                            if(isForceCheck) {
+                            if (isForceCheck) {
                                 ToastUtils.showToast(context, "当前已经是最新版本");
                             }
                         } else {
@@ -121,7 +122,7 @@ public class UpdateUtils {
      * 显示更新对话框,包含版本相关信息
      */
     private static void showUpdateConfirmDialog(final BaseActivity context, final AppUpdateInfo updateInfo) {
-        String content = String.format(
+        String content = String.format(Locale.CHINESE,
                 context.getResources().getString(R.string.update_info),
                 updateInfo.getVersionName(),
                 updateInfo.getUpdateInfo() == null ? "无" : updateInfo.getUpdateInfo());

@@ -25,13 +25,13 @@
 ### 已开发完成的示例
 
   * [DesignResCollection_MVC/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVC) - Model-View-Controller 结构。
-  * [DesignResCollection_MVP/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP) - Model-View-Presenter 结构。
   
 ### 待开发的示例
   * [DesignResCollection_MVC-Dagger2/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP-Dagger2) - 基于 Model-View-Presenter 结构，添加Dagger2框架。
+  * [DesignResCollection_MVP/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP) - Model-View-Presenter 结构。
   
 ### 其他相关示例
-  * [DesignResCollection](https://github.com/boredream/DesignResCollectionApp) - 完整App代码，本项目中示例为了演示框架，做了功能和页面上的精简。
+  * [DesignResCollection](https://github.com/boredream/DesignResCollectionApp) - 完整App代码。本项目中的示例是基于此项目做了功能和页面上的精简，便于演示不同代码结构。
 
   
 ## 使用框架

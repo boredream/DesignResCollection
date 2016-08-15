@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="@dimen/margin_medium">
+
+    <ProgressBar
+        android:id="@+id/pb_footer_progress"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:indeterminateDuration="900" />
+
+    <TextView
+        android:id="@+id/tv_footer_progress"
+        style="@style/TextViewCaption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="没有更多数据"
+        android:visibility="gone" />
+
+</LinearLayout>

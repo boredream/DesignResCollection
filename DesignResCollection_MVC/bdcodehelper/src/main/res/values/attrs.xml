@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="DrawableTextView">
+        <attr name="drawableWidth" format="dimension" />
+        <attr name="drawableHeight" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="DropDownMenu">
+        <attr name="ddunderlineColor" format="color" />
+        <attr name="dddividerColor" format="color" />
+        <attr name="ddtextSelectedColor" format="color" />
+        <attr name="ddtextUnselectedColor" format="color" />
+        <attr name="ddmenuBackgroundColor" format="color" />
+        <attr name="ddmaskColor" format="color" />
+        <attr name="ddmenuTextSize" format="dimension" />
+        <attr name="ddmenuSelectedIcon" format="reference" />
+        <attr name="ddmenuUnselectedIcon" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="BottomTabRadioButton">
+        <attr name="hint_mode" format="enum">
+            <enum name="none" value="0" />
+            <enum name="point" value="1" />
+            <enum name="num" value="2" />
+        </attr>
+        <attr name="hint_color" format="color" />
+        <attr name="hint_toppadding" format="dimension" />
+        <attr name="hint_rightpadding" format="dimension" />
+        <attr name="point_radius" format="dimension" />
+        <attr name="num" format="integer" />
+        <attr name="num_radius" format="dimension" />
+        <attr name="num_size" format="dimension" />
+        <attr name="num_color" format="color" />
+    </declare-styleable>
+
+</resources>

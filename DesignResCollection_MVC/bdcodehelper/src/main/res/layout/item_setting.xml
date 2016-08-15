@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?listPreferredItemHeightSmall"
+    android:background="@drawable/bg_white2gray_sel"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/margin_medium"
+    android:paddingRight="@dimen/margin_medium">
+
+    <ImageView
+        android:id="@+id/iv_left"
+        android:layout_width="24dp"
+        android:layout_height="24dp" />
+
+    <TextView
+        android:id="@+id/tv_mid"
+        style="@style/TextViewSubhead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginRight="@dimen/margin_small" />
+
+    <ImageView
+        android:id="@+id/iv_red_dot"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:src="@drawable/shape_oval_red_solid"
+        android:visibility="gone" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/tv_right"
+        style="@style/TextViewBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginRight="@dimen/margin_small"
+        android:textColor="@color/txt_light_gray"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_right"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:visibility="gone" />
+
+</LinearLayout>

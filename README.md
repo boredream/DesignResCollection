@@ -1,6 +1,6 @@
 # DesignResCollection
   提供同一个App的不同架构实现，对其进行对比分析，方便大家选取使用  
-  仿造谷歌的App框架项目 https://github.com/googlesamples/android-architecture  
+  项目启发来自谷歌的同类框架项目 https://github.com/googlesamples/android-architecture  
   
   
 # 为什么要做这样一个项目 
@@ -25,7 +25,7 @@
 ### 已开发完成的示例
 
   * [DesignResCollection_MVC/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVC) - Model-View-Controller 结构。
-  * [DesignResCollection_MVC/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP) - Model-View-Presenter 结构。
+  * [DesignResCollection_MVP/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP) - Model-View-Presenter 结构。
   
 ### 待开发的示例
   * [DesignResCollection_MVC-Dagger2/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP-Dagger2) - 基于 Model-View-Presenter 结构，添加Dagger2框架。

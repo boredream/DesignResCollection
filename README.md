@@ -31,7 +31,7 @@
   * [DesignResCollection_MVC-Dagger2/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP-Dagger2) - 基于 Model-View-Presenter 结构，添加Dagger2框架。
   
 ### 其他相关示例
-  * [DesignResCollection](https://github.com/boredream/DesignResCollectionApp) - 发布用的完整App代码，本项目中示例都是精简版。
+  * [DesignResCollection](https://github.com/boredream/DesignResCollectionApp) - 完整App代码，本项目中示例为了演示框架，做了功能和页面上的精简。
 
   
 ## 使用框架

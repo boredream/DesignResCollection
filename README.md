@@ -31,11 +31,11 @@ Android 的框架多用MVC模型进行开发，而其中的Activity经常承担�
   * [DesignResCollection_MVC-Dagger2/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP-Dagger2) - 基于 Model-View-Presenter 结构，添加Dagger2框架。
   
   
-### 后台实现
+## 后台实现
 
-直接使用LeanCloud作为后端服务，比较简单，无需自行开发。  
-使用LeanCloud的Restful-API接口，而非直接使用LeanCloud的Android SDK，更贴近于实际开发中情景，可以使用自己的网络框架。  
-网络框架部分使用Retrofit2.0 + RxJava。  
+  * 使用LeanCloud作为后端服务，比较简单，无需自行开发。  
+  * 使用LeanCloud的Restful-API接口。（不用LeanCloud的Android SDK，更贴近于实际开发中用开发接口文档的情景）  
+  * 网络框架部分使用Retrofit2.0 + RxJava。  
   
   
 ## 到底使用哪种框架使用在我自己的app中？
@@ -46,5 +46,5 @@ Android 的框架多用MVC模型进行开发，而其中的Activity经常承担�
   
 ## 使用
 
-下载~解压~Open对应框架项目的文件夹
+下载~ 解压~ Open对应框架项目的文件夹
 

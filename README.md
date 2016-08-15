@@ -3,7 +3,7 @@
   仿造谷歌的App框架项目 https://github.com/googlesamples/android-architecture  
   
   
-# 为什么要做这样一个开源项目 [持续开发中...]
+# 为什么要做这样一个项目 
 
   Android 的框架多用MVC模型进行开发，而其中的Activity经常承担了大量的V和C的工作，既处理逻辑又处理UI。  
 因此Activity中很容易聚集大量代码，造成结构复杂混乱、测试维护困难等诸多不便。  
@@ -16,7 +16,7 @@
 比如你只是一个简单的App，不需要单元测试，功能UI都比较少，那直接MVC结构即可。  
   
   
-## 代码示例
+## 代码示例 [持续开发中...]
 
   显示设计网站中收集来的资源的一个应用DesignResCollection，不同结构对应不同的[_结构后缀]。  
 比如基本的MVP结构就是 DesignResCollection_MVP。不同结构的具体介绍请查看对应文件夹中的README.md  

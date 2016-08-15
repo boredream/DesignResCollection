@@ -8,7 +8,7 @@
   Android 的框架多用MVC模型进行开发，而其中的Activity经常承担了大量的V和C的工作，既处理逻辑又处理UI。  
 因此Activity中很容易聚集大量代码，造成结构复杂混乱、测试维护困难等诸多不便。  
   
-  而这个项目就是为了帮助解决这个问题的。在这个项目中将提供相同的应用程序，使用不同的框架实现之。  
+  这个项目就是为了帮助解决这个问题的。其中将提供一个相同的应用程序，然后使用不同的框架实现之。  
 
   您可以使用本项目中的示例代码作为参考，或者直接作为项目的架子在此之上继续开发自己的项目。  
 本项目中，主要关注的重点在于代码的结构框架、测试以及可维护性。  
@@ -30,12 +30,16 @@
 ### 待开发的示例
   * [DesignResCollection_MVC-Dagger2/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP-Dagger2) - 基于 Model-View-Presenter 结构，添加Dagger2框架。
   
+### 其他相关示例
+  * [DesignResCollection](https://github.com/boredream/DesignResCollectionApp) - 发布用的完整App代码，本项目中示例都是精简版。
+
   
-## 后台实现
+## 使用框架
 
   * 使用LeanCloud作为后端服务，比较简单，无需自行开发。  
   * 使用LeanCloud的Restful-API接口。（不用LeanCloud的Android SDK，更贴近于实际开发中用开发接口文档的情景）  
   * 网络框架部分使用Retrofit2.0 + RxJava。  
+  * 图片使用Glide。  
   
   
 ## 到底使用哪种框架使用在我自己的app中？

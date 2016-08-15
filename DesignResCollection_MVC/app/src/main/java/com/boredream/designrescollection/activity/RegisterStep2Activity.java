@@ -27,9 +27,9 @@ import java.util.Map;
 import rx.Observable;
 
 /**
- * 短信验证页面步骤二,用于注册和忘记密码的验证短信
+ * 注册页面步骤二
  */
-public class PhoneValidateStep2Activity extends BaseActivity implements View.OnClickListener {
+public class RegisterStep2Activity extends BaseActivity implements View.OnClickListener {
 
     // 总倒计时60秒
     private static final long TOTCAL_TIME = 60 * DateUtils.ONE_SECOND_MILLIONS;
@@ -40,10 +40,6 @@ public class PhoneValidateStep2Activity extends BaseActivity implements View.OnC
     private Button btn_code_info;
     private Button btn_next;
 
-    /**
-     * 0-注册 1-忘记密码
-     */
-    private int type;
     private String phone;
     private String password;
 
@@ -59,7 +55,6 @@ public class PhoneValidateStep2Activity extends BaseActivity implements View.OnC
 
     private void initExtras() {
         Intent intent = getIntent();
-        type = intent.getIntExtra("type", 0);
         phone = intent.getStringExtra("phone");
         password = intent.getStringExtra("password");
     }
@@ -118,37 +113,7 @@ public class PhoneValidateStep2Activity extends BaseActivity implements View.OnC
             return;
         }
 
-        if (type == 1) {
-            resetPswBySmsCode(code);
-        } else {
-            register(code);
-        }
-    }
-
-    /**
-     * 重置密码
-     */
-    private void resetPswBySmsCode(String code) {
-        Map<String, Object> params = new HashMap<>();
-        params.put("password", password);
-        Observable<Object> observable = HttpRequest.getApiService().resetPasswordBySmsCode(code, params);
-        showProgressDialog();
-        ObservableDecorator.decorate(observable)
-                .subscribe(new SimpleSubscriber<Object>(this) {
-                    @Override
-                    public void onNext(Object user) {
-                        // 密码重置成功,跳转到登录页
-                        dismissProgressDialog();
-                        clearIntent2Login();
-                        showToast("密码重置成功");
-                    }
-
-                    @Override
-                    public void onError(Throwable throwable) {
-                        super.onError(throwable);
-                        dismissProgressDialog();
-                    }
-                });
+        register(code);
     }
 
     /**
@@ -188,9 +153,11 @@ public class PhoneValidateStep2Activity extends BaseActivity implements View.OnC
     private void showRegistSuccessDialog() {
         new AlertDialog.Builder(this)
                 .setMessage("注册成功，你可以在个人详情中修改或完善用户信息。")
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                .setPositiveButton("确定", null)
+                .setOnDismissListener(new DialogInterface.OnDismissListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onDismiss(DialogInterface dialog) {
+                        // 确定或者返回键关闭对话框都走此
                         intent2Activity(MainActivity.class);
                     }
                 })
@@ -228,7 +195,9 @@ public class PhoneValidateStep2Activity extends BaseActivity implements View.OnC
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_code_info:
-                resendSmsCode();
+                // FIXME: 短信有限，所以直接模拟验证码发送成功，使用不验证的注册
+                // resendSmsCode();
+                startCountDown();
                 break;
             case R.id.btn_next:
                 submit();

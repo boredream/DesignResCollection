@@ -1,6 +1,5 @@
 package com.boredream.designrescollection.activity;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,35 +20,24 @@ import java.util.Map;
 import rx.Observable;
 
 /**
- * 短信验证页面步骤一,用于注册和忘记密码的发送短信和信息填写
+ * 注册页面步骤一
  */
-public class PhoneValidateStep1Activity extends BaseActivity implements View.OnClickListener {
+public class RegisterStep1Activity extends BaseActivity implements View.OnClickListener {
 
     private EditText et_username;
     private EditText et_password;
     private Button btn_next;
-
-    /**
-     * 0-注册 1-忘记密码
-     */
-    private int type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_validate_step1);
 
-        initExtras();
         initView();
     }
 
-    private void initExtras() {
-        Intent intent = getIntent();
-        type = intent.getIntExtra("type", 0);
-    }
-
     private void initView() {
-        initBackTitle(type == 1 ? "重置密码" : "注册");
+        initBackTitle("注册");
 
         et_username = (EditText) findViewById(R.id.et_username);
         et_password = (EditText) findViewById(R.id.et_password);
@@ -60,9 +48,9 @@ public class PhoneValidateStep1Activity extends BaseActivity implements View.OnC
 
     private void next() {
         // validate
-        final String phone = et_username.getText().toString().trim();
-        if (TextUtils.isEmpty(phone)) {
-            Toast.makeText(this, "请输入手机号", Toast.LENGTH_SHORT).show();
+        final String username = et_username.getText().toString().trim();
+        if (TextUtils.isEmpty(username)) {
+            Toast.makeText(this, "请输入用户名", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -72,8 +60,9 @@ public class PhoneValidateStep1Activity extends BaseActivity implements View.OnC
             return;
         }
 
-        // validate success, do something
-        requestSmsCode(phone, password);
+        // FIXME: 短信有限，所以直接模拟验证码发送成功，使用不验证的注册
+        // requestSmsCode(phone, password);
+        toValidateStep2(username, password);
     }
 
     /**
@@ -90,12 +79,7 @@ public class PhoneValidateStep1Activity extends BaseActivity implements View.OnC
                     public void onNext(Object o) {
                         dismissProgressDialog();
 
-                        // 短信验证码发送成功后,跳转到短信验证页,同时传递所需数据
-                        Intent intent = new Intent(PhoneValidateStep1Activity.this, PhoneValidateStep2Activity.class);
-                        intent.putExtra("type", type);
-                        intent.putExtra("phone", phone);
-                        intent.putExtra("password", password);
-                        startActivity(intent);
+                        toValidateStep2(phone, password);
                     }
 
                     @Override
@@ -104,6 +88,14 @@ public class PhoneValidateStep1Activity extends BaseActivity implements View.OnC
                         dismissProgressDialog();
                     }
                 });
+    }
+
+    // 短信验证码发送成功后,跳转到短信验证页,同时传递所需数据
+    private void  toValidateStep2(String phone, String password) {
+        Intent intent = new Intent(RegisterStep1Activity.this, RegisterStep2Activity.class);
+        intent.putExtra("phone", phone);
+        intent.putExtra("password", password);
+        startActivity(intent);
     }
 
     @Override

@@ -60,7 +60,6 @@ public class HttpRequest {
     private static final String APP_ID_VALUE = "iaEH7ObIA4sPY8RSs3VCVXBg-gzGzoHsz";
     private static final String API_KEY_VALUE = "dXfhXIVyeWMN2czJkd4ehwzs";
 
-
     private static Retrofit retrofit;
     private static OkHttpClient httpClient;
 
@@ -95,7 +94,7 @@ public class HttpRequest {
         retrofit = new Retrofit.Builder()
                 .baseUrl(HOST)
                 .addConverterFactory(GsonConverterFactory.create()) // gson
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) // rxjava 响应式编程
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) // rxjava
                 .client(httpClient)
                 .callbackExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
                 .build();
@@ -119,6 +118,11 @@ public class HttpRequest {
         Observable<User> userRegist(
                 @Body User user);
 
+        // 添加用户
+        @POST("/1/users")
+        Observable<User> addUser(
+                @Body User user);
+
         // 忘记密码重置
         @PUT("/1/resetPasswordBySmsCode/{smsCode}")
         Observable<Object> resetPasswordBySmsCode(
@@ -137,16 +141,6 @@ public class HttpRequest {
                 @Query("limit") int perPageCount,
                 @Query("skip") int page,
                 @Query("where") String where);
-
-        // 动态图收藏用户列表
-        @GET("/1/classes/_User")
-        Observable<ListResponse<User>> getGifFavUsers(
-                @Query("where") String where);
-
-        // 获取用户详情
-        @GET("/1/users/{objectId}")
-        Observable<User> getCurrentUser(
-                @Path("objectId") String userId);
 
         // 获取用户详情
         @GET("/1/users/{objectId}")
@@ -171,7 +165,8 @@ public class HttpRequest {
 
         @Streaming
         @GET
-        Observable<ResponseBody> downloadFile(@Url String fileUrl);
+        Observable<ResponseBody> downloadFile(
+                @Url String fileUrl);
 
         // 提交意见反馈
         @POST("/1/classes/FeedBack")
@@ -180,17 +175,6 @@ public class HttpRequest {
 
 
         ////////////////////////////// 业务接口 //////////////////////////////
-
-        // 添加设计资源
-        @POST("/1/classes/DesignRes")
-        Observable<BaseEntity> addDesignRes(
-                @Body DesignRes entity);
-
-        // 修改设计资源
-        @PUT("/1/classes/DesignRes/{objectId}")
-        Observable<BaseEntity> updateDesignRes(
-                @Path("objectId") String objectId,
-                @Body Map<String, Object> updateInfo);
 
         // 查询设计资源
         @GET("/1/classes/DesignRes")
@@ -255,41 +239,6 @@ public class HttpRequest {
                         UserInfoKeeper.saveLoginData(user.getObjectId(), user.getSessionToken());
                     }
                 });
-    }
-
-    /**
-     * 使用token自动登录
-     *
-     * @param loginData size为2的数组, 第一个为当前用户id, 第二个为当前用户token
-     */
-    public static Observable<User> loginByToken(final String[] loginData) {
-        AppService service = getApiService();
-        // 这种自动登录方法其实是使用token去再次获取当前账号数据
-        return service.getUserById(loginData[0])
-                .doOnNext(new Action1<User>() {
-                    @Override
-                    public void call(User user) {
-                        // TODO 获取用户信息接口不会返回token
-                        user.setSessionToken(loginData[1]);
-                        // 保存登录用户数据以及token信息
-                        UserInfoKeeper.setCurrentUser(user);
-                        // 保存自动登录使用的信息
-                        UserInfoKeeper.saveLoginData(user.getObjectId(), user.getSessionToken());
-                    }
-                });
-    }
-
-    /**
-     * 根据昵称模糊搜索用户,分页(默认每页数量为CommonConstants.COUNT_OF_PAGE)
-     *
-     * @param searchKey 搜索昵称
-     * @param page      页数,从1开始
-     */
-    public static Observable<ListResponse<User>> getUserByName(String searchKey, int page) {
-        AppService service = getApiService();
-        String where = "{\"username\":{\"$regex\":\"" + searchKey + ".*\"}}";
-        return service.getUserByName(CommonConstants.COUNT_OF_PAGE,
-                (page - 1) * CommonConstants.COUNT_OF_PAGE, where);
     }
 
     /**

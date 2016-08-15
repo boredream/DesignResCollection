@@ -28,8 +28,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.PhoneValidateStep1Activity" />
-        <activity android:name=".activity.PhoneValidateStep2Activity" />
+        <activity android:name=".activity.RegisterStep1Activity" />
+        <activity android:name=".activity.RegisterStep2Activity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.WriteCommentActivity" />

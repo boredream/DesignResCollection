@@ -47,6 +47,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         fragments.add(new SearchFragment());
         fragments.add(new FavFragment());
         fragments.add(new UserFragment());
+
         controller = new FragmentController(this, R.id.fl_content, fragments);
 
         // 默认Fragment

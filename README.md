@@ -24,11 +24,11 @@ Android 的框架多用MVC模型进行开发，而其中的Activity经常承担�
   
 ### 已开发完成的示例
 
-  * [DesignResCollection_MVC/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVC) - Model-View-Controller 结构.
-  * [DesignResCollection_MVC/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP) - Model-View-Presenter 结构.
+  * [DesignResCollection_MVC/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVC) - Model-View-Controller 结构。
+  * [DesignResCollection_MVC/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP) - Model-View-Presenter 结构。
   
 ### 待开发的示例
-  * [DesignResCollection_MVC-Dagger2/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP-Dagger2) - 基于 Model-View-Presenter 结构，添加Dagger2框架.
+  * [DesignResCollection_MVC-Dagger2/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP-Dagger2) - 基于 Model-View-Presenter 结构，添加Dagger2框架。
   
   
 ### 后台实现

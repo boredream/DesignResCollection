@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="96dp"
+    android:background="@drawable/bg_white2gray_sel"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/margin_medium"
+    android:paddingRight="@dimen/margin_medium">
+
+    <TextView
+        style="@style/TextViewBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="尚未登录，无法进行收藏等操作。"
+        android:textColor="@color/txt_gray" />
+
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/ButtonPrimary"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="立即登录" />
+
+
+</LinearLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@mipmap/bg_pull_to_refresh" />
+
+    <item>
+        <rotate
+            android:drawable="@mipmap/ic_loading"
+            android:fromDegrees="0"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toDegrees="360" />
+    </item>
+
+</layer-list>

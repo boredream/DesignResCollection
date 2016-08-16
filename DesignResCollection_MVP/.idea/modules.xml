@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DesignResCollection.iml" filepath="$PROJECT_DIR$/DesignResCollection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DesignResCollection_MVP.iml" filepath="$PROJECT_DIR$/DesignResCollection_MVP.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/bdcodehelper/bdcodehelper.iml" filepath="$PROJECT_DIR$/bdcodehelper/bdcodehelper.iml" />
     </modules>

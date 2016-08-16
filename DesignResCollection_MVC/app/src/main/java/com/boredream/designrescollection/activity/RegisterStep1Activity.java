@@ -8,16 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.boredream.bdcodehelper.net.ObservableDecorator;
 import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.base.BaseActivity;
-import com.boredream.designrescollection.net.HttpRequest;
-import com.boredream.designrescollection.net.SimpleSubscriber;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import rx.Observable;
 
 /**
  * 注册页面步骤一
@@ -63,31 +55,6 @@ public class RegisterStep1Activity extends BaseActivity implements View.OnClickL
         // FIXME: 短信有限，所以直接模拟验证码发送成功，使用不验证的注册
         // requestSmsCode(phone, password);
         toValidateStep2(username, password);
-    }
-
-    /**
-     * 发送短信验证码
-     */
-    private void requestSmsCode(final String phone, final String password) {
-        showProgressDialog();
-        Map<String, Object> params = new HashMap<>();
-        params.put("mobilePhoneNumber", phone);
-        Observable<Object> observable = HttpRequest.getApiService().requestSmsCode(params);
-        ObservableDecorator.decorate(observable)
-                .subscribe(new SimpleSubscriber<Object>(this) {
-                    @Override
-                    public void onNext(Object o) {
-                        dismissProgressDialog();
-
-                        toValidateStep2(phone, password);
-                    }
-
-                    @Override
-                    public void onError(Throwable throwable) {
-                        super.onError(throwable);
-                        dismissProgressDialog();
-                    }
-                });
     }
 
     // 短信验证码发送成功后,跳转到短信验证页,同时传递所需数据

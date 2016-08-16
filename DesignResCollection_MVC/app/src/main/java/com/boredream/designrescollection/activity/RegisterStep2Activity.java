@@ -21,9 +21,6 @@ import com.boredream.designrescollection.net.HttpRequest;
 import com.boredream.designrescollection.net.SimpleSubscriber;
 import com.boredream.designrescollection.utils.UserInfoKeeper;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import rx.Observable;
 
 /**
@@ -163,32 +160,6 @@ public class RegisterStep2Activity extends BaseActivity implements View.OnClickL
                 })
                 .setCancelable(false) // cancelable设为false,防止用户点击返回键关闭对话框停留在当前页面
                 .show();
-    }
-
-    /**
-     * 再次获取短信验证码
-     */
-    private void resendSmsCode() {
-        showProgressDialog();
-        Map<String, Object> params = new HashMap<>();
-        params.put("mobilePhoneNumber", phone);
-        Observable<Object> observable = HttpRequest.getApiService().requestSmsCode(params);
-        ObservableDecorator.decorate(observable)
-                .subscribe(new SimpleSubscriber<Object>(this) {
-                    @Override
-                    public void onNext(Object o) {
-                        dismissProgressDialog();
-
-                        // 短信验证码发送成功后,开始倒计时
-                        startCountDown();
-                    }
-
-                    @Override
-                    public void onError(Throwable throwable) {
-                        super.onError(throwable);
-                        dismissProgressDialog();
-                    }
-                });
     }
 
     @Override

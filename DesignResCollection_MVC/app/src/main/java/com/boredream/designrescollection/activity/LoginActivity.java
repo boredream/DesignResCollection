@@ -36,9 +36,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
         initExtras();
         initView();
-
-        et_username.setText("18551681236");
-        et_password.setText("123456");
     }
 
     private void initExtras() {

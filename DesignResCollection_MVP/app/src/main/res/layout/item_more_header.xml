@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <include
+        android:id="@+id/include_more_header"
+        layout="@layout/include_more_header" />
+
+    <include
+        android:id="@+id/include_more_no_header"
+        layout="@layout/include_more_no_header" />
+
+</FrameLayout>

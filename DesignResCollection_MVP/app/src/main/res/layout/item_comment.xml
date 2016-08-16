@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/margin_small"
+    android:paddingLeft="@dimen/margin_medium"
+    android:paddingRight="@dimen/margin_medium"
+    android:paddingTop="@dimen/margin_small">
+
+    <ImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="@dimen/margin_medium"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_account_circle_grey600_24dp" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        style="@style/TextViewSubhead"
+        android:layout_toRightOf="@id/iv_avatar" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        style="@style/TextViewCaption"
+        android:layout_below="@+id/tv_username"
+        android:layout_toRightOf="@id/iv_avatar"
+        android:textColor="@color/txt_gray"
+        android:textColorHint="@color/txt_light_gray" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        style="@style/TextViewBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_time"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_toRightOf="@id/iv_avatar" />
+
+
+</RelativeLayout>

@@ -40,12 +40,20 @@
   * 使用LeanCloud的Restful-API接口。（不用LeanCloud的Android SDK，更贴近于实际开发中用开发接口文档的情景）  
   * 网络框架部分使用Retrofit2.0 + RxJava。  
   * 图片使用Glide。  
+  * [代码助手](https://github.com/boredream/bdcodehelper)常见工具类、功能等都封装到了这个依赖Model中，一来为了方便，二来让注意力更集中在项目框架结构上。
   
-  
+
 ## 到底使用哪种框架使用在我自己的app中？
 
   每个框架示例中都有一个README，你可以先查看下每种的特点。  
 最终项目里还会对比下所有框架的优缺点列出来，方便你根据自己具体情况进行全面的比较选取。  
+  
+  
+## 应用截图
+![image](https://github.com/boredream/DesignResCollection/blob/master/screenshoot/device-2016-08-17-142555.png)
+![image](https://github.com/boredream/DesignResCollection/blob/master/screenshoot/device-2016-08-17-142654.png)
+![image](https://github.com/boredream/DesignResCollection/blob/master/screenshoot/device-2016-08-17-142712.png)
+![image](https://github.com/boredream/DesignResCollection/blob/master/screenshoot/device-2016-08-17-142739.png)
   
   
 ## 使用

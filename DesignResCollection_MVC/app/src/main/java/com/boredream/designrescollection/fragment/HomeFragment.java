@@ -73,30 +73,33 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initData() {
+        showProgressDialog();
         loadData(1);
     }
 
     private void loadData(final int page) {
-        if (page == 1) {
-            datas.clear();
-            srl.setRefreshing(true);
-        }
-
         Observable<ListResponse<DesignRes>> observable = HttpRequest.getDesignRes(page);
         ObservableDecorator.decorate(observable).subscribe(
                 new SimpleSubscriber<ListResponse<DesignRes>>(activity) {
                     @Override
                     public void onNext(ListResponse<DesignRes> response) {
                         curPage = page;
-                        srl.setRefreshing(false);
 
+                        srl.setRefreshing(false);
+                        dismissProgressDialog();
+
+                        if (page == 1) {
+                            datas.clear();
+                        }
                         setResponse(response);
                     }
 
                     @Override
                     public void onError(Throwable throwable) {
                         super.onError(throwable);
+
                         srl.setRefreshing(false);
+                        dismissProgressDialog();
                     }
                 });
     }

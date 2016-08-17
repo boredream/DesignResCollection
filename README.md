@@ -31,9 +31,10 @@
   * [DesignResCollection_MVP/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP) - Model-View-Presenter 结构。
   
 ### 其他相关示例
-  * [DesignResCollection](https://github.com/boredream/DesignResCollectionApp) - 完整App代码，不断丰富完善中，实现一个最终完整版。本项目中的示例是基于此项目做了功能和页面上的精简，便于演示不同代码结构。
-
+  * [DesignResCollection（ing...）](https://github.com/boredream/DesignResCollectionApp) - 完整App代码，不断丰富完善中，实现一个最终完整版。本项目中的示例是基于此项目做了功能和页面上的精简，便于演示不同代码结构。
+  * [DesignCollectionCloudEngine](https://github.com/boredream/DesignCollectionCloudEngine) - 部署在LeanCloud上的云代码项目，用于定时爬取数据保存到LeanCloud中为应用提供数据来源的。
   
+
 ## 使用框架
 
   * 使用LeanCloud作为后端服务，比较简单，无需自行开发。  

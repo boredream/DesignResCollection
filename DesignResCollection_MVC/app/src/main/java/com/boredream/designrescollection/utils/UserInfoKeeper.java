@@ -1,6 +1,10 @@
 package com.boredream.designrescollection.utils;
 
 
+import android.content.Context;
+import android.content.Intent;
+
+import com.boredream.designrescollection.activity.LoginActivity;
 import com.boredream.designrescollection.entity.User;
 
 /**
@@ -47,4 +51,18 @@ public class UserInfoKeeper {
         clearCurrentUser();
     }
 
+    /**
+     * 检测登录状态
+     *
+     * @return true-已登录 false-未登录,会自动跳转至登录页
+     */
+    public static boolean checkLogin(Context context) {
+        if (currentUser == null) {
+            Intent intent = new Intent(context, LoginActivity.class);
+            intent.putExtra("checkLogin", true);
+            context.startActivity(intent);
+            return false;
+        }
+        return true;
+    }
 }

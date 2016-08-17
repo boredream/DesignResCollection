@@ -5,8 +5,6 @@ import com.boredream.designrescollection.base.BaseEntity;
 
 public class User extends BaseEntity {
 
-    public static final int ROLE_COACH = 1;
-
     private String sessionToken;
 
     private String nickname;
@@ -33,11 +31,6 @@ public class User extends BaseEntity {
      */
     private String avatar;
 
-    /**
-     * 性别 0保密, 1男, 2女
-     */
-    private int gender;
-
     private String company;
 
     public String getSessionToken() {
@@ -54,14 +47,6 @@ public class User extends BaseEntity {
 
     public void setCompany(String company) {
         this.company = company;
-    }
-
-    public int getGender() {
-        return gender;
-    }
-
-    public void setGender(int gender) {
-        this.gender = gender;
     }
 
     public String getAvatar() {

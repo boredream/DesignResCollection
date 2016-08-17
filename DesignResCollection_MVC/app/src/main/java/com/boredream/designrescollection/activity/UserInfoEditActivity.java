@@ -155,15 +155,17 @@ public class UserInfoEditActivity extends BaseActivity implements View.OnClickLi
             case ImageUtils.REQUEST_CODE_FROM_ALBUM:
                 // 从相册选择
                 uri = data.getData();
+                // 选择后裁剪
                 ImageUtils.cropImage(this, uri);
                 break;
             case ImageUtils.REQUEST_CODE_FROM_CAMERA:
                 // 相机拍照
                 uri = ImageUtils.imageUriFromCamera;
+                // 拍照后裁剪
                 ImageUtils.cropImage(this, uri);
                 break;
             case ImageUtils.REQUEST_CODE_CROP_IMAGE:
-                // 头像图片都要进行裁剪处理
+                // 裁剪完成后上传图片
                 uploadUserAvatarImage(ImageUtils.cropImageUri);
                 break;
         }

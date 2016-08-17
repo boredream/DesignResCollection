@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.boredream.bdcodehelper.base.BoreBaseActivity;
-import com.boredream.designrescollection.activity.LoginActivity;
 import com.boredream.designrescollection.activity.MainActivity;
 import com.boredream.designrescollection.constants.CommonConstants;
 
@@ -36,15 +35,6 @@ public class BaseActivity extends BoreBaseActivity {
 
         application = (BaseApplication) getApplication();
         sp = getSharedPreferences(CommonConstants.SP_NAME, MODE_PRIVATE);
-    }
-
-    /**
-     * 清空任务栈跳转至登录页
-     */
-    protected void clearIntent2Login() {
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
     }
 
     /**

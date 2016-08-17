@@ -79,7 +79,10 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 UpdateUtils.checkUpdate(this, true);
                 break;
             case 1:
-                intent2Activity(FeedBackActivity.class);
+                if(UserInfoKeeper.checkLogin(this)) {
+                    // 一般意见反馈不需要登录，这里模拟下需登录场景的处理方法
+                    intent2Activity(FeedBackActivity.class);
+                }
                 break;
         }
     }
@@ -88,9 +91,9 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_logout:
-                // 登出,清理用户数据同时跳转到登录页
+                // 登出,清理用户数据同时跳转到主页
                 UserInfoKeeper.logout();
-                clearIntent2Login();
+                intent2Activity(MainActivity.class);
                 break;
         }
     }

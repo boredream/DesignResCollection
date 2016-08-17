@@ -60,8 +60,8 @@ public class HomeFragment extends BaseFragment {
         rv.addItemDecoration(new GridSpacingDecorator(DisplayUtils.dp2px(activity, 8)));
         GridLayoutManager gridLayoutManager = new GridLayoutManager(activity, 2);
         rv.setLayoutManager(gridLayoutManager);
-        adapter = new LoadMoreAdapter(
-                rv,
+
+        adapter = new LoadMoreAdapter(rv,
                 new DesignResAdapter(activity, datas),
                 new LoadMoreAdapter.OnLoadMoreListener() {
                     @Override

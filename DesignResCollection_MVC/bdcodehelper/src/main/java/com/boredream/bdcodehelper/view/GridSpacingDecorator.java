@@ -18,7 +18,7 @@ public class GridSpacingDecorator extends RecyclerView.ItemDecoration {
         outRect.right = space / 2;
         outRect.bottom = space;
         if (parent.getChildAdapterPosition(view) <= 1) {
-            outRect.top = space * 2;
+            outRect.top = space;
         }
     }
 }

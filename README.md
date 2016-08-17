@@ -40,7 +40,7 @@
 [DesignResCollection_MVP/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP) - Model-View-Presenter 结构。
 
 
-## 使用框架
+## 通用依赖框架
 
   * 使用LeanCloud作为后端服务，比较简单，无需自行开发。  
   * 使用LeanCloud的Restful-API接口。（不用LeanCloud的Android SDK，更贴近于实际开发中用开发接口文档的情景）  

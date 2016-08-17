@@ -11,7 +11,7 @@ public class CommonConstants {
     /**
      * SharedPreferences 名称
      */
-    public static final String SP_NAME = "interio_design_config";
+    public static final String SP_NAME = "config";
 
     /**
      * 每页加载的数量

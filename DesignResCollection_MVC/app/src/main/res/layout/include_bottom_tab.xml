@@ -18,20 +18,6 @@
     <com.boredream.bdcodehelper.view.DrawableRadioButton
         android:id="@+id/rb2"
         style="@style/RadioButtonBottomTab"
-        android:drawableTop="@drawable/ic_search_grey2black_sel"
-        app:drawableHeight="40dp"
-        app:drawableWidth="40dp" />
-
-    <com.boredream.bdcodehelper.view.DrawableRadioButton
-        android:id="@+id/rb3"
-        style="@style/RadioButtonBottomTab"
-        android:drawableTop="@drawable/ic_fav_grey2black_sel"
-        app:drawableHeight="40dp"
-        app:drawableWidth="40dp" />
-
-    <com.boredream.bdcodehelper.view.DrawableRadioButton
-        android:id="@+id/rb4"
-        style="@style/RadioButtonBottomTab"
         android:drawableTop="@drawable/ic_more_grey2black_sel"
         app:drawableHeight="40dp"
         app:drawableWidth="40dp" />

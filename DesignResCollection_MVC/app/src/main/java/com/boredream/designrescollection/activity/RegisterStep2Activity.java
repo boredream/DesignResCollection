@@ -43,7 +43,7 @@ public class RegisterStep2Activity extends BaseActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phone_validate_step2);
+        setContentView(R.layout.activity_register_step2);
 
         initExtras();
         initView();
@@ -122,7 +122,7 @@ public class RegisterStep2Activity extends BaseActivity implements View.OnClickL
         user.setUsername(phone);
         user.setPassword(password);
         user.setSmsCode(code);
-        Observable<User> observable = HttpRequest.getApiService().userRegist(user);
+        Observable<User> observable = HttpRequest.getApiService().register(user);
         showProgressDialog();
         ObservableDecorator.decorate(observable)
                 .subscribe(new SimpleSubscriber<User>(this) {

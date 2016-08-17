@@ -8,9 +8,7 @@ import android.widget.RadioGroup;
 import com.boredream.bdcodehelper.fragment.FragmentController;
 import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.base.BaseActivity;
-import com.boredream.designrescollection.fragment.FavFragment;
 import com.boredream.designrescollection.fragment.HomeFragment;
-import com.boredream.designrescollection.fragment.SearchFragment;
 import com.boredream.designrescollection.fragment.UserFragment;
 import com.boredream.designrescollection.utils.UpdateUtils;
 
@@ -44,8 +42,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private void initData() {
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
-        fragments.add(new SearchFragment());
-        fragments.add(new FavFragment());
         fragments.add(new UserFragment());
 
         controller = new FragmentController(this, R.id.fl_content, fragments);
@@ -65,12 +61,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 break;
             case R.id.rb2:
                 controller.showFragment(1);
-                break;
-            case R.id.rb3:
-                controller.showFragment(2);
-                break;
-            case R.id.rb4:
-                controller.showFragment(3);
                 break;
         }
     }

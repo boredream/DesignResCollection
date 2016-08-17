@@ -23,7 +23,7 @@ public class RegisterStep1Activity extends BaseActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phone_validate_step1);
+        setContentView(R.layout.activity_register_step1);
 
         initView();
     }

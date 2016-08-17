@@ -3,7 +3,6 @@ package com.boredream.designrescollection.base;
 
 import android.app.Application;
 
-import com.boredream.bdcodehelper.db.AddressData;
 import com.boredream.designrescollection.net.HttpRequest;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.integration.okhttp.OkHttpUrlLoader;
@@ -27,7 +26,6 @@ public class BaseApplication extends Application {
         instance = this;
 
         initGlide();
-        initDatabase();
     }
 
     /**
@@ -37,9 +35,5 @@ public class BaseApplication extends Application {
         OkHttpClient okHttpClient = HttpRequest.getHttpClient();
         Glide.get(this).register(GlideUrl.class, InputStream.class,
                 new OkHttpUrlLoader.Factory(okHttpClient));
-    }
-
-    private void initDatabase() {
-        AddressData.init(this);
     }
 }

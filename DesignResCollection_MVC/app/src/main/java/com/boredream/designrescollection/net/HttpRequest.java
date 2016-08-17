@@ -10,7 +10,6 @@ import android.text.TextUtils;
 import com.boredream.bdcodehelper.entity.AppUpdateInfo;
 import com.boredream.bdcodehelper.entity.FileUploadResponse;
 import com.boredream.bdcodehelper.entity.ListResponse;
-import com.boredream.bdcodehelper.entity.UpdatePswRequest;
 import com.boredream.bdcodehelper.net.ObservableDecorator;
 import com.boredream.designrescollection.base.BaseEntity;
 import com.boredream.designrescollection.constants.CommonConstants;
@@ -27,7 +26,6 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
-import com.squareup.okhttp.ResponseBody;
 import com.squareup.okhttp.logging.HttpLoggingInterceptor;
 
 import java.io.IOException;
@@ -42,8 +40,6 @@ import retrofit.http.POST;
 import retrofit.http.PUT;
 import retrofit.http.Path;
 import retrofit.http.Query;
-import retrofit.http.Streaming;
-import retrofit.http.Url;
 import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Action1;
@@ -108,44 +104,10 @@ public class HttpRequest {
                 @Query("username") String username,
                 @Query("password") String password);
 
-        // 手机获取验证码
-        @POST("/1/requestSmsCode")
-        Observable<Object> requestSmsCode(
-                @Body Map<String, Object> mobilePhoneNumber);
-
-        // 手机验证注册
+        // 注册用户
         @POST("/1/users")
-        Observable<User> userRegist(
+        Observable<User> register(
                 @Body User user);
-
-        // 添加用户
-        @POST("/1/users")
-        Observable<User> addUser(
-                @Body User user);
-
-        // 忘记密码重置
-        @PUT("/1/resetPasswordBySmsCode/{smsCode}")
-        Observable<Object> resetPasswordBySmsCode(
-                @Path("smsCode") String smsCode,
-                @Body Map<String, Object> password);
-
-        // 旧密码修改新密码
-        @POST(" /1/updateUserPassword/{objectId}")
-        Observable<User> updateUserPassword(
-                @Path("smsCode") String smsCode,
-                @Body UpdatePswRequest updatePswRequest);
-
-        // 根据昵称搜索用户
-        @GET("/1/classes/_User")
-        Observable<ListResponse<User>> getUserByName(
-                @Query("limit") int perPageCount,
-                @Query("skip") int page,
-                @Query("where") String where);
-
-        // 获取用户详情
-        @GET("/1/users/{objectId}")
-        Observable<User> getUserById(
-                @Path("objectId") String userId);
 
         // 修改用户详情(注意, 提交什么参数修改什么参数)
         @PUT("/1/users/{objectId}")
@@ -162,11 +124,6 @@ public class HttpRequest {
         // 查询app更新信息
         @GET("/1/classes/AppUpdateInfo")
         Observable<ListResponse<AppUpdateInfo>> getAppUpdateInfo();
-
-        @Streaming
-        @GET
-        Observable<ResponseBody> downloadFile(
-                @Url String fileUrl);
 
         // 提交意见反馈
         @POST("/1/classes/FeedBack")
@@ -235,8 +192,6 @@ public class HttpRequest {
                     public void call(User user) {
                         // 保存登录用户数据以及token信息
                         UserInfoKeeper.setCurrentUser(user);
-                        // 保存自动登录使用的信息
-                        UserInfoKeeper.saveLoginData(user.getObjectId(), user.getSessionToken());
                     }
                 });
     }

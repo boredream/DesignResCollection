@@ -1,7 +1,5 @@
 package com.boredream.bdcodehelper.net;
 
-import android.content.Context;
-
 import java.util.concurrent.TimeUnit;
 
 import rx.Observable;

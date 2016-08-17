@@ -27,6 +27,10 @@ android {
         exclude 'META-INF/NOTICE'
     }
 
+    lintOptions {
+        abortOnError false
+    }
+
     android.applicationVariants.all { variant ->
         renameAPK(variant, defaultConfig, "release")
     }

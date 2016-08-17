@@ -51,10 +51,10 @@
   
   
 ## 应用截图
-![image](https://github.com/boredream/DesignResCollection/blob/master/screenshoot/device-2016-08-17-142555.png =300x530)
-![image](https://github.com/boredream/DesignResCollection/blob/master/screenshoot/device-2016-08-17-142654.png =300x530)
-![image](https://github.com/boredream/DesignResCollection/blob/master/screenshoot/device-2016-08-17-142712.png =300x530)
-![image](https://github.com/boredream/DesignResCollection/blob/master/screenshoot/device-2016-08-17-142739.png =300x530)
+<img src="https://github.com/boredream/DesignResCollection/blob/master/screenshoot/device-2016-08-17-142555.png" width="300" height="530">
+<img src="https://github.com/boredream/DesignResCollection/blob/master/screenshoot/device-2016-08-17-142654.png" width="300" height="530">
+<img src="https://github.com/boredream/DesignResCollection/blob/master/screenshoot/device-2016-08-17-142712.png" width="300" height="530">
+<img src="https://github.com/boredream/DesignResCollection/blob/master/screenshoot/device-2016-08-17-142739.png" width="300" height="530">
   
   
 ## 使用

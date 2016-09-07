@@ -1,7 +1,7 @@
 package com.boredream.designrescollection;
 
-import com.boredream.designrescollection.activity.login.LoginContract;
-import com.boredream.designrescollection.activity.login.LoginPresenter;
+import com.boredream.designrescollection.ui.login.LoginContract;
+import com.boredream.designrescollection.ui.login.LoginPresenter;
 
 import org.junit.Before;
 import org.junit.Test;

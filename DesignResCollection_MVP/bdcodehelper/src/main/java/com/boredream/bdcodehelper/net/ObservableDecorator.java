@@ -1,6 +1,6 @@
 package com.boredream.bdcodehelper.net;
 
-import android.content.Context;
+import com.boredream.bdcodehelper.BoreConstants;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,9 +14,12 @@ import rx.schedulers.Schedulers;
 public class ObservableDecorator {
 
     public static <T> Observable<T> decorate(Observable<T> observable) {
-        return observable
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .delay(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread()); // FIXME 模拟延迟,用于观察加载框等效果
+        Observable<T> newObservable = observable.subscribeOn(Schedulers.newThread());
+        if (!BoreConstants.isUnitTest) {
+            newObservable.observeOn(AndroidSchedulers.mainThread())
+                    .delay(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread()); // FIXME 模拟延迟,用于观察加载框等效果
+        }
+
+        return newObservable;
     }
 }

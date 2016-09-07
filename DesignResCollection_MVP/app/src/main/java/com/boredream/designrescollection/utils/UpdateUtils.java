@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 
 import com.boredream.bdcodehelper.entity.AppUpdateInfo;
@@ -23,6 +24,7 @@ import com.boredream.designrescollection.net.HttpRequest;
 import com.boredream.designrescollection.net.SimpleSubscriber;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import rx.Observable;
 
@@ -39,7 +41,9 @@ public class UpdateUtils {
      * 检测版本更新
      *
      * @param context
-     * @param isForceCheck 是否强制检测更新, false-WiFi情况下才提示更新,true-无论什么网络环境都会提示更新
+     * @param isForceCheck 是否强制检测更新
+     *                     true强制 - 无论什么网络环境都会提示更新
+     *                     false非强制 - WiFi情况下才提示更新
      */
     public static void checkUpdate(final BaseActivity context, final boolean isForceCheck) {
         if (!NetUtils.isConnected(context)) {
@@ -86,14 +90,14 @@ public class UpdateUtils {
 
                         AppUpdateInfo newestUpdateInfo = results.get(0);
                         for (AppUpdateInfo updateInfo : results) {
-                            if(updateInfo.getVersion() > newestUpdateInfo.getVersion()) {
+                            if (updateInfo.getVersion() > newestUpdateInfo.getVersion()) {
                                 // 取最大版本号的作为最新版本
                                 newestUpdateInfo = updateInfo;
                             }
                         }
 
                         if (newestUpdateInfo.getVersion() <= AppUtils.getAppVersionCode(context)) {
-                            if(isForceCheck) {
+                            if (isForceCheck) {
                                 ToastUtils.showToast(context, "当前已经是最新版本");
                             }
                         } else {
@@ -121,7 +125,7 @@ public class UpdateUtils {
      * 显示更新对话框,包含版本相关信息
      */
     private static void showUpdateConfirmDialog(final BaseActivity context, final AppUpdateInfo updateInfo) {
-        String content = String.format(
+        String content = String.format(Locale.CHINESE,
                 context.getResources().getString(R.string.update_info),
                 updateInfo.getVersionName(),
                 updateInfo.getUpdateInfo() == null ? "无" : updateInfo.getUpdateInfo());
@@ -159,13 +163,14 @@ public class UpdateUtils {
         ToastUtils.showToast(context, "开始下载安装包...");
 
         // parse url
-        Uri mUri = Uri.parse(updateInfo.getApkFile().getUrl());
+        Uri mUri = Uri.parse(updateInfo.getFileUrl());
 
         // create request
         DownloadManager.Request r = new DownloadManager.Request(mUri);
 
         // set request property
-        r.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, updateInfo.getDownloadTitle());
+        String apkName = getDownloadApkName(context, updateInfo);
+        r.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, apkName);
         r.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
 
         // create manager
@@ -176,6 +181,11 @@ public class UpdateUtils {
 
         // add to queue
         dm.enqueue(r);
+    }
+
+    @NonNull
+    private static String getDownloadApkName(BaseActivity context, AppUpdateInfo updateInfo) {
+        return context.getString(R.string.app_name) + "_" + updateInfo.getVersionName() + ".apk";
     }
 
     /**
@@ -198,7 +208,8 @@ public class UpdateUtils {
         do {
             int status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
             String title = c.getString(c.getColumnIndex(DownloadManager.COLUMN_TITLE));
-            if (title.equals(updateInfo.getDownloadTitle())) {
+            String apkName = getDownloadApkName(context, updateInfo);
+            if (title.equals(apkName)) {
                 // 如果下载列表中文件是当前版本应用，则继续判断下载状态
                 if (status == DownloadManager.STATUS_SUCCESSFUL) {
                     // 如果已经下载，返回状态，同时直接提示安装

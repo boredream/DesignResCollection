@@ -1,8 +1,7 @@
 package com.boredream.designrescollection.constants;
 
 /**
- * TODO replace your app constants
- * 常用常量
+ * 通用常量
  */
 public class CommonConstants {
 
@@ -12,7 +11,7 @@ public class CommonConstants {
     /**
      * SharedPreferences 名称
      */
-    public static final String SP_NAME = "interio_design_config";
+    public static final String SP_NAME = "config";
 
     /**
      * 每页加载的数量

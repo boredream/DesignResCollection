@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="56dp"
     android:background="@android:color/white"
+    android:gravity="center"
     android:orientation="horizontal">
 
     <com.boredream.bdcodehelper.view.DrawableRadioButton
@@ -16,20 +17,6 @@
 
     <com.boredream.bdcodehelper.view.DrawableRadioButton
         android:id="@+id/rb2"
-        style="@style/RadioButtonBottomTab"
-        android:drawableTop="@drawable/ic_search_grey2black_sel"
-        app:drawableHeight="40dp"
-        app:drawableWidth="40dp" />
-
-    <com.boredream.bdcodehelper.view.DrawableRadioButton
-        android:id="@+id/rb3"
-        style="@style/RadioButtonBottomTab"
-        android:drawableTop="@drawable/ic_fav_grey2black_sel"
-        app:drawableHeight="40dp"
-        app:drawableWidth="40dp" />
-
-    <com.boredream.bdcodehelper.view.DrawableRadioButton
-        android:id="@+id/rb4"
         style="@style/RadioButtonBottomTab"
         android:drawableTop="@drawable/ic_more_grey2black_sel"
         app:drawableHeight="40dp"

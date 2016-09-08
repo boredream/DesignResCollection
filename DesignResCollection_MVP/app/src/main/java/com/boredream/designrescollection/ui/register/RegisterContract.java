@@ -7,15 +7,15 @@ import com.boredream.designrescollection.entity.User;
 public class RegisterContract {
     interface View extends BaseView<Presenter> {
 
-        void loginSuccess(User user);
+        void requestSmsSuccess(String phone, String password);
 
+        void registerSuccess(User user);
     }
 
     interface Presenter extends BasePresenter {
 
-        void requestSms(String phone);
+        void requestSms(String phone, String password);
 
-        void register();
-
+        void register(String phone, String password, String code);
     }
 }

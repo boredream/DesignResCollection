@@ -26,6 +26,8 @@ public interface BaseView<T> {
 
     void dismissProgress();
 
-    void showErrorToast(String message);
+    void showLocalError(String message);
+
+    void showWebError(String message);
 
 }

@@ -103,7 +103,12 @@ public class LoginFragment extends BaseFragment implements LoginContract.View, V
     }
 
     @Override
-    public void showErrorToast(String message) {
+    public void showLocalError(String message) {
+        showToast(message);
+    }
+
+    @Override
+    public void showWebError(String message) {
         showToast(message);
     }
 

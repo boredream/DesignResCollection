@@ -26,12 +26,12 @@ public class LoginPresenter implements LoginContract.Presenter {
     @Override
     public void login(String username, String password) {
         if (StringUtils.isEmpty(username)) {
-            rootView.showErrorToast("用户名不能为空");
+            rootView.showLocalError("用户名不能为空");
             return;
         }
 
         if (StringUtils.isEmpty(password)) {
-            rootView.showErrorToast("密码不能为空");
+            rootView.showLocalError("密码不能为空");
             return;
         }
 
@@ -53,7 +53,7 @@ public class LoginPresenter implements LoginContract.Presenter {
                 rootView.dismissProgress();
 
                 String error = ErrorInfoUtils.parseHttpErrorInfo(e);
-                rootView.showErrorToast(error);
+                rootView.showWebError(error);
             }
 
             @Override

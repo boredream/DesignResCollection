@@ -35,5 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_large"
             android:text="下一步" />
+
     </LinearLayout>
+
 </LinearLayout>

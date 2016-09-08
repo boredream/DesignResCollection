@@ -23,4 +23,5 @@
         最新版本：%1$s
         \n\n更新内容：\n%2$s
     </string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>

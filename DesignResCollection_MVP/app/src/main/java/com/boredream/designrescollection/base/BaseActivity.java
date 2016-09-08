@@ -22,6 +22,8 @@ public class BaseActivity extends BoreBaseActivity {
     private boolean couldDoubleBackExit;
     private boolean doubleBackExitPressedOnce;
 
+    protected boolean isActive;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,18 @@ public class BaseActivity extends BoreBaseActivity {
 
         application = (BaseApplication) getApplication();
         sp = getSharedPreferences(CommonConstants.SP_NAME, MODE_PRIVATE);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        isActive = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        isActive = false;
     }
 
     /**

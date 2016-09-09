@@ -35,6 +35,13 @@ public class RegisterPresenterTest {
     @Test
     public void testRequestSms() throws Exception {
         // 模拟发送短信，无需测试
+        String phone = "13913391235";
+        String password = "123456";
+
+        presenter.requestSms(phone, password);
+        view.showProgress();
+        view.dismissProgress();
+        view.requestSmsSuccess(phone, password);
     }
 
     @Test

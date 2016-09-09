@@ -20,11 +20,6 @@ public class RegisterPresenter implements RegisterContract.Presenter {
     }
 
     @Override
-    public void start() {
-
-    }
-
-    @Override
     public void requestSms(final String phone, final String password) {
         if (StringUtils.isEmpty(phone)) {
             rootView.showLocalError("请输入用户名");
@@ -51,7 +46,6 @@ public class RegisterPresenter implements RegisterContract.Presenter {
                 if (!rootView.isActive()) {
                     return;
                 }
-
                 rootView.dismissProgress();
 
                 String error = ErrorInfoUtils.parseHttpErrorInfo(e);
@@ -63,7 +57,6 @@ public class RegisterPresenter implements RegisterContract.Presenter {
                 if (!rootView.isActive()) {
                     return;
                 }
-
                 rootView.dismissProgress();
 
                 rootView.requestSmsSuccess(phone, password);

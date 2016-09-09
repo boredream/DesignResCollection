@@ -13,6 +13,7 @@ import com.boredream.bdcodehelper.utils.AppUtils;
 import com.boredream.bdcodehelper.view.DividerItemDecoration;
 import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.base.BaseActivity;
+import com.boredream.designrescollection.ui.feedback.FeedBackActivity;
 import com.boredream.designrescollection.utils.UpdateUtils;
 import com.boredream.designrescollection.utils.UserInfoKeeper;
 

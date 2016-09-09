@@ -18,6 +18,4 @@ package com.boredream.designrescollection.base;
 
 public interface BasePresenter {
 
-    void start();
-
 }

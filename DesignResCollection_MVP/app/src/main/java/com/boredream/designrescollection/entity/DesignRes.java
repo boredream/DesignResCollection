@@ -53,4 +53,32 @@ public class DesignRes extends BaseEntity {
     public void setSrcLink(String srcLink) {
         this.srcLink = srcLink;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        DesignRes designRes = (DesignRes) o;
+
+        if (desc != null ? !desc.equals(designRes.desc) : designRes.desc != null) return false;
+        if (srcTag != null ? !srcTag.equals(designRes.srcTag) : designRes.srcTag != null)
+            return false;
+        if (name != null ? !name.equals(designRes.name) : designRes.name != null) return false;
+        if (imgUrl != null ? !imgUrl.equals(designRes.imgUrl) : designRes.imgUrl != null)
+            return false;
+        return srcLink != null ? srcLink.equals(designRes.srcLink) : designRes.srcLink == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = desc != null ? desc.hashCode() : 0;
+        result = 31 * result + (srcTag != null ? srcTag.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (imgUrl != null ? imgUrl.hashCode() : 0);
+        result = 31 * result + (srcLink != null ? srcLink.hashCode() : 0);
+        return result;
+    }
 }

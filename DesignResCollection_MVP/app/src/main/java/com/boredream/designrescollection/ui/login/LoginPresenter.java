@@ -19,11 +19,6 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     @Override
-    public void start() {
-
-    }
-
-    @Override
     public void login(String username, String password) {
         if (StringUtils.isEmpty(username)) {
             rootView.showLocalError("用户名不能为空");
@@ -49,7 +44,6 @@ public class LoginPresenter implements LoginContract.Presenter {
                 if (!rootView.isActive()) {
                     return;
                 }
-
                 rootView.dismissProgress();
 
                 String error = ErrorInfoUtils.parseHttpErrorInfo(e);
@@ -61,7 +55,6 @@ public class LoginPresenter implements LoginContract.Presenter {
                 if (!rootView.isActive()) {
                     return;
                 }
-
                 rootView.dismissProgress();
 
                 rootView.loginSuccess(user);

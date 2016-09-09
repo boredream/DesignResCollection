@@ -2,17 +2,11 @@ package com.boredream.designrescollection.ui.register;
 
 import com.boredream.bdcodehelper.BoreConstants;
 import com.boredream.designrescollection.entity.User;
-import com.boredream.designrescollection.net.HttpRequest;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-
-import rx.Subscriber;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -22,7 +16,6 @@ public class RegisterPresenterTest {
     @Mock
     private RegisterContract.View view;
 
-    @Mock
     private RegisterPresenter presenter;
 
     @Before
@@ -44,13 +37,15 @@ public class RegisterPresenterTest {
         // 模拟发送短信，无需测试
     }
 
-    @Captor
-    private ArgumentCaptor<Subscriber<User>> captor;
-
     @Test
     public void testRegister() throws Exception {
-        when(HttpRequest.getApiService().register(mock(User.class))).thenReturn();
+        String phone = "13913391235";
+        String password = "123456";
+        String code = "1234";
 
-        presenter.register("13913391234", "123456", "1234");
+        presenter.register(phone, password, code);
+        view.showProgress();
+        view.dismissProgress();
+        view.registerSuccess(mock(User.class));
     }
 }

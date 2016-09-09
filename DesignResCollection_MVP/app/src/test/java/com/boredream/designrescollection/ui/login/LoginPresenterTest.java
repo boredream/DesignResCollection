@@ -3,6 +3,7 @@ package com.boredream.designrescollection.ui.login;
 import com.boredream.bdcodehelper.BoreConstants;
 import com.boredream.designrescollection.utils.UserInfoKeeper;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -47,11 +48,21 @@ public class LoginPresenterTest {
     }
 
     @Test
-    public void testLoginSuccess() throws Exception {
-        presenter.login("18551681236", "123456");
+    public void testLogin_Success() throws Exception {
+        String phone = "18551681236";
+        presenter.login(phone, "123456");
         verify(view).showProgress();
-        Thread.sleep(2000);
         verify(view).dismissProgress();
         verify(view).loginSuccess(UserInfoKeeper.getCurrentUser());
+        Assert.assertEquals(UserInfoKeeper.getCurrentUser().getUsername(), phone);
+    }
+
+    @Test
+    public void testLogin_UserNotExit() throws Exception {
+        String phone = "110110110";
+        presenter.login(phone, "123456");
+        verify(view).showProgress();
+        verify(view).dismissProgress();
+        verify(view).showWebError("找不到用户");
     }
 }

@@ -16,8 +16,8 @@ public class ObservableDecorator {
     public static <T> Observable<T> decorate(Observable<T> observable) {
         Observable<T> newObservable;
         if(BoreConstants.isUnitTest) {
-            newObservable = observable.subscribeOn(Schedulers.newThread())
-                    .delay(1, TimeUnit.SECONDS);
+            newObservable = observable.subscribeOn(Schedulers.immediate())
+                    .observeOn(Schedulers.immediate());
         } else {
             newObservable = observable.subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())

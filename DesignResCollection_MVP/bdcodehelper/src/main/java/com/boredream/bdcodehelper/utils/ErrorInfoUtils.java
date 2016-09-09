@@ -52,7 +52,7 @@ public class ErrorInfoUtils {
      */
     private static String getLocalErrorInfo(ErrorResponse error) {
         String s = ErrorConstants.errors.get(error.getCode());
-        if (TextUtils.isEmpty(s)) {
+        if (StringUtils.isEmpty(s)) {
             return error.getError();
         } else {
             return s;

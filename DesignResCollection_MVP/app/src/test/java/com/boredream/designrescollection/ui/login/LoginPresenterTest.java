@@ -34,16 +34,14 @@ public class LoginPresenterTest {
     }
 
     @Test
-    public void testEmptyPassword() throws Exception {
+    public void testLogin_EmptyPassword() throws Exception {
         presenter.login("13913391521", "");
-
         verify(view).showLocalError("密码不能为空");
     }
 
     @Test
-    public void testEmptyUsername() throws Exception {
+    public void testLogin_EmptyUsername() throws Exception {
         presenter.login(null, "123456");
-
         verify(view).showLocalError("用户名不能为空");
     }
 
@@ -64,5 +62,14 @@ public class LoginPresenterTest {
         verify(view).showProgress();
         verify(view).dismissProgress();
         verify(view).showWebError("找不到用户");
+    }
+
+    @Test
+    public void testLogin_PswError() throws Exception {
+        String phone = "18551681236";
+        presenter.login(phone, "110119120");
+        verify(view).showProgress();
+        verify(view).dismissProgress();
+        verify(view).showWebError("密码不正确");
     }
 }

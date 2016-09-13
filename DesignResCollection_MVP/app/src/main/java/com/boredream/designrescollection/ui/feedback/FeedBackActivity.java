@@ -7,6 +7,7 @@ import android.widget.EditText;
 
 import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.base.BaseActivity;
+import com.boredream.designrescollection.net.HttpRequest;
 
 public class FeedBackActivity extends BaseActivity implements FeedBackContract.View {
 
@@ -24,7 +25,7 @@ public class FeedBackActivity extends BaseActivity implements FeedBackContract.V
     }
 
     private void initView() {
-        presenter = new FeedBackPresenter(this);
+        presenter = new FeedBackPresenter(this, HttpRequest.getApiService());
 
         initBackTitle("意见反馈")
                 .setRightText("提交")

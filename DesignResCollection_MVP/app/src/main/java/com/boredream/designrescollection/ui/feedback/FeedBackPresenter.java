@@ -13,9 +13,14 @@ import rx.Subscriber;
 public class FeedBackPresenter implements FeedBackContract.Presenter {
 
     private final FeedBackContract.View rootView;
+    private final HttpRequest.ApiService api;
 
-    public FeedBackPresenter(FeedBackContract.View rootView) {
+    /**
+     * view和api都依赖注入是方便mock测试view和api
+     */
+    public FeedBackPresenter(FeedBackContract.View rootView, HttpRequest.ApiService api) {
         this.rootView = rootView;
+        this.api = api;
         this.rootView.setPresenter(this);
     }
 
@@ -32,41 +37,40 @@ public class FeedBackPresenter implements FeedBackContract.Presenter {
             return;
         }
 
+        rootView.showProgress();
+
         // 使用自定义对象存至云平台,作为简易版的反馈意见收集
         FeedBack fb = new FeedBack();
         fb.setContent(content);
         fb.setEmail(email);
 
-        rootView.showProgress();
+        Observable<BaseEntity> observable = ObservableDecorator.decorate(api.addFeedBack(fb));
+        observable.subscribe(new Subscriber<BaseEntity>() {
+            @Override
+            public void onCompleted() {
 
-        Observable<BaseEntity> observable = HttpRequest.getApiService().addFeedBack(fb);
-        ObservableDecorator.decorate(observable).subscribe(
-                new Subscriber<BaseEntity>() {
-                    @Override
-                    public void onCompleted() {
+            }
 
-                    }
+            @Override
+            public void onError(Throwable e) {
+                if (!rootView.isActive()) {
+                    return;
+                }
+                rootView.dismissProgress();
 
-                    @Override
-                    public void onError(Throwable e) {
-                        if (!rootView.isActive()) {
-                            return;
-                        }
-                        rootView.dismissProgress();
+                String error = ErrorInfoUtils.parseHttpErrorInfo(e);
+                rootView.showWebError(error);
+            }
 
-                        String error = ErrorInfoUtils.parseHttpErrorInfo(e);
-                        rootView.showWebError(error);
-                    }
+            @Override
+            public void onNext(BaseEntity entity) {
+                if (!rootView.isActive()) {
+                    return;
+                }
+                rootView.dismissProgress();
 
-                    @Override
-                    public void onNext(BaseEntity entity) {
-                        if (!rootView.isActive()) {
-                            return;
-                        }
-                        rootView.dismissProgress();
-
-                        rootView.addFeedbackSuccess();
-                    }
-                });
+                rootView.addFeedbackSuccess();
+            }
+        });
     }
 }

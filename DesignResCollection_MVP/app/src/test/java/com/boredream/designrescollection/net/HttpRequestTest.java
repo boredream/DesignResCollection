@@ -10,7 +10,7 @@ import rx.Observable;
 
 public class HttpRequestTest {
 
-    HttpRequest.AppService service;
+    HttpRequest.ApiService service;
 
     @Before
     public void setUp() {

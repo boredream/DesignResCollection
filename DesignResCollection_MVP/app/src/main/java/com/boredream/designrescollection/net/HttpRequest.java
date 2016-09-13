@@ -95,7 +95,7 @@ public class HttpRequest {
                 .build();
     }
 
-    public interface AppService {
+    public interface ApiService {
         ////////////////////////////// 通用接口 //////////////////////////////
         // 登录用户
         @GET("/1/login")
@@ -141,8 +141,8 @@ public class HttpRequest {
                 @Query("include") String include);
     }
 
-    public static AppService getApiService() {
-        return retrofit.create(AppService.class);
+    public static ApiService getApiService() {
+        return retrofit.create(ApiService.class);
     }
 
     ////////////////////////////// 业务接口方法 //////////////////////////////
@@ -151,7 +151,7 @@ public class HttpRequest {
      * 查询设计资源
      */
     public static Observable<ListResponse<DesignRes>> getDesignRes(int page) {
-        AppService service = getApiService();
+        ApiService service = getApiService();
         String where = "{}";
         return service.getDesignRes(CommonConstants.COUNT_OF_PAGE,
                 (page - 1) * CommonConstants.COUNT_OF_PAGE, where, null);
@@ -164,7 +164,7 @@ public class HttpRequest {
      * @param name 搜索名称
      */
     public static Observable<ListResponse<DesignRes>> getDesignRes(int page, String name) {
-        AppService service = getApiService();
+        ApiService service = getApiService();
         String whereName = "{}";
         if (!TextUtils.isEmpty(name)) {
             whereName = "{\"name\":{\"$regex\":\".*" + name + ".*\"}}";
@@ -184,7 +184,7 @@ public class HttpRequest {
      * @param password 密码
      */
     public static Observable<User> login(String username, String password) {
-        AppService service = getApiService();
+        ApiService service = getApiService();
         return service.login(username, password)
                 .doOnNext(new Action1<User>() {
                     @Override
@@ -206,7 +206,7 @@ public class HttpRequest {
      * @param call
      */
     public static void fileUpload(final Context context, Uri uri, int reqW, int reqH, final Subscriber<FileUploadResponse> call) {
-        final AppService service = getApiService();
+        final ApiService service = getApiService();
         final String filename = "avatar_" + System.currentTimeMillis() + ".jpg";
 
         // 先从本地获取图片,利用Glide压缩图片后获取byte[]

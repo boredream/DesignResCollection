@@ -1,7 +1,5 @@
 package com.boredream.bdcodehelper.utils;
 
-import android.text.TextUtils;
-
 import com.boredream.bdcodehelper.entity.ErrorResponse;
 import com.boredream.bdcodehelper.net.ErrorConstants;
 import com.google.gson.Gson;

@@ -14,5 +14,6 @@ public interface FeedBackContract {
     interface Presenter extends BasePresenter {
 
         void addFeedback(String content, String email);
+
     }
 }

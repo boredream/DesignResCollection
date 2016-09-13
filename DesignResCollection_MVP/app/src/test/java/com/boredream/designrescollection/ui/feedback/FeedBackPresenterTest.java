@@ -1,12 +1,18 @@
 package com.boredream.designrescollection.ui.feedback;
 
 import com.boredream.bdcodehelper.BoreConstants;
+import com.boredream.designrescollection.base.BaseEntity;
+import com.boredream.designrescollection.entity.FeedBack;
+import com.boredream.designrescollection.net.HttpRequest;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import rx.Observable;
+
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -15,6 +21,9 @@ public class FeedBackPresenterTest {
 
     @Mock
     private FeedBackContract.View view;
+
+    @Mock
+    private HttpRequest.ApiService api;
 
     @Before
     public void setupMocksAndView() {
@@ -27,7 +36,7 @@ public class FeedBackPresenterTest {
 
         BoreConstants.isUnitTest = true;
 
-        presenter = new FeedBackPresenter(view);
+        presenter = new FeedBackPresenter(view, api);
     }
 
     @Test
@@ -39,4 +48,16 @@ public class FeedBackPresenterTest {
         verify(view).dismissProgress();
         verify(view).addFeedbackSuccess();
     }
+
+    @Test
+    public void testAddFeedback_Mock_Success() throws Exception {
+        when(api.addFeedBack(any(FeedBack.class))).thenReturn(Observable.just(new BaseEntity()));
+
+        String content = "fuck it !!!!!!!!!!!!!!";
+        String email = "110@qq.com";
+        presenter.addFeedback(content, email);
+
+        verify(view).addFeedbackSuccess();
+    }
+
 }

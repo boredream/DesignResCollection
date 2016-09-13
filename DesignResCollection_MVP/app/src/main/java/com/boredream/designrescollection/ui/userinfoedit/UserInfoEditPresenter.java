@@ -1,12 +1,11 @@
 package com.boredream.designrescollection.ui.userinfoedit;
 
-import android.net.Uri;
-
 import com.boredream.bdcodehelper.entity.FileUploadResponse;
 import com.boredream.bdcodehelper.net.ObservableDecorator;
 import com.boredream.designrescollection.base.BaseEntity;
 import com.boredream.designrescollection.net.HttpRequest;
 import com.boredream.designrescollection.utils.UserInfoKeeper;
+import com.squareup.okhttp.MediaType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,23 +16,23 @@ import rx.Subscriber;
 public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
 
     private final UserInfoEditContract.View view;
+    private final HttpRequest.ApiService api;
 
-    public UserInfoEditPresenter(UserInfoEditContract.View view) {
+    public UserInfoEditPresenter(UserInfoEditContract.View view, HttpRequest.ApiService api) {
         this.view = view;
+        this.api = api;
         this.view.setPresenter(this);
     }
 
     @Override
-    public void uploadAvatar(Uri uri, int reqWidth, int reqHeight) {
-        if(uri == null) {
-            view.showTip("图片获取失败");
-            return;
-        }
-
+    public void uploadAvatar(byte[] bytes) {
         view.showProgress();
 
+        final String filename = "image_" + System.currentTimeMillis() + ".jpg";
+
         // 第一步,上传头像文件到服务器
-        HttpRequest.fileUpload(uri, reqWidth, reqHeight,
+        Observable<FileUploadResponse> observable = HttpRequest.fileUpload(bytes, filename, MediaType.parse("image/jpeg"));
+        ObservableDecorator.decorate(observable).subscribe(
                 new Subscriber<FileUploadResponse>() {
                     @Override
                     public void onCompleted() {
@@ -89,4 +88,5 @@ public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
                     }
                 });
     }
+
 }

@@ -14,9 +14,6 @@ public class FeedBackPresenter implements FeedBackContract.Presenter {
     private final FeedBackContract.View view;
     private final HttpRequest.ApiService api;
 
-    /**
-     * view和api都依赖注入是方便mock测试view和api
-     */
     public FeedBackPresenter(FeedBackContract.View view, HttpRequest.ApiService api) {
         this.view = view;
         this.api = api;

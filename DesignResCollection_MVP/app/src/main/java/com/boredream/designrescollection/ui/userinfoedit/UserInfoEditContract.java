@@ -1,7 +1,5 @@
 package com.boredream.designrescollection.ui.userinfoedit;
 
-import android.net.Uri;
-
 import com.boredream.designrescollection.base.BasePresenter;
 import com.boredream.designrescollection.base.BaseView;
 
@@ -16,11 +14,8 @@ public interface UserInfoEditContract {
     interface Presenter extends BasePresenter {
 
         /**
-         * 上传用户头像图片
-         *
-         * @param uri 头像图片uri
+         * 上传用户头像
          */
-        void uploadAvatar(Uri uri, int reqWidth, int reqHeight);
-
+        void uploadAvatar(byte[] bytes);
     }
 }

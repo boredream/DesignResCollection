@@ -1,24 +1,17 @@
 package com.boredream.designrescollection.net;
 
 
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.text.TextUtils;
 
 import com.boredream.bdcodehelper.entity.AppUpdateInfo;
 import com.boredream.bdcodehelper.entity.FileUploadResponse;
 import com.boredream.bdcodehelper.entity.ListResponse;
-import com.boredream.bdcodehelper.net.ObservableDecorator;
-import com.boredream.designrescollection.base.BaseApplication;
 import com.boredream.designrescollection.base.BaseEntity;
 import com.boredream.designrescollection.constants.CommonConstants;
 import com.boredream.designrescollection.entity.DesignRes;
 import com.boredream.designrescollection.entity.FeedBack;
 import com.boredream.designrescollection.entity.User;
 import com.boredream.designrescollection.utils.UserInfoKeeper;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.squareup.okhttp.Interceptor;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
@@ -40,7 +33,6 @@ import retrofit.http.PUT;
 import retrofit.http.Path;
 import retrofit.http.Query;
 import rx.Observable;
-import rx.Subscriber;
 import rx.functions.Action1;
 
 public class HttpRequest {
@@ -196,37 +188,14 @@ public class HttpRequest {
     }
 
     /**
-     * 上传图片
+     * 上传文件
      *
-     * @param call    上传成功回调
-     * @param uri     图片uri
-     * @param reqW    上传图片需要压缩的宽度
-     * @param reqH    上传图片需要压缩的高度
-     * @param call
+     * @param bytes
      */
-    public static void fileUpload(Uri uri, int reqW, int reqH, final Subscriber<FileUploadResponse> call) {
-        final ApiService service = getApiService();
-        final String filename = "avatar_" + System.currentTimeMillis() + ".jpg";
-
-        // 先从本地获取图片,利用Glide压缩图片后获取byte[]
-        Glide.with(BaseApplication.getInstance()).load(uri).asBitmap().toBytes().into(
-                new SimpleTarget<byte[]>(reqW, reqH) {
-                    @Override
-                    public void onResourceReady(final byte[] resource, GlideAnimation<? super byte[]> glideAnimation) {
-                        // 上传图片
-                        RequestBody requestBody = RequestBody.create(MediaType.parse("image/jpeg"), resource);
-
-                        Observable<FileUploadResponse> observable = service.fileUpload(filename, requestBody);
-                        ObservableDecorator.decorate(observable)
-                                .subscribe(call);
-                    }
-
-                    @Override
-                    public void onLoadFailed(Exception e, Drawable errorDrawable) {
-                        super.onLoadFailed(e, errorDrawable);
-                        call.onError(new Throwable("图片解析失败"));
-                    }
-                });
+    public static Observable<FileUploadResponse> fileUpload(byte[] bytes, String filename, MediaType type) {
+        ApiService service = getApiService();
+        RequestBody requestBody = RequestBody.create(type, bytes);
+        return service.fileUpload(filename, requestBody);
     }
 
 }

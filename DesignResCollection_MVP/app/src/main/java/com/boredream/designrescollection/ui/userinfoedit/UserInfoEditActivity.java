@@ -13,8 +13,11 @@ import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.base.BaseActivity;
 import com.boredream.designrescollection.entity.User;
 import com.boredream.designrescollection.net.GlideHelper;
+import com.boredream.designrescollection.net.HttpRequest;
 import com.boredream.designrescollection.ui.UsernameModifyActivity;
 import com.boredream.designrescollection.utils.UserInfoKeeper;
+
+import rx.Subscriber;
 
 public class UserInfoEditActivity extends BaseActivity implements View.OnClickListener, UserInfoEditContract.View {
 
@@ -48,7 +51,7 @@ public class UserInfoEditActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void initView() {
-        presenter = new UserInfoEditPresenter(this);
+        presenter = new UserInfoEditPresenter(this, HttpRequest.getApiService());
 
         initBackTitle("修改个人资料");
 
@@ -97,10 +100,28 @@ public class UserInfoEditActivity extends BaseActivity implements View.OnClickLi
                 break;
             case ImageUtils.REQUEST_CODE_CROP_IMAGE:
                 // 裁剪完成后上传图片
-                presenter.uploadAvatar(ImageUtils.cropImageUri,
-                        iv_avatar.getWidth(), iv_avatar.getHeight());
+                compressAndUpload(ImageUtils.cropImageUri);
                 break;
         }
+    }
+
+    private void compressAndUpload(Uri uri) {
+        ImageUtils.compressImage(this, uri, iv_avatar.getWidth(), iv_avatar.getHeight(), new Subscriber<byte[]>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(byte[] bytes) {
+                presenter.uploadAvatar(bytes);
+            }
+        });
     }
 
     @Override

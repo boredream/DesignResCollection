@@ -8,12 +8,19 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
+
+import rx.Subscriber;
 
 /**
  * 图片工具类
@@ -117,6 +124,33 @@ public class ImageUtils {
      */
     public static void pickImageFromAlbum(final Activity activity) {
         pickImageFromAlbum(activity, 0);
+    }
+
+    /**
+     * 亚索图片
+     *
+     * @param call    上传成功回调
+     * @param context
+     * @param uri     图片uri
+     * @param reqW    上传图片需要压缩的宽度
+     * @param reqH    上传图片需要压缩的高度
+     * @param call
+     */
+    public static void compressImage(final Context context, Uri uri, int reqW, int reqH, final Subscriber<byte[]> call) {
+        // 先从本地获取图片,利用Glide压缩图片后获取byte[]
+        Glide.with(context).load(uri).asBitmap().toBytes().into(
+                new SimpleTarget<byte[]>(reqW, reqH) {
+                    @Override
+                    public void onResourceReady(final byte[] resource, GlideAnimation<? super byte[]> glideAnimation) {
+                        call.onNext(resource);
+                    }
+
+                    @Override
+                    public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                        super.onLoadFailed(e, errorDrawable);
+                        call.onError(new Throwable("图片解析失败"));
+                    }
+                });
     }
 
     /**

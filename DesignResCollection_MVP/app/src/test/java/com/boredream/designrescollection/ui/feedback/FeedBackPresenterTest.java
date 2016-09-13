@@ -56,8 +56,20 @@ public class FeedBackPresenterTest {
         String content = "fuck it !!!!!!!!!!!!!!";
         String email = "110@qq.com";
         presenter.addFeedback(content, email);
-
+        verify(view).showProgress();
+        verify(view).dismissProgress();
         verify(view).addFeedbackSuccess();
     }
 
+    @Test
+    public void testAddFeedback_Mock_Error() throws Exception {
+        when(api.addFeedBack(any(FeedBack.class))).thenReturn(Observable.<BaseEntity>error(new Exception("blablabla")));
+
+        String content = "fuck it !!!!!!!!!!!!!!";
+        String email = "110@qq.com";
+        presenter.addFeedback(content, email);
+        verify(view).showProgress();
+        verify(view).dismissProgress();
+        verify(view).showWebError("反馈提交失败");
+    }
 }

@@ -1,7 +1,6 @@
 package com.boredream.designrescollection.ui.feedback;
 
 import com.boredream.bdcodehelper.net.ObservableDecorator;
-import com.boredream.bdcodehelper.utils.ErrorInfoUtils;
 import com.boredream.bdcodehelper.utils.StringUtils;
 import com.boredream.designrescollection.base.BaseEntity;
 import com.boredream.designrescollection.entity.FeedBack;
@@ -58,8 +57,7 @@ public class FeedBackPresenter implements FeedBackContract.Presenter {
                 }
                 rootView.dismissProgress();
 
-                String error = ErrorInfoUtils.parseHttpErrorInfo(e);
-                rootView.showWebError(error);
+                rootView.showWebError("反馈提交失败");
             }
 
             @Override

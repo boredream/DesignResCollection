@@ -63,7 +63,7 @@ public class HomePresenter implements HomeContract.Presenter {
                         rootView.dismissProgress();
 
                         datas = response.getResults();
-                        rootView.loadListSuccess(page, response.getResults());
+                        rootView.loadListSuccess(page, datas);
                     }
                 });
     }

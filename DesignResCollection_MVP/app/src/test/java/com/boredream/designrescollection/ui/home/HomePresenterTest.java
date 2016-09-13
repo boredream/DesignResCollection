@@ -3,6 +3,7 @@ package com.boredream.designrescollection.ui.home;
 import com.boredream.bdcodehelper.BoreConstants;
 import com.boredream.designrescollection.entity.DesignRes;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -39,6 +40,7 @@ public class HomePresenterTest {
         presenter.pullToLoadList();
         verify(view).dismissProgress();
         verify(view).loadListSuccess(1, presenter.datas);
+        Assert.assertTrue(presenter.datas.size() > 0);
     }
 
     @Test
@@ -47,6 +49,7 @@ public class HomePresenterTest {
         verify(view).showProgress();
         verify(view).dismissProgress();
         verify(view).loadListSuccess(1, presenter.datas);
+        Assert.assertTrue(presenter.datas.size() > 0);
     }
 
     @Test
@@ -54,5 +57,6 @@ public class HomePresenterTest {
         presenter.loadList(999);
         verify(view).dismissProgress();
         verify(view).loadListSuccess(999, Collections.<DesignRes>emptyList());
+        Assert.assertFalse(presenter.datas.size() > 0);
     }
 }

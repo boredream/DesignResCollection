@@ -1,0 +1,92 @@
+package com.boredream.designrescollection.ui.userinfoedit;
+
+import android.net.Uri;
+
+import com.boredream.bdcodehelper.entity.FileUploadResponse;
+import com.boredream.bdcodehelper.net.ObservableDecorator;
+import com.boredream.designrescollection.base.BaseEntity;
+import com.boredream.designrescollection.net.HttpRequest;
+import com.boredream.designrescollection.utils.UserInfoKeeper;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import rx.Observable;
+import rx.Subscriber;
+
+public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
+
+    private final UserInfoEditContract.View view;
+
+    public UserInfoEditPresenter(UserInfoEditContract.View view) {
+        this.view = view;
+        this.view.setPresenter(this);
+    }
+
+    @Override
+    public void uploadAvatar(Uri uri, int reqWidth, int reqHeight) {
+        if(uri == null) {
+            view.showTip("图片获取失败");
+            return;
+        }
+
+        view.showProgress();
+
+        // 第一步,上传头像文件到服务器
+        HttpRequest.fileUpload(uri, reqWidth, reqHeight,
+                new Subscriber<FileUploadResponse>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onNext(FileUploadResponse fileUploadResponse) {
+                        // 第二步,将上传图片返回的url地址更新至用户对象中
+                        updateUserAvatar(HttpRequest.FILE_HOST + fileUploadResponse.getUrl());
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable) {
+                        view.dismissProgress();
+                    }
+                });
+    }
+
+    /**
+     * 更新用户头像
+     *
+     * @param avatarUrl 头像图片地址
+     */
+    private void updateUserAvatar(final String avatarUrl) {
+        Map<String, Object> updateMap = new HashMap<>();
+        updateMap.put("avatar", avatarUrl);
+
+        Observable<BaseEntity> observable = HttpRequest.getApiService().updateUserById(
+                UserInfoKeeper.getCurrentUser().getObjectId(), updateMap);
+        ObservableDecorator.decorate(observable)
+                .subscribe(new Subscriber<BaseEntity>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onNext(BaseEntity entity) {
+                        view.dismissProgress();
+
+                        // 成功后更新当前用户的头像数据
+                        UserInfoKeeper.getCurrentUser().setAvatar(avatarUrl);
+
+                        view.uploadAvatarSuccess();
+
+                        view.showTip("上传修改头像成功");
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable) {
+                        view.dismissProgress();
+                    }
+                });
+    }
+}

@@ -16,7 +16,7 @@ import com.boredream.bdcodehelper.view.EmptyItemDecoration;
 import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.ui.AboutActivity;
 import com.boredream.designrescollection.ui.SettingActivity;
-import com.boredream.designrescollection.ui.UserInfoEditActivity;
+import com.boredream.designrescollection.ui.userinfoedit.UserInfoEditActivity;
 import com.boredream.designrescollection.adapter.MoreRecyclerAdapter;
 import com.boredream.designrescollection.base.BaseFragment;
 import com.boredream.designrescollection.utils.UserInfoKeeper;

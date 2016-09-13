@@ -11,32 +11,32 @@ import rx.Subscriber;
 
 public class FeedBackPresenter implements FeedBackContract.Presenter {
 
-    private final FeedBackContract.View rootView;
+    private final FeedBackContract.View view;
     private final HttpRequest.ApiService api;
 
     /**
      * view和api都依赖注入是方便mock测试view和api
      */
-    public FeedBackPresenter(FeedBackContract.View rootView, HttpRequest.ApiService api) {
-        this.rootView = rootView;
+    public FeedBackPresenter(FeedBackContract.View view, HttpRequest.ApiService api) {
+        this.view = view;
         this.api = api;
-        this.rootView.setPresenter(this);
+        this.view.setPresenter(this);
     }
 
     @Override
     public void addFeedback(String content, String email) {
         // 开始验证输入内容
         if (StringUtils.isEmpty(content)) {
-            rootView.showLocalError("反馈内容不能为空");
+            view.showTip("反馈内容不能为空");
             return;
         }
 
         if (StringUtils.isEmpty(email)) {
-            rootView.showLocalError("请输入邮箱地址,方便我们对您的意见进行及时回复");
+            view.showTip("请输入邮箱地址,方便我们对您的意见进行及时回复");
             return;
         }
 
-        rootView.showProgress();
+        view.showProgress();
 
         // 使用自定义对象存至云平台,作为简易版的反馈意见收集
         FeedBack fb = new FeedBack();
@@ -52,22 +52,22 @@ public class FeedBackPresenter implements FeedBackContract.Presenter {
 
             @Override
             public void onError(Throwable e) {
-                if (!rootView.isActive()) {
+                if (!view.isActive()) {
                     return;
                 }
-                rootView.dismissProgress();
+                view.dismissProgress();
 
-                rootView.showWebError("反馈提交失败");
+                view.showTip("反馈提交失败");
             }
 
             @Override
             public void onNext(BaseEntity entity) {
-                if (!rootView.isActive()) {
+                if (!view.isActive()) {
                     return;
                 }
-                rootView.dismissProgress();
+                view.dismissProgress();
 
-                rootView.addFeedbackSuccess();
+                view.addFeedbackSuccess();
             }
         });
     }

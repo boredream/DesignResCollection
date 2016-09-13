@@ -11,26 +11,26 @@ import rx.Subscriber;
 
 public class LoginPresenter implements LoginContract.Presenter {
 
-    private final LoginContract.View rootView;
+    private final LoginContract.View view;
 
-    public LoginPresenter(LoginContract.View rootView) {
-        this.rootView = rootView;
-        this.rootView.setPresenter(this);
+    public LoginPresenter(LoginContract.View view) {
+        this.view = view;
+        this.view.setPresenter(this);
     }
 
     @Override
     public void login(String username, String password) {
         if (StringUtils.isEmpty(username)) {
-            rootView.showLocalError("用户名不能为空");
+            view.showTip("用户名不能为空");
             return;
         }
 
         if (StringUtils.isEmpty(password)) {
-            rootView.showLocalError("密码不能为空");
+            view.showTip("密码不能为空");
             return;
         }
 
-        rootView.showProgress();
+        view.showProgress();
 
         Observable<User> observable = HttpRequest.login(username, password);
         ObservableDecorator.decorate(observable).subscribe(new Subscriber<User>() {
@@ -41,23 +41,23 @@ public class LoginPresenter implements LoginContract.Presenter {
 
             @Override
             public void onError(Throwable e) {
-                if (!rootView.isActive()) {
+                if (!view.isActive()) {
                     return;
                 }
-                rootView.dismissProgress();
+                view.dismissProgress();
 
                 String error = ErrorInfoUtils.parseHttpErrorInfo(e);
-                rootView.showWebError(error);
+                view.showTip(error);
             }
 
             @Override
             public void onNext(User user) {
-                if (!rootView.isActive()) {
+                if (!view.isActive()) {
                     return;
                 }
-                rootView.dismissProgress();
+                view.dismissProgress();
 
-                rootView.loginSuccess(user);
+                view.loginSuccess(user);
             }
         });
     }

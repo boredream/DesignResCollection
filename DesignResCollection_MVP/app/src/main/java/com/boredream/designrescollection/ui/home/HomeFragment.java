@@ -113,12 +113,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     }
 
     @Override
-    public void showLocalError(String message) {
-        showToast(message);
-    }
-
-    @Override
-    public void showWebError(String message) {
+    public void showTip(String message) {
         showToast(message);
     }
 

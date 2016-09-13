@@ -12,26 +12,26 @@ import rx.Subscriber;
 
 public class RegisterPresenter implements RegisterContract.Presenter {
 
-    private final RegisterContract.View rootView;
+    private final RegisterContract.View view;
 
-    public RegisterPresenter(RegisterContract.View rootView) {
-        this.rootView = rootView;
-        this.rootView.setPresenter(this);
+    public RegisterPresenter(RegisterContract.View view) {
+        this.view = view;
+        this.view.setPresenter(this);
     }
 
     @Override
     public void requestSms(final String phone, final String password) {
         if (StringUtils.isEmpty(phone)) {
-            rootView.showLocalError("请输入用户名");
+            view.showTip("请输入用户名");
             return;
         }
 
         if (StringUtils.isEmpty(password) || password.length() < 6) {
-            rootView.showLocalError("请设置登录密码，不少于6位");
+            view.showTip("请设置登录密码，不少于6位");
             return;
         }
 
-        rootView.showProgress();
+        view.showProgress();
 
         // FIXME 模拟获取短信接口
         Observable<String> observable = Observable.just("发送验证码咯~");
@@ -43,23 +43,23 @@ public class RegisterPresenter implements RegisterContract.Presenter {
 
             @Override
             public void onError(Throwable e) {
-                if (!rootView.isActive()) {
+                if (!view.isActive()) {
                     return;
                 }
-                rootView.dismissProgress();
+                view.dismissProgress();
 
                 String error = ErrorInfoUtils.parseHttpErrorInfo(e);
-                rootView.showWebError(error);
+                view.showTip(error);
             }
 
             @Override
             public void onNext(String string) {
-                if (!rootView.isActive()) {
+                if (!view.isActive()) {
                     return;
                 }
-                rootView.dismissProgress();
+                view.dismissProgress();
 
-                rootView.requestSmsSuccess(phone, password);
+                view.requestSmsSuccess(phone, password);
             }
         });
     }
@@ -76,11 +76,11 @@ public class RegisterPresenter implements RegisterContract.Presenter {
     @Override
     public void register(String phone, String password, String code) {
         if (StringUtils.isEmpty(code)) {
-            rootView.showLocalError("请输入验证码");
+            view.showTip("请输入验证码");
             return;
         }
 
-        rootView.showProgress();
+        view.showProgress();
 
         // 注册接口
         Observable<User> observable = getUserObservable(phone, password, code);
@@ -92,27 +92,27 @@ public class RegisterPresenter implements RegisterContract.Presenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        if (!rootView.isActive()) {
+                        if (!view.isActive()) {
                             return;
                         }
 
-                        rootView.dismissProgress();
+                        view.dismissProgress();
 
                         String error = ErrorInfoUtils.parseHttpErrorInfo(e);
-                        rootView.showWebError(error);
+                        view.showTip(error);
                     }
 
                     @Override
                     public void onNext(User user) {
                         UserInfoKeeper.setCurrentUser(user);
 
-                        if (!rootView.isActive()) {
+                        if (!view.isActive()) {
                             return;
                         }
 
-                        rootView.dismissProgress();
+                        view.dismissProgress();
 
-                        rootView.registerSuccess(user);
+                        view.registerSuccess(user);
                     }
                 });
     }

@@ -1,7 +1,6 @@
 package com.boredream.designrescollection.net;
 
 
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.TextUtils;
@@ -10,6 +9,7 @@ import com.boredream.bdcodehelper.entity.AppUpdateInfo;
 import com.boredream.bdcodehelper.entity.FileUploadResponse;
 import com.boredream.bdcodehelper.entity.ListResponse;
 import com.boredream.bdcodehelper.net.ObservableDecorator;
+import com.boredream.designrescollection.base.BaseApplication;
 import com.boredream.designrescollection.base.BaseEntity;
 import com.boredream.designrescollection.constants.CommonConstants;
 import com.boredream.designrescollection.entity.DesignRes;
@@ -199,18 +199,17 @@ public class HttpRequest {
      * 上传图片
      *
      * @param call    上传成功回调
-     * @param context
      * @param uri     图片uri
      * @param reqW    上传图片需要压缩的宽度
      * @param reqH    上传图片需要压缩的高度
      * @param call
      */
-    public static void fileUpload(final Context context, Uri uri, int reqW, int reqH, final Subscriber<FileUploadResponse> call) {
+    public static void fileUpload(Uri uri, int reqW, int reqH, final Subscriber<FileUploadResponse> call) {
         final ApiService service = getApiService();
         final String filename = "avatar_" + System.currentTimeMillis() + ".jpg";
 
         // 先从本地获取图片,利用Glide压缩图片后获取byte[]
-        Glide.with(context).load(uri).asBitmap().toBytes().into(
+        Glide.with(BaseApplication.getInstance()).load(uri).asBitmap().toBytes().into(
                 new SimpleTarget<byte[]>(reqW, reqH) {
                     @Override
                     public void onResourceReady(final byte[] resource, GlideAnimation<? super byte[]> glideAnimation) {

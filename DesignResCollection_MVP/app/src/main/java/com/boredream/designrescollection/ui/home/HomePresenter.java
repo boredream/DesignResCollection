@@ -13,12 +13,12 @@ import rx.Subscriber;
 
 public class HomePresenter implements HomeContract.Presenter {
 
-    private final HomeContract.View rootView;
+    private final HomeContract.View view;
     public List<DesignRes> datas;
 
-    public HomePresenter(HomeContract.View rootView) {
-        this.rootView = rootView;
-        this.rootView.setPresenter(this);
+    public HomePresenter(HomeContract.View view) {
+        this.view = view;
+        this.view.setPresenter(this);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class HomePresenter implements HomeContract.Presenter {
     @Override
     public void loadList(final int page) {
         if(page == 1) {
-            rootView.showProgress();
+            view.showProgress();
         }
 
         loadData(page);
@@ -46,24 +46,24 @@ public class HomePresenter implements HomeContract.Presenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        if (!rootView.isActive()) {
+                        if (!view.isActive()) {
                             return;
                         }
-                        rootView.dismissProgress();
+                        view.dismissProgress();
 
                         String error = ErrorInfoUtils.parseHttpErrorInfo(e);
-                        rootView.showWebError(error);
+                        view.showTip(error);
                     }
 
                     @Override
                     public void onNext(ListResponse<DesignRes> response) {
-                        if (!rootView.isActive()) {
+                        if (!view.isActive()) {
                             return;
                         }
-                        rootView.dismissProgress();
+                        view.dismissProgress();
 
                         datas = response.getResults();
-                        rootView.loadListSuccess(page, datas);
+                        view.loadListSuccess(page, datas);
                     }
                 });
     }

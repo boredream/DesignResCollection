@@ -64,15 +64,6 @@ public class RegisterPresenter implements RegisterContract.Presenter {
         });
     }
 
-    public Observable<User> getUserObservable(String phone, String password, String code) {
-        User user = new User();
-        user.setMobilePhoneNumber(phone);
-        user.setUsername(phone);
-        user.setPassword(password);
-        user.setSmsCode(code);
-        return ObservableDecorator.decorate(HttpRequest.getApiService().register(user));
-    }
-
     @Override
     public void register(String phone, String password, String code) {
         if (StringUtils.isEmpty(code)) {
@@ -83,7 +74,12 @@ public class RegisterPresenter implements RegisterContract.Presenter {
         view.showProgress();
 
         // 注册接口
-        Observable<User> observable = getUserObservable(phone, password, code);
+        User user = new User();
+        user.setMobilePhoneNumber(phone);
+        user.setUsername(phone);
+        user.setPassword(password);
+        user.setSmsCode(code);
+        Observable<User> observable = HttpRequest.getInstance().service.register(user);
         observable.subscribe(new Subscriber<User>() {
                     @Override
                     public void onCompleted() {

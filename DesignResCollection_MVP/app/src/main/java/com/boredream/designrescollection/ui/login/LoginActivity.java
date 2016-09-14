@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.boredream.bdcodehelper.utils.ActivityUtils;
 import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.base.BaseActivity;
+import com.boredream.designrescollection.net.HttpRequest;
 
 public class LoginActivity extends BaseActivity {
 
@@ -36,6 +37,6 @@ public class LoginActivity extends BaseActivity {
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), loginFragment, R.id.fl_content);
         }
 
-        new LoginPresenter(loginFragment);
+        new LoginPresenter(loginFragment, HttpRequest.getInstance());
     }
 }

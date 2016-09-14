@@ -25,7 +25,7 @@ public class FeedBackActivity extends BaseActivity implements FeedBackContract.V
     }
 
     private void initView() {
-        presenter = new FeedBackPresenter(this, HttpRequest.getApiService());
+        presenter = new FeedBackPresenter(this, HttpRequest.getInstance().service);
 
         initBackTitle("意见反馈")
                 .setRightText("提交")

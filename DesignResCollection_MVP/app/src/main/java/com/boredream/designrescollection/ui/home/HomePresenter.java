@@ -36,7 +36,7 @@ public class HomePresenter implements HomeContract.Presenter {
     }
 
     private void loadData(final int page) {
-        Observable<ListResponse<DesignRes>> observable = HttpRequest.getDesignRes(page);
+        Observable<ListResponse<DesignRes>> observable = HttpRequest.getInstance().getDesignRes(page);
         ObservableDecorator.decorate(observable).subscribe(
                 new Subscriber<ListResponse<DesignRes>>() {
                     @Override

@@ -1,6 +1,7 @@
 package com.boredream.designrescollection.ui.login;
 
 import com.boredream.bdcodehelper.BoreConstants;
+import com.boredream.designrescollection.net.HttpRequest;
 import com.boredream.designrescollection.utils.UserInfoKeeper;
 
 import org.junit.Assert;
@@ -30,19 +31,19 @@ public class LoginPresenterTest {
 
         BoreConstants.isUnitTest = true;
 
-        presenter = new LoginPresenter(view);
+        presenter = new LoginPresenter(view, HttpRequest.getInstance());
     }
 
     @Test
     public void testLogin_EmptyPassword() throws Exception {
         presenter.login("13913391521", "");
-        verify(view).showLocalError("密码不能为空");
+        verify(view).showTip("密码不能为空");
     }
 
     @Test
     public void testLogin_EmptyUsername() throws Exception {
         presenter.login(null, "123456");
-        verify(view).showLocalError("用户名不能为空");
+        verify(view).showTip("用户名不能为空");
     }
 
     @Test
@@ -61,7 +62,7 @@ public class LoginPresenterTest {
         presenter.login(phone, "123456");
         verify(view).showProgress();
         verify(view).dismissProgress();
-        verify(view).showWebError("找不到用户");
+        verify(view).showTip("找不到用户");
     }
 
     @Test
@@ -70,6 +71,6 @@ public class LoginPresenterTest {
         presenter.login(phone, "110119120");
         verify(view).showProgress();
         verify(view).dismissProgress();
-        verify(view).showWebError("密码不正确");
+        verify(view).showTip("密码不正确");
     }
 }

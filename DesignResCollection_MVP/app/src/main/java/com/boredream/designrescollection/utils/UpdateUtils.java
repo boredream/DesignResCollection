@@ -64,7 +64,7 @@ public class UpdateUtils {
             context.showProgressDialog();
         }
 
-        Observable<ListResponse<AppUpdateInfo>> observable = HttpRequest.getApiService().getAppUpdateInfo();
+        Observable<ListResponse<AppUpdateInfo>> observable = HttpRequest.getInstance().service.getAppUpdateInfo();
         ObservableDecorator.decorate(observable).subscribe(
                 new SimpleSubscriber<ListResponse<AppUpdateInfo>>(context) {
                     @Override

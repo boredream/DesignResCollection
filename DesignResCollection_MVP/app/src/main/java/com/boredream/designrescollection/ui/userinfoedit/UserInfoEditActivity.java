@@ -51,7 +51,7 @@ public class UserInfoEditActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void initView() {
-        presenter = new UserInfoEditPresenter(this, HttpRequest.getApiService());
+        presenter = new UserInfoEditPresenter(this, HttpRequest.getInstance());
 
         initBackTitle("修改个人资料");
 

@@ -16,11 +16,11 @@ import rx.Subscriber;
 public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
 
     private final UserInfoEditContract.View view;
-    private final HttpRequest.ApiService api;
+    private final HttpRequest httpRequest;
 
-    public UserInfoEditPresenter(UserInfoEditContract.View view, HttpRequest.ApiService api) {
+    public UserInfoEditPresenter(UserInfoEditContract.View view, HttpRequest httpRequest) {
         this.view = view;
-        this.api = api;
+        this.httpRequest = httpRequest;
         this.view.setPresenter(this);
     }
 
@@ -31,7 +31,7 @@ public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
         final String filename = "image_" + System.currentTimeMillis() + ".jpg";
 
         // 第一步,上传头像文件到服务器
-        Observable<FileUploadResponse> observable = HttpRequest.fileUpload(bytes, filename, MediaType.parse("image/jpeg"));
+        Observable<FileUploadResponse> observable = httpRequest.fileUpload(bytes, filename, MediaType.parse("image/jpeg"));
         ObservableDecorator.decorate(observable).subscribe(
                 new Subscriber<FileUploadResponse>() {
                     @Override
@@ -61,7 +61,7 @@ public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
         Map<String, Object> updateMap = new HashMap<>();
         updateMap.put("avatar", avatarUrl);
 
-        Observable<BaseEntity> observable = HttpRequest.getApiService().updateUserById(
+        Observable<BaseEntity> observable = httpRequest.service.updateUserById(
                 UserInfoKeeper.getCurrentUser().getObjectId(), updateMap);
         ObservableDecorator.decorate(observable)
                 .subscribe(new Subscriber<BaseEntity>() {
@@ -85,6 +85,8 @@ public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
                     @Override
                     public void onError(Throwable throwable) {
                         view.dismissProgress();
+
+                        view.showTip("上传修改头像失败");
                     }
                 });
     }

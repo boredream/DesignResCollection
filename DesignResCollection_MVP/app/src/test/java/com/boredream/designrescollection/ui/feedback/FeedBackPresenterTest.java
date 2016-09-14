@@ -70,6 +70,6 @@ public class FeedBackPresenterTest {
         presenter.addFeedback(content, email);
         verify(view).showProgress();
         verify(view).dismissProgress();
-        verify(view).showWebError("反馈提交失败");
+        verify(view).showTip("反馈提交失败");
     }
 }

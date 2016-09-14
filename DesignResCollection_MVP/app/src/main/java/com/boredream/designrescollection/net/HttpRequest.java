@@ -47,14 +47,18 @@ public class HttpRequest {
     private static final String APP_ID_VALUE = "iaEH7ObIA4sPY8RSs3VCVXBg-gzGzoHsz";
     private static final String API_KEY_VALUE = "dXfhXIVyeWMN2czJkd4ehwzs";
 
-    private static Retrofit retrofit;
-    private static OkHttpClient httpClient;
+    public ApiService service;
 
-    public static OkHttpClient getHttpClient() {
+    private OkHttpClient httpClient;
+    public OkHttpClient getHttpClient() {
         return httpClient;
     }
 
-    static {
+    private static HttpRequest ourInstance = new HttpRequest();
+    public static HttpRequest getInstance() {
+        return ourInstance;
+    }
+    private HttpRequest() {
         // OkHttpClient
         httpClient = new OkHttpClient();
 
@@ -78,13 +82,15 @@ public class HttpRequest {
         httpClient.interceptors().add(interceptor);
 
         // Retrofit
-        retrofit = new Retrofit.Builder()
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(HOST)
                 .addConverterFactory(GsonConverterFactory.create()) // gson
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) // rxjava
                 .client(httpClient)
                 //.callbackExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
                 .build();
+
+        service = retrofit.create(ApiService.class);
     }
 
     public interface ApiService {
@@ -133,17 +139,12 @@ public class HttpRequest {
                 @Query("include") String include);
     }
 
-    public static ApiService getApiService() {
-        return retrofit.create(ApiService.class);
-    }
-
     ////////////////////////////// 业务接口方法 //////////////////////////////
 
     /**
      * 查询设计资源
      */
-    public static Observable<ListResponse<DesignRes>> getDesignRes(int page) {
-        ApiService service = getApiService();
+    public Observable<ListResponse<DesignRes>> getDesignRes(int page) {
         String where = "{}";
         return service.getDesignRes(CommonConstants.COUNT_OF_PAGE,
                 (page - 1) * CommonConstants.COUNT_OF_PAGE, where, null);
@@ -155,8 +156,7 @@ public class HttpRequest {
      * @param page
      * @param name 搜索名称
      */
-    public static Observable<ListResponse<DesignRes>> getDesignRes(int page, String name) {
-        ApiService service = getApiService();
+    public Observable<ListResponse<DesignRes>> getDesignRes(int page, String name) {
         String whereName = "{}";
         if (!TextUtils.isEmpty(name)) {
             whereName = "{\"name\":{\"$regex\":\".*" + name + ".*\"}}";
@@ -175,8 +175,7 @@ public class HttpRequest {
      * @param username 用户名
      * @param password 密码
      */
-    public static Observable<User> login(String username, String password) {
-        ApiService service = getApiService();
+    public Observable<User> login(String username, String password) {
         return service.login(username, password)
                 .doOnNext(new Action1<User>() {
                     @Override
@@ -192,8 +191,7 @@ public class HttpRequest {
      *
      * @param bytes
      */
-    public static Observable<FileUploadResponse> fileUpload(byte[] bytes, String filename, MediaType type) {
-        ApiService service = getApiService();
+    public Observable<FileUploadResponse> fileUpload(byte[] bytes, String filename, MediaType type) {
         RequestBody requestBody = RequestBody.create(type, bytes);
         return service.fileUpload(filename, requestBody);
     }

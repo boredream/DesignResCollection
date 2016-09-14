@@ -12,9 +12,11 @@ import rx.Subscriber;
 public class LoginPresenter implements LoginContract.Presenter {
 
     private final LoginContract.View view;
+    private final HttpRequest httpRequest;
 
-    public LoginPresenter(LoginContract.View view) {
+    public LoginPresenter(LoginContract.View view, HttpRequest httpRequest) {
         this.view = view;
+        this.httpRequest = httpRequest;
         this.view.setPresenter(this);
     }
 
@@ -32,7 +34,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
         view.showProgress();
 
-        Observable<User> observable = HttpRequest.login(username, password);
+        Observable<User> observable = httpRequest.login(username, password);
         ObservableDecorator.decorate(observable).subscribe(new Subscriber<User>() {
             @Override
             public void onCompleted() {

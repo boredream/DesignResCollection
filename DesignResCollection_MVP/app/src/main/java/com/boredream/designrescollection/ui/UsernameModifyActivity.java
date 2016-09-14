@@ -67,7 +67,7 @@ public class UsernameModifyActivity extends BaseActivity {
         updateMap.put("username", username);
 
         showProgressDialog();
-        Observable<BaseEntity> observable = HttpRequest.getApiService()
+        Observable<BaseEntity> observable = HttpRequest.getInstance().service
                 .updateUserById(currentUser.getObjectId(), updateMap);
         ObservableDecorator.decorate(observable)
                 .subscribe(new SimpleSubscriber<BaseEntity>(this) {

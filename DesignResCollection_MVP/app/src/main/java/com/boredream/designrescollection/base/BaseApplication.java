@@ -32,7 +32,7 @@ public class BaseApplication extends Application {
      * 图片加载框架Glide,使用OkHttp处理网络请求
      */
     private void initGlide() {
-        OkHttpClient okHttpClient = HttpRequest.getHttpClient();
+        OkHttpClient okHttpClient = HttpRequest.getInstance().getHttpClient();
         Glide.get(this).register(GlideUrl.class, InputStream.class,
                 new OkHttpUrlLoader.Factory(okHttpClient));
     }

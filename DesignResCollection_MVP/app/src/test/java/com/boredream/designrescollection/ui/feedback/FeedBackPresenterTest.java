@@ -17,7 +17,10 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class FeedBackPresenterTest {
+
     private FeedBackPresenter presenter;
+
+    private FeedBackPresenter mockPresenter;
 
     @Mock
     private FeedBackContract.View view;
@@ -31,12 +34,13 @@ public class FeedBackPresenterTest {
         // inject the mocks in the test the initMocks method needs to be called.
         MockitoAnnotations.initMocks(this);
 
-        // The presenter wont't update the view unless it's active.
+        // The mockPresenter wont't update the view unless it's active.
         when(view.isActive()).thenReturn(true);
 
         BoreConstants.isUnitTest = true;
 
-        presenter = new FeedBackPresenter(view, api);
+        presenter = new FeedBackPresenter(view, HttpRequest.getInstance().service);
+        mockPresenter = new FeedBackPresenter(view, api);
     }
 
     @Test
@@ -55,7 +59,7 @@ public class FeedBackPresenterTest {
 
         String content = "fuck it !!!!!!!!!!!!!!";
         String email = "110@qq.com";
-        presenter.addFeedback(content, email);
+        mockPresenter.addFeedback(content, email);
         verify(view).showProgress();
         verify(view).dismissProgress();
         verify(view).addFeedbackSuccess();
@@ -67,7 +71,7 @@ public class FeedBackPresenterTest {
 
         String content = "fuck it !!!!!!!!!!!!!!";
         String email = "110@qq.com";
-        presenter.addFeedback(content, email);
+        mockPresenter.addFeedback(content, email);
         verify(view).showProgress();
         verify(view).dismissProgress();
         verify(view).showTip("反馈提交失败");

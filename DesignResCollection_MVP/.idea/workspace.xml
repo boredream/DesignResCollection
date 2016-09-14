@@ -38,11 +38,43 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="FeedBackPresenterTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/test/java/com/boredream/designrescollection/ui/feedback/FeedBackPresenterTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="51" column="39" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
+              <folding>
+                <element signature="e#2271#2283#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ObservableDecorator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bdcodehelper/src/main/java/com/boredream/bdcodehelper/net/ObservableDecorator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FeedBackPresenter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/feedback/FeedBackPresenter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="UserInfoEditPresenterTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/test/java/com/boredream/designrescollection/ui/userinfoedit/UserInfoEditPresenterTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28030303">
-              <caret line="44" column="18" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="20" />
+            <state vertical-scroll-proportion="1.4444444">
+              <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -2779,8 +2811,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/home/HomeFragment.java" />
         <option value="$PROJECT_DIR$/bdcodehelper/src/main/java/com/boredream/bdcodehelper/utils/ImageUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/userinfoedit/UserInfoEditContract.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/feedback/FeedBackPresenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/feedback/FeedBackActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/home/HomePresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/login/LoginPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/register/RegisterPresenter.java" />
@@ -2790,11 +2820,13 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/base/BaseApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/userinfoedit/UserInfoEditActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/utils/UpdateUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/test/java/com/boredream/designrescollection/ui/feedback/FeedBackPresenterTest.java" />
         <option value="$PROJECT_DIR$/app/src/test/java/com/boredream/designrescollection/ui/login/LoginPresenterTest.java" />
         <option value="$PROJECT_DIR$/app/src/test/java/com/boredream/designrescollection/net/HttpRequestTest.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/userinfoedit/UserInfoEditPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/test/java/com/boredream/designrescollection/ui/userinfoedit/UserInfoEditPresenterTest.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/feedback/FeedBackPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/feedback/FeedBackActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/test/java/com/boredream/designrescollection/ui/feedback/FeedBackPresenterTest.java" />
       </list>
     </option>
   </component>
@@ -2956,44 +2988,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DesignResCollection_MVP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DesignResCollection_MVP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="designrescollection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="feedback" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3379,59 +3373,7 @@
       <recent name="E:\code\DesignResCollection\DesignResCollection_MVP\app\src\main" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserInfoEditPresenterTest.test">
-    <configuration default="false" name="FeedBackPresenterTest.testAddFeedback_Mock_Error" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.boredream.designrescollection.ui.feedback.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="app" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.boredream.designrescollection.ui.feedback" />
-      <option name="MAIN_CLASS_NAME" value="com.boredream.designrescollection.ui.feedback.FeedBackPresenterTest" />
-      <option name="METHOD_NAME" value="testAddFeedback_Mock_Error" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="HomePresenterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.boredream.designrescollection.ui.home.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="app" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.boredream.designrescollection.ui.home" />
-      <option name="MAIN_CLASS_NAME" value="com.boredream.designrescollection.ui.home.HomePresenterTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.FeedBackPresenterTest">
     <configuration default="false" name="HttpRequestTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -3498,6 +3440,58 @@
       <option name="MAIN_CLASS_NAME" value="com.boredream.designrescollection.ui.feedback.FeedBackPresenterTest" />
       <option name="METHOD_NAME" value="testAddFeedback_Mock_Success" />
       <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="FeedBackPresenterTest.testAddFeedback_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.boredream.designrescollection.ui.feedback.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="app" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.boredream.designrescollection.ui.feedback" />
+      <option name="MAIN_CLASS_NAME" value="com.boredream.designrescollection.ui.feedback.FeedBackPresenterTest" />
+      <option name="METHOD_NAME" value="testAddFeedback_Success" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="FeedBackPresenterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.boredream.designrescollection.ui.feedback.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="app" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.boredream.designrescollection.ui.feedback" />
+      <option name="MAIN_CLASS_NAME" value="com.boredream.designrescollection.ui.feedback.FeedBackPresenterTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -3758,19 +3752,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Android Application.app" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.FeedBackPresenterTest.testAddFeedback_Mock_Error" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.HomePresenterTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.HttpRequestTest.test" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.UserInfoEditPresenterTest.test" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.FeedBackPresenterTest.testAddFeedback_Mock_Success" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.HttpRequestTest.test" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.UserInfoEditPresenterTest.test" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.FeedBackPresenterTest.testAddFeedback_Mock_Success" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.FeedBackPresenterTest.testAddFeedback_Success" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.FeedBackPresenterTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.UserInfoEditPresenterTest.test" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.FeedBackPresenterTest.testAddFeedback_Mock_Success" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.HttpRequestTest.test" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.FeedBackPresenterTest.testAddFeedback_Mock_Error" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.HomePresenterTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.FeedBackPresenterTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.FeedBackPresenterTest.testAddFeedback_Success" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.FeedBackPresenterTest.testAddFeedback_Mock_Success" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.UserInfoEditPresenterTest.test" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.HttpRequestTest.test" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
@@ -3800,29 +3794,23 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FeedBackPresenterTest_testAddFeedback_Mock_Success - 2016.09.14 at 18h 08m 43s.xml">
+    <history-entry file="FeedBackPresenterTest - 2016.09.14 at 18h 19m 20s.xml">
+      <configuration name="FeedBackPresenterTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FeedBackPresenterTest_testAddFeedback_Mock_Success - 2016.09.14 at 18h 16m 59s.xml">
       <configuration name="FeedBackPresenterTest.testAddFeedback_Mock_Success" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HttpRequestTest_test - 2016.09.14 at 17h 00m 58s.xml">
-      <configuration name="HttpRequestTest.test" configurationId="JUnit" />
+    <history-entry file="FeedBackPresenterTest_testAddFeedback_Mock_Success - 2016.09.14 at 18h 18m 34s.xml">
+      <configuration name="FeedBackPresenterTest.testAddFeedback_Mock_Success" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HttpRequestTest_test - 2016.09.14 at 17h 01m 23s.xml">
-      <configuration name="HttpRequestTest.test" configurationId="JUnit" />
+    <history-entry file="FeedBackPresenterTest_testAddFeedback_Success - 2016.09.14 at 18h 18m 07s.xml">
+      <configuration name="FeedBackPresenterTest.testAddFeedback_Success" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserInfoEditPresenterTest_test - 2016.09.14 at 18h 05m 11s.xml">
-      <configuration name="UserInfoEditPresenterTest.test" configurationId="JUnit" />
+    <history-entry file="FeedBackPresenterTest_testAddFeedback_Success - 2016.09.14 at 18h 18m 22s.xml">
+      <configuration name="FeedBackPresenterTest.testAddFeedback_Success" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserInfoEditPresenterTest_test - 2016.09.14 at 18h 07m 22s.xml">
-      <configuration name="UserInfoEditPresenterTest.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserInfoEditPresenterTest_test - 2016.09.14 at 18h 08m 53s.xml">
-      <configuration name="UserInfoEditPresenterTest.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserInfoEditPresenterTest_test - 2016.09.14 at 18h 09m 24s.xml">
-      <configuration name="UserInfoEditPresenterTest.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserInfoEditPresenterTest_test - 2016.09.14 at 18h 10m 39s.xml">
-      <configuration name="UserInfoEditPresenterTest.test" configurationId="JUnit" />
+    <history-entry file="FeedBackPresenterTest_testAddFeedback_Success - 2016.09.14 at 18h 18m 39s.xml">
+      <configuration name="FeedBackPresenterTest.testAddFeedback_Success" configurationId="JUnit" />
     </history-entry>
     <history-entry file="UserInfoEditPresenterTest_test - 2016.09.14 at 18h 10m 52s.xml">
       <configuration name="UserInfoEditPresenterTest.test" configurationId="JUnit" />
@@ -3830,10 +3818,16 @@
     <history-entry file="UserInfoEditPresenterTest_test - 2016.09.14 at 18h 11m 09s.xml">
       <configuration name="UserInfoEditPresenterTest.test" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="UserInfoEditPresenterTest_test - 2016.09.14 at 18h 13m 00s.xml">
+      <configuration name="UserInfoEditPresenterTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserInfoEditPresenterTest_test - 2016.09.14 at 18h 14m 51s.xml">
+      <configuration name="UserInfoEditPresenterTest.test" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22853957" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -3841,16 +3835,16 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4057971" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4057971" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37904125" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39910814" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49275362" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22061966" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25083613" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4671126" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -3937,13 +3931,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21840873">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdcodehelper/src/main/java/com/boredream/bdcodehelper/net/ObservableDecorator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -4185,27 +4172,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/feedback/FeedBackPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="70" selection-start-line="11" selection-start-column="70" selection-end-line="11" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/feedback/FeedBackActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="48" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="81" />
-          <folding>
-            <element signature="e#926#1108#0" expanded="false" />
-            <element signature="e#1107#1108#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/home/HomePresenter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -4308,36 +4274,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/net/HttpRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="193" column="93" selection-start-line="193" selection-start-column="84" selection-end-line="193" selection-end-column="93" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/test/java/com/boredream/designrescollection/ui/feedback/FeedBackPresenterTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="36" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="44" />
-          <folding>
-            <element signature="e#2128#2140#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/userinfoedit/UserInfoEditPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="79" column="29" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/userinfoedit/UserInfoEditContract.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -4346,10 +4282,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/userinfoedit/UserInfoEditPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="16" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/net/HttpRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="110" column="31" selection-start-line="110" selection-start-column="31" selection-end-line="110" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/feedback/FeedBackActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="81" selection-start-line="27" selection-start-column="81" selection-end-line="27" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/boredream/designrescollection/ui/feedback/FeedBackPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdcodehelper/src/main/java/com/boredream/bdcodehelper/net/ObservableDecorator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/test/java/com/boredream/designrescollection/ui/feedback/FeedBackPresenterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="39" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
+          <folding>
+            <element signature="e#2271#2283#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/test/java/com/boredream/designrescollection/ui/userinfoedit/UserInfoEditPresenterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28030303">
-          <caret line="44" column="18" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="20" />
+        <state vertical-scroll-proportion="1.4444444">
+          <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
           <folding />
         </state>
       </provider>

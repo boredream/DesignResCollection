@@ -57,7 +57,7 @@ public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
      *
      * @param avatarUrl 头像图片地址
      */
-    private void updateUserAvatar(final String avatarUrl) {
+    public void updateUserAvatar(final String avatarUrl) {
         Map<String, Object> updateMap = new HashMap<>();
         updateMap.put("avatar", avatarUrl);
 

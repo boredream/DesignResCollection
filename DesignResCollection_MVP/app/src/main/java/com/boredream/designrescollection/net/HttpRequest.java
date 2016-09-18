@@ -21,6 +21,7 @@ import com.squareup.okhttp.Response;
 import com.squareup.okhttp.logging.HttpLoggingInterceptor;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import retrofit.GsonConverterFactory;
@@ -164,6 +165,13 @@ public class HttpRequest {
         String where = whereName;
         return service.getDesignRes(CommonConstants.COUNT_OF_PAGE,
                 (page - 1) * CommonConstants.COUNT_OF_PAGE, where, null);
+    }
+
+    public Observable<BaseEntity> updateNickname(String userid, String nickname) {
+        Map<String, Object> updateMap = new HashMap<>();
+        updateMap.put("nickname", nickname);
+
+        return service.updateUserById(userid, updateMap);
     }
 
 

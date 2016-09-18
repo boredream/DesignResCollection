@@ -16,6 +16,10 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/**
+ * 提交反馈很少有失败情况，所以使用mock模拟接口部分手动返回错误结果，以验证对应场景
+ * 同时也提供真实接口的presenter，用于测试真实数据
+ */
 public class FeedBackPresenterTest {
 
     private FeedBackPresenter presenter;
@@ -48,6 +52,7 @@ public class FeedBackPresenterTest {
         String content = "fuck it !!!!!!!!!!!!!!";
         String email = "110@qq.com";
         presenter.addFeedback(content, email);
+
         verify(view).showProgress();
         verify(view).dismissProgress();
         verify(view).addFeedbackSuccess();
@@ -55,11 +60,13 @@ public class FeedBackPresenterTest {
 
     @Test
     public void testAddFeedback_Mock_Success() throws Exception {
+        // 模拟数据，当api调用addFeedBack接口传入任意值时，就返回成功的基本数据BaseEntity
         when(api.addFeedBack(any(FeedBack.class))).thenReturn(Observable.just(new BaseEntity()));
 
         String content = "fuck it !!!!!!!!!!!!!!";
         String email = "110@qq.com";
         mockPresenter.addFeedback(content, email);
+
         verify(view).showProgress();
         verify(view).dismissProgress();
         verify(view).addFeedbackSuccess();
@@ -67,11 +74,13 @@ public class FeedBackPresenterTest {
 
     @Test
     public void testAddFeedback_Mock_Error() throws Exception {
+        // 模拟数据，当api调用addFeedBack接口传入任意值时，就抛出错误error
         when(api.addFeedBack(any(FeedBack.class))).thenReturn(Observable.<BaseEntity>error(new Exception("blablabla")));
 
         String content = "fuck it !!!!!!!!!!!!!!";
         String email = "110@qq.com";
         mockPresenter.addFeedback(content, email);
+
         verify(view).showProgress();
         verify(view).dismissProgress();
         verify(view).showTip("反馈提交失败");

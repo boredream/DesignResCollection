@@ -2,9 +2,11 @@ package com.boredream.designrescollection.ui.userinfoedit;
 
 import com.boredream.bdcodehelper.entity.FileUploadResponse;
 import com.boredream.bdcodehelper.net.ObservableDecorator;
+import com.boredream.bdcodehelper.utils.ErrorInfoUtils;
+import com.boredream.bdcodehelper.utils.StringUtils;
 import com.boredream.designrescollection.base.BaseEntity;
+import com.boredream.designrescollection.entity.User;
 import com.boredream.designrescollection.net.HttpRequest;
-import com.boredream.designrescollection.utils.UserInfoKeeper;
 import com.squareup.okhttp.MediaType;
 
 import java.util.HashMap;
@@ -17,10 +19,14 @@ public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
 
     private final UserInfoEditContract.View view;
     private final HttpRequest httpRequest;
+    private final User user;
 
-    public UserInfoEditPresenter(UserInfoEditContract.View view, HttpRequest httpRequest) {
+    public UserInfoEditPresenter(UserInfoEditContract.View view,
+                                 HttpRequest httpRequest,
+                                 User user) {
         this.view = view;
         this.httpRequest = httpRequest;
+        this.user = user;
         this.view.setPresenter(this);
     }
 
@@ -62,7 +68,7 @@ public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
         updateMap.put("avatar", avatarUrl);
 
         Observable<BaseEntity> observable = httpRequest.service.updateUserById(
-                UserInfoKeeper.getCurrentUser().getObjectId(), updateMap);
+                user.getObjectId(), updateMap);
         ObservableDecorator.decorate(observable)
                 .subscribe(new Subscriber<BaseEntity>() {
                     @Override
@@ -75,7 +81,7 @@ public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
                         view.dismissProgress();
 
                         // 成功后更新当前用户的头像数据
-                        UserInfoKeeper.getCurrentUser().setAvatar(avatarUrl);
+                        user.setAvatar(avatarUrl);
 
                         view.uploadAvatarSuccess();
 
@@ -87,6 +93,46 @@ public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
                         view.dismissProgress();
 
                         view.showTip("上传修改头像失败");
+                    }
+                });
+    }
+
+    @Override
+    public void updateNickname(final String nickname) {
+        // validate
+        if (StringUtils.isEmpty(nickname)) {
+            view.showTip("昵称不能为空");
+            return;
+        }
+
+        view.showProgress();
+
+        Observable<BaseEntity> observable = HttpRequest.getInstance().updateNickname(
+                user.getObjectId(), nickname);
+        ObservableDecorator.decorate(observable)
+                .subscribe(new Subscriber<BaseEntity>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onNext(BaseEntity entity) {
+                        view.dismissProgress();
+
+                        // 修改成功后更新当前用户的昵称
+                        user.setNickname(nickname);
+
+                        view.showTip("昵称修改成功");
+                        view.updateNicknameSuccess();
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable) {
+                        view.dismissProgress();
+
+                        String error = ErrorInfoUtils.parseHttpErrorInfo(throwable);
+                        view.showTip(error);
                     }
                 });
     }

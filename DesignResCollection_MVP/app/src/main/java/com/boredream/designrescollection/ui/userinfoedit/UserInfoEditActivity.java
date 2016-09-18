@@ -14,7 +14,7 @@ import com.boredream.designrescollection.base.BaseActivity;
 import com.boredream.designrescollection.entity.User;
 import com.boredream.designrescollection.net.GlideHelper;
 import com.boredream.designrescollection.net.HttpRequest;
-import com.boredream.designrescollection.ui.UsernameModifyActivity;
+import com.boredream.designrescollection.ui.ModifyTextActivity;
 import com.boredream.designrescollection.utils.UserInfoKeeper;
 
 import rx.Subscriber;
@@ -47,11 +47,12 @@ public class UserInfoEditActivity extends BaseActivity implements View.OnClickLi
     private void initData() {
         currentUser = UserInfoKeeper.getCurrentUser();
         GlideHelper.showAvatar(this, currentUser.getAvatar(), iv_avatar);
-        tv_username.setText(currentUser.getUsername());
+        tv_username.setText(currentUser.getNickname());
     }
 
     private void initView() {
-        presenter = new UserInfoEditPresenter(this, HttpRequest.getInstance());
+        presenter = new UserInfoEditPresenter(this,
+                HttpRequest.getInstance(), UserInfoKeeper.getCurrentUser());
 
         initBackTitle("修改个人资料");
 
@@ -71,7 +72,7 @@ public class UserInfoEditActivity extends BaseActivity implements View.OnClickLi
                 ImageUtils.showImagePickDialog(this);
                 break;
             case R.id.ll_username:
-                intent2Activity(UsernameModifyActivity.class);
+                intent2Activity(ModifyTextActivity.class);
                 break;
         }
     }
@@ -127,6 +128,11 @@ public class UserInfoEditActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void uploadAvatarSuccess() {
         GlideHelper.showAvatar(this, currentUser.getAvatar(), iv_avatar);
+    }
+
+    @Override
+    public void updateNicknameSuccess() {
+        tv_username.setText(currentUser.getNickname());
     }
 
     @Override

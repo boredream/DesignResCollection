@@ -9,6 +9,8 @@ public interface UserInfoEditContract {
 
         void uploadAvatarSuccess();
 
+        void updateNicknameSuccess();
+
     }
 
     interface Presenter extends BasePresenter {
@@ -17,5 +19,8 @@ public interface UserInfoEditContract {
          * 上传用户头像
          */
         void uploadAvatar(byte[] bytes);
+
+        void updateNickname(String nickname);
+
     }
 }

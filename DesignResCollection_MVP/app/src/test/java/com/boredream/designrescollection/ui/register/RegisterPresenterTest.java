@@ -1,14 +1,14 @@
 package com.boredream.designrescollection.ui.register;
 
 import com.boredream.bdcodehelper.BoreConstants;
-import com.boredream.designrescollection.entity.User;
+import com.boredream.designrescollection.utils.UserInfoKeeper;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class RegisterPresenterTest {
@@ -37,22 +37,22 @@ public class RegisterPresenterTest {
         // 模拟发送短信，无需测试
         String phone = "13913391235";
         String password = "123456";
-
         presenter.requestSms(phone, password);
-        view.showProgress();
-        view.dismissProgress();
-        view.requestSmsSuccess(phone, password);
+
+        verify(view).showProgress();
+        verify(view).dismissProgress();
+        verify(view).requestSmsSuccess(phone, password);
     }
 
     @Test
     public void testRegister() throws Exception {
-        String phone = "13913391235";
+        String phone = "13913391238";
         String password = "123456";
         String code = "1234";
-
         presenter.register(phone, password, code);
-        view.showProgress();
-        view.dismissProgress();
-        view.registerSuccess(mock(User.class));
+
+        verify(view).showProgress();
+        verify(view).dismissProgress();
+        verify(view).registerSuccess(UserInfoKeeper.getCurrentUser());
     }
 }

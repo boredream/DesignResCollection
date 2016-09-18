@@ -38,6 +38,7 @@ public class HomePresenterTest {
     @Test
     public void testPullToLoadList() throws Exception {
         presenter.pullToLoadList();
+
         verify(view).dismissProgress();
         verify(view).loadListSuccess(1, presenter.datas);
         Assert.assertTrue(presenter.datas.size() > 0);
@@ -46,6 +47,7 @@ public class HomePresenterTest {
     @Test
     public void testLoadList() throws Exception {
         presenter.loadList(1);
+
         verify(view).showProgress();
         verify(view).dismissProgress();
         verify(view).loadListSuccess(1, presenter.datas);
@@ -55,6 +57,7 @@ public class HomePresenterTest {
     @Test
     public void testLoadList_overPage() throws Exception {
         presenter.loadList(999);
+
         verify(view).dismissProgress();
         verify(view).loadListSuccess(999, Collections.<DesignRes>emptyList());
         Assert.assertFalse(presenter.datas.size() > 0);

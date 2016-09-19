@@ -1,13 +1,11 @@
 package com.boredream.designrescollection.net;
 
 import com.boredream.bdcodehelper.BoreConstants;
-import com.boredream.bdcodehelper.entity.ListResponse;
-import com.boredream.designrescollection.entity.DesignRes;
+import com.boredream.designrescollection.entity.User;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import rx.Observable;
 import rx.Subscriber;
 
 public class HttpRequestTest {
@@ -19,8 +17,7 @@ public class HttpRequestTest {
 
     @Test
     public void test() {
-        Observable<ListResponse<DesignRes>> observable = HttpRequest.getInstance().getDesignRes(1);
-        observable.subscribe(new Subscriber<ListResponse<DesignRes>>() {
+        HttpRequest.getInstance().login("123", "345").subscribe(new Subscriber<User>() {
             @Override
             public void onCompleted() {
 
@@ -28,12 +25,12 @@ public class HttpRequestTest {
 
             @Override
             public void onError(Throwable e) {
-
+                System.out.println(e.toString());
             }
 
             @Override
-            public void onNext(ListResponse<DesignRes> designResListResponse) {
-
+            public void onNext(User user) {
+                System.out.println(user.toString());
             }
         });
     }

@@ -3,6 +3,7 @@ package com.boredream.designrescollection.ui.userinfoedit;
 import com.boredream.bdcodehelper.BoreConstants;
 import com.boredream.bdcodehelper.entity.FileUploadResponse;
 import com.boredream.designrescollection.base.BaseEntity;
+import com.boredream.designrescollection.entity.User;
 import com.boredream.designrescollection.net.HttpRequest;
 import com.squareup.okhttp.MediaType;
 
@@ -40,7 +41,9 @@ public class UserInfoEditPresenterTest {
 
         BoreConstants.isUnitTest = true;
 
-        presenter = new UserInfoEditPresenter(view, httpRequest);
+        User user = new User();
+        user.setObjectId("123456");
+        presenter = new UserInfoEditPresenter(view, httpRequest, user);
     }
 
     @Test
@@ -53,7 +56,8 @@ public class UserInfoEditPresenterTest {
                 .thenReturn(Observable.just(response));
 
         // 如果不加updateUserById的when处理，由于httpRequest的是mock的对象，updateUserById方法会毫无反应
-        // 空指针报错，因为虽然mock了httpRequest对象，但是没mock该对象中的service变量的对象
+        // 但是updateUserById是ApiService方法，加空指针报错。
+        // 因为虽然mock了httpRequest对象，但是没mock该对象中的service变量的对象
         when(httpRequest.service.updateUserById(anyString(), anyMap()))
                 .thenReturn(Observable.just(new BaseEntity()));
 
@@ -62,7 +66,7 @@ public class UserInfoEditPresenterTest {
 
         verify(view).showProgress();
         verify(view).dismissProgress();
-        verify(view).uploadAvatarSuccess();
+        verify(view).uploadUserInfoSuccess();
     }
 
     @Test
@@ -75,6 +79,6 @@ public class UserInfoEditPresenterTest {
 
         verify(view).showProgress();
         verify(view).dismissProgress();
-        verify(view).updateNicknameSuccess();
+        verify(view).uploadUserInfoSuccess();
     }
 }

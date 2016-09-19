@@ -35,7 +35,7 @@
         <activity android:name=".ui.SettingActivity" />
         <activity android:name=".ui.AboutActivity" />
         <activity android:name=".ui.userinfoedit.UserInfoEditActivity" />
-        <activity android:name=".ui.ModifyTextActivity" />
+        <activity android:name=".ui.modifytext.ModifyTextActivity" />
         <activity android:name=".ui.feedback.FeedBackActivity" />
         <activity
             android:name=".ui.login.Main2Activity"

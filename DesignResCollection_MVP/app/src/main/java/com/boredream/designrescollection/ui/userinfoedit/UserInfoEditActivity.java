@@ -14,12 +14,14 @@ import com.boredream.designrescollection.base.BaseActivity;
 import com.boredream.designrescollection.entity.User;
 import com.boredream.designrescollection.net.GlideHelper;
 import com.boredream.designrescollection.net.HttpRequest;
-import com.boredream.designrescollection.ui.ModifyTextActivity;
+import com.boredream.designrescollection.ui.modifytext.ModifyTextActivity;
 import com.boredream.designrescollection.utils.UserInfoKeeper;
 
 import rx.Subscriber;
 
 public class UserInfoEditActivity extends BaseActivity implements View.OnClickListener, UserInfoEditContract.View {
+
+    private static final int REQUEST_CODE_MODIFY_NICKNAME = 110;
 
     private UserInfoEditContract.Presenter presenter;
     private ImageView iv_avatar;
@@ -35,12 +37,6 @@ public class UserInfoEditActivity extends BaseActivity implements View.OnClickLi
         setContentView(R.layout.activity_user_info_edit);
 
         initView();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        // 如果跳转到二级页面修改了用户信息,则再次返回到该页面时显示最新的用户数据
         initData();
     }
 
@@ -72,7 +68,8 @@ public class UserInfoEditActivity extends BaseActivity implements View.OnClickLi
                 ImageUtils.showImagePickDialog(this);
                 break;
             case R.id.ll_username:
-                intent2Activity(ModifyTextActivity.class);
+                ModifyTextActivity.start(this, REQUEST_CODE_MODIFY_NICKNAME,
+                        "昵称", currentUser.getNickname());
                 break;
         }
     }
@@ -103,6 +100,14 @@ public class UserInfoEditActivity extends BaseActivity implements View.OnClickLi
                 // 裁剪完成后上传图片
                 compressAndUpload(ImageUtils.cropImageUri);
                 break;
+            case REQUEST_CODE_MODIFY_NICKNAME:
+                boolean isModify = data.getBooleanExtra(ModifyTextActivity.RESULT_IS_MODIFY, true);
+                if(!isModify) {
+                    // 未修改，不做任何操作
+                    return;
+                }
+                presenter.updateNickname(data.getStringExtra(ModifyTextActivity.RESULT_NEW_STRING));
+                break;
         }
     }
 
@@ -126,13 +131,8 @@ public class UserInfoEditActivity extends BaseActivity implements View.OnClickLi
     }
 
     @Override
-    public void uploadAvatarSuccess() {
-        GlideHelper.showAvatar(this, currentUser.getAvatar(), iv_avatar);
-    }
-
-    @Override
-    public void updateNicknameSuccess() {
-        tv_username.setText(currentUser.getNickname());
+    public void uploadUserInfoSuccess() {
+        initData();
     }
 
     @Override

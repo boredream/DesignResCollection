@@ -83,7 +83,7 @@ public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
                         // 成功后更新当前用户的头像数据
                         user.setAvatar(avatarUrl);
 
-                        view.uploadAvatarSuccess();
+                        view.uploadUserInfoSuccess();
 
                         view.showTip("上传修改头像成功");
                     }
@@ -107,7 +107,7 @@ public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
 
         view.showProgress();
 
-        Observable<BaseEntity> observable = HttpRequest.getInstance().updateNickname(
+        Observable<BaseEntity> observable = httpRequest.updateNickname(
                 user.getObjectId(), nickname);
         ObservableDecorator.decorate(observable)
                 .subscribe(new Subscriber<BaseEntity>() {
@@ -124,7 +124,7 @@ public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
                         user.setNickname(nickname);
 
                         view.showTip("昵称修改成功");
-                        view.updateNicknameSuccess();
+                        view.uploadUserInfoSuccess();
                     }
 
                     @Override

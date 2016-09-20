@@ -25,9 +25,10 @@
 ### 已开发完成的示例
 
   * [DesignResCollection_MVC/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVC) - Model-View-Controller 结构。
+  * [DesignResCollection_MVP/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP) - Model-View-Presenter 结构。其中包含了针对P层的junit逻辑测试代码以及针对V层的Espresso页面测试代码。
   
 ### 待开发的示例
-  * [DesignResCollection_MVP/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP) - Model-View-Presenter 结构。
+
   * [DesignResCollection_MVP-Dagger2/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP-Dagger2) - 基于 Model-View-Presenter 结构，添加Dagger2框架。
   
 ### 其他相关示例
@@ -36,8 +37,11 @@
   
 
 ## 开发计划
-2016.8.17~  
-[DesignResCollection_MVP/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP) - Model-View-Presenter 结构。
+* 2016.8.17 ~ 9.20（已完成）
+[DesignResCollection_MVP/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP)
+
+* 2016.9.20 ~
+[DesignResCollection_MVP-Dagger2/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP-Dagger2)
 
 
 ## 通用依赖框架

@@ -10,6 +10,7 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.entity.User;
+import com.boredream.designrescollection.idlingres.RxIdlingResource;
 import com.boredream.designrescollection.utils.UserInfoKeeper;
 
 import org.hamcrest.core.IsNot;
@@ -20,6 +21,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.io.IOException;
+
+import rx.plugins.RxJavaPlugins;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -50,6 +53,8 @@ public class UserInfoEditActivityTest {
         // Stub the Intent.
         Instrumentation.ActivityResult resultGallery = createImageGalleryActivityResultStub();
         intending(hasAction(Intent.ACTION_GET_CONTENT)).respondWith(resultGallery);
+
+        RxJavaPlugins.getInstance().registerObservableExecutionHook(RxIdlingResource.get());
 
         Intent intent = new Intent();
         mActivityRule.launchActivity(intent);

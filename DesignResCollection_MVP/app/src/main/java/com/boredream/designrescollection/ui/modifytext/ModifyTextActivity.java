@@ -8,7 +8,6 @@ import android.widget.EditText;
 
 import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.base.BaseActivity;
-import com.boredream.designrescollection.ui.userinfoedit.UserInfoEditActivity;
 
 /**
  * 修改文字内容输入框页面
@@ -25,10 +24,10 @@ public class ModifyTextActivity extends BaseActivity implements ModifyTextContra
     private String oldString;
 
     private ModifyTextContract.Presenter presenter;
-    private EditText et;
+    private EditText et_input;
 
     public static void start(Activity context, int requestCode, String title, String oldString) {
-        Intent intent = new Intent(context, UserInfoEditActivity.class);
+        Intent intent = new Intent(context, ModifyTextActivity.class);
         intent.putExtra(ModifyTextActivity.EXTRA_TITLE, title);
         intent.putExtra(ModifyTextActivity.EXTRA_OLD_STRING, oldString);
         context.startActivityForResult(intent, requestCode);
@@ -61,17 +60,17 @@ public class ModifyTextActivity extends BaseActivity implements ModifyTextContra
                         submit();
                     }
                 });
-        et = (EditText) findViewById(R.id.et);
+        et_input = (EditText) findViewById(R.id.et_input);
     }
 
     private void initData() {
         if (oldString != null) {
-            et.setText(oldString);
+            et_input.setText(oldString);
         }
     }
 
     private void submit() {
-        String str = et.getText().toString().trim();
+        String str = et_input.getText().toString().trim();
         presenter.modifyText(title, oldString, str);
     }
 

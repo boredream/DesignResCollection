@@ -14,7 +14,7 @@
         android:textColor="@color/txt_gray" />
 
     <EditText
-        android:id="@+id/et"
+        android:id="@+id/et_input"
         style="@style/EditTextSingleLine"
         android:layout_height="48dp"
         android:layout_margin="@dimen/margin_medium"

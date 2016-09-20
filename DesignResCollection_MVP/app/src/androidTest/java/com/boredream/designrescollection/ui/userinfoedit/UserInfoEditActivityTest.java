@@ -15,17 +15,19 @@ import com.boredream.designrescollection.utils.UserInfoKeeper;
 
 import org.hamcrest.core.IsNot;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.io.IOException;
+import java.util.Random;
 
 import rx.plugins.RxJavaPlugins;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static android.support.test.espresso.action.ViewActions.typeText;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intending;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasAction;
 import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
@@ -37,36 +39,34 @@ import static org.hamcrest.core.Is.is;
 public class UserInfoEditActivityTest {
 
     @Rule
-    public ActivityTestRule<UserInfoEditActivity> mActivityRule = new ActivityTestRule<>(UserInfoEditActivity.class, true, false);
+    public ActivityTestRule<UserInfoEditActivity> mActivityRule = new ActivityTestRule<>(UserInfoEditActivity.class, true, true);
 
-    @Before
-    public void setUser() throws IOException {
+    static {
         User user = new User();
         user.setObjectId("57abf85e2e958a00543737da");
         user.setUsername("18551681236");
-        user.setNickname("boredream");
+        user.setNickname("");
         user.setSessionToken("hh45pryl55lbm6n3l6sfbuywg");
         UserInfoKeeper.setCurrentUser(user);
 
+        RxJavaPlugins.getInstance().registerObservableExecutionHook(RxIdlingResource.get());
+    }
+
+    @Test
+    public void testUploadAvatar() throws Exception {
         Intents.init();
 
         // Stub the Intent.
         Instrumentation.ActivityResult resultGallery = createImageGalleryActivityResultStub();
         intending(hasAction(Intent.ACTION_GET_CONTENT)).respondWith(resultGallery);
 
-        RxJavaPlugins.getInstance().registerObservableExecutionHook(RxIdlingResource.get());
-
-        Intent intent = new Intent();
-        mActivityRule.launchActivity(intent);
-    }
-
-    @Test
-    public void testUploadAvatar() throws Exception {
-        // Click on the button that will trigger the stubbed intent.
+        // actions
         onView(withId(R.id.ll_avatar)).perform(click());
         onView(withText("相册"))
                 .inRoot(withDecorView(IsNot.not(is(mActivityRule.getActivity().getWindow().getDecorView()))))
                 .perform(click());
+
+        // assertions
         Assert.assertTrue(UserInfoKeeper.getCurrentUser().getAvatar() != null);
     }
 
@@ -82,6 +82,14 @@ public class UserInfoEditActivityTest {
 
     @Test
     public void testUpdateNickname() throws Exception {
+        String newName = "boredream" + new Random().nextInt(10);
 
+        // actions
+        onView(withId(R.id.ll_username)).perform(click());
+        onView(withId(R.id.et_input)).perform(typeText(newName), closeSoftKeyboard());
+        onView(withText("保存")).perform(click());
+
+        // assertions
+        onView(withId(R.id.tv_username)).check(matches(withText(newName)));
     }
 }

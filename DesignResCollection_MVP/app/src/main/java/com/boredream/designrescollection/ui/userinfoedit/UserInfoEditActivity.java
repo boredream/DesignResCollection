@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.boredream.bdcodehelper.net.ObservableDecorator;
 import com.boredream.bdcodehelper.utils.ImageUtils;
 import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.base.BaseActivity;
@@ -17,6 +18,7 @@ import com.boredream.designrescollection.net.HttpRequest;
 import com.boredream.designrescollection.ui.modifytext.ModifyTextActivity;
 import com.boredream.designrescollection.utils.UserInfoKeeper;
 
+import rx.Observable;
 import rx.Subscriber;
 
 public class UserInfoEditActivity extends BaseActivity implements View.OnClickListener, UserInfoEditContract.View {
@@ -87,22 +89,16 @@ public class UserInfoEditActivity extends BaseActivity implements View.OnClickLi
             case ImageUtils.REQUEST_CODE_FROM_ALBUM:
                 // 从相册选择
                 uri = data.getData();
-                // 选择后裁剪
-                ImageUtils.cropImage(this, uri);
+                compressAndUpload(uri);
                 break;
             case ImageUtils.REQUEST_CODE_FROM_CAMERA:
                 // 相机拍照
                 uri = ImageUtils.imageUriFromCamera;
-                // 拍照后裁剪
-                ImageUtils.cropImage(this, uri);
-                break;
-            case ImageUtils.REQUEST_CODE_CROP_IMAGE:
-                // 裁剪完成后上传图片
-                compressAndUpload(ImageUtils.cropImageUri);
+                compressAndUpload(uri);
                 break;
             case REQUEST_CODE_MODIFY_NICKNAME:
                 boolean isModify = data.getBooleanExtra(ModifyTextActivity.RESULT_IS_MODIFY, true);
-                if(!isModify) {
+                if (!isModify) {
                     // 未修改，不做任何操作
                     return;
                 }
@@ -111,23 +107,28 @@ public class UserInfoEditActivity extends BaseActivity implements View.OnClickLi
         }
     }
 
-    private void compressAndUpload(Uri uri) {
-        ImageUtils.compressImage(this, uri, iv_avatar.getWidth(), iv_avatar.getHeight(), new Subscriber<byte[]>() {
-            @Override
-            public void onCompleted() {
+    private void compressAndUpload(final Uri uri) {
+        showProgress();
 
-            }
+        Observable<byte[]> observable = ImageUtils.compressImage(this, uri, iv_avatar.getWidth(), iv_avatar.getHeight());
+        ObservableDecorator.decorate(observable)
+                .subscribe(new Subscriber<byte[]>() {
+                    @Override
+                    public void onCompleted() {
 
-            @Override
-            public void onError(Throwable e) {
+                    }
 
-            }
+                    @Override
+                    public void onError(Throwable e) {
+                        showToast(e.getMessage());
+                        dismissProgress();
+                    }
 
-            @Override
-            public void onNext(byte[] bytes) {
-                presenter.uploadAvatar(bytes);
-            }
-        });
+                    @Override
+                    public void onNext(byte[] bytes) {
+                        presenter.uploadAvatar(bytes);
+                    }
+                });
     }
 
     @Override

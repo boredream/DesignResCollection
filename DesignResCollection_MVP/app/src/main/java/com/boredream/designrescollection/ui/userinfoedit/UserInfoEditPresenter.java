@@ -32,8 +32,6 @@ public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
 
     @Override
     public void uploadAvatar(byte[] bytes) {
-        view.showProgress();
-
         final String filename = "image_" + System.currentTimeMillis() + ".jpg";
 
         // 第一步,上传头像文件到服务器

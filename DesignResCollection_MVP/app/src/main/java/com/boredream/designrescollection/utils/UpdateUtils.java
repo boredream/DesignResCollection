@@ -30,6 +30,24 @@ import rx.Observable;
 
 /**
  * 检查更新工具类
+ * <p>
+ * 可以注册下载完成广播，在其中进行提示跳转安装等行为
+ * <p>
+ * <li>注册广播</li>
+ * <pre>
+ *      context.registerReceiver(receiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+ * </pre>
+ * <p>
+ * <li>使用广播</li>
+ * <pre>
+ *      String action = intent.getAction();
+ *      if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
+ *          long enqueueId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, 0);
+ *          Uri uri = UpdateUtils.getDownloadUriById(context, enqueueId);
+ *          // do something
+ *      }
+ * </pre>
+ * </p>
  */
 public class UpdateUtils {
 

@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -17,10 +16,10 @@ import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.FutureTarget;
 
-import rx.Subscriber;
+import rx.Observable;
+import rx.functions.Func1;
 
 /**
  * 图片工具类
@@ -129,26 +128,38 @@ public class ImageUtils {
     /**
      * 亚索图片
      *
-     * @param call    上传成功回调
      * @param context
      * @param uri     图片uri
      * @param reqW    上传图片需要压缩的宽度
      * @param reqH    上传图片需要压缩的高度
-     * @param call
+     * @return 上传成功回调
      */
-    public static void compressImage(final Context context, Uri uri, int reqW, int reqH, final Subscriber<byte[]> call) {
+    public static Observable<byte[]> compressImage(final Context context,
+                                                   Uri uri,
+                                                   final int reqW,
+                                                   final int reqH) {
         // 先从本地获取图片,利用Glide压缩图片后获取byte[]
-        Glide.with(context).load(uri).asBitmap().toBytes().into(
-                new SimpleTarget<byte[]>(reqW, reqH) {
+        return Observable.just(uri)
+                .flatMap(new Func1<Uri, Observable<byte[]>>() {
                     @Override
-                    public void onResourceReady(final byte[] resource, GlideAnimation<? super byte[]> glideAnimation) {
-                        call.onNext(resource);
-                    }
+                    public Observable<byte[]> call(Uri uri) {
+                        // 在work线程中，同步压缩图片，然后Observable返回
+                        // 即将Glide的回调封装成RxJava的Observable
+                        FutureTarget<byte[]> future = Glide.with(context)
+                                .load(uri)
+                                .asBitmap()
+                                .toBytes()
+                                .into(reqW, reqH);
 
-                    @Override
-                    public void onLoadFailed(Exception e, Drawable errorDrawable) {
-                        super.onLoadFailed(e, errorDrawable);
-                        call.onError(new Throwable("图片解析失败"));
+                        byte[] bytes;
+                        try {
+                            bytes = future.get();
+                        } catch (Exception e) {
+                            // 获取失败时，抛出runtime异常
+                            // 该异常会被Subscriber捕捉，进onError
+                            throw new RuntimeException(e);
+                        }
+                        return Observable.just(bytes);
                     }
                 });
     }
@@ -207,7 +218,7 @@ public class ImageUtils {
      * 删除一条图片
      */
     public static void deleteImageUri(Context context, Uri uri) {
-        context.getContentResolver().delete(imageUriFromCamera, null, null);
+        context.getContentResolver().delete(uri, null, null);
     }
 
     /**

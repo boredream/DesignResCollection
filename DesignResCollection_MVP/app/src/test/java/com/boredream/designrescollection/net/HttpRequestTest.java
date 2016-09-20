@@ -17,7 +17,7 @@ public class HttpRequestTest {
 
     @Test
     public void test() {
-        HttpRequest.getInstance().login("123", "345").subscribe(new Subscriber<User>() {
+        HttpRequest.getInstance().login("18551681236", "123456").subscribe(new Subscriber<User>() {
             @Override
             public void onCompleted() {
 

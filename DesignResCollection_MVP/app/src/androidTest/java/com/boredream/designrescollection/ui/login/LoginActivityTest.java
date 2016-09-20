@@ -5,12 +5,16 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.boredream.designrescollection.R;
+import com.boredream.designrescollection.idlingres.RxIdlingResource;
 import com.boredream.designrescollection.utils.UserInfoKeeper;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import rx.plugins.RxJavaPlugins;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -28,6 +32,11 @@ public class LoginActivityTest {
 
 	@Rule
 	public ActivityTestRule<LoginActivity> mActivityRule = new ActivityTestRule<>(LoginActivity.class, true, false);
+
+	@Before
+	public void doBefore() {
+		RxJavaPlugins.getInstance().registerObservableExecutionHook(RxIdlingResource.get());
+	}
 
 	@Test
 	public void testLogin_EmptyPassword() throws Exception {
@@ -64,6 +73,7 @@ public class LoginActivityTest {
 	@Test
 	public void testLogin_Success() throws Exception {
 		Intent intent = new Intent();
+		intent.putExtra("checkLogin", true);
 		mActivityRule.launchActivity(intent);
 
 		// actions

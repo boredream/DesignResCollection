@@ -92,7 +92,7 @@ public class MoreRecyclerAdapter extends SettingRecyclerAdapter {
                 viewHolderHeader.include_more_no_header.setVisibility(View.GONE);
 
                 GlideHelper.showAvatar(holder.itemView.getContext(), user.getAvatar(), viewHolderHeader.iv_avatar);
-                viewHolderHeader.tv_name.setText(user.getUsername());
+                viewHolderHeader.tv_name.setText(user.getNickname());
 
                 viewHolderHeader.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

@@ -17,7 +17,9 @@
 ### 待开发的示例
 
   * [DesignResCollection_MVP-Dagger2/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP-Dagger2) - 基于 Model-View-Presenter 结构，添加Dagger2框架。
-  * [DesignResCollection_IM/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP-Dagger2) - 基于 LeanCloud服务，实现IM及时聊天业务，提供最基本的IM相关功能。
+  * [DesignResCollection#LeanCloud/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP-Dagger2) - 基于 LeanCloud服务，不用自己写后台服务端代码，非全栈开发也可以完成完整网络应用。
+  * [DesignResCollection#IM/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP-Dagger2) - 基于 LeanCloud服务，实现IM及时聊天业务，提供最基本的IM相关功能。
+  
   
 ### 其他相关示例
   * [DesignResCollection（ing...）](https://github.com/boredream/DesignResCollectionApp) - 完整App代码，不断丰富完善中，实现一个最终完整版。本项目中的示例是基于此项目做了功能和页面上的精简，便于演示不同代码结构。

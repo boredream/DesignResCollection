@@ -39,6 +39,8 @@
   * 网络框架部分使用Retrofit2.0 + RxJava。  
   * 图片使用Glide。  
   * [代码助手Model ](https://github.com/boredream/bdcodehelper)常见工具类、功能等都封装到了这个依赖Model中，一来为了方便，二来让注意力更集中在项目框架结构上。
+  * 使用Espresso进行UI页面交互测试
+  * 使用mockito对Presenter分别进行真实接口数据测试以及mock模拟数据测试
   
 
 ## 到底使用哪种框架使用在我自己的app中？

@@ -9,7 +9,6 @@ import com.boredream.bdcodehelper.fragment.FragmentController;
 import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.base.BaseActivity;
 import com.boredream.designrescollection.ui.home.HomeFragment;
-import com.boredream.designrescollection.ui.user.UserFragment;
 import com.boredream.designrescollection.utils.UpdateUtils;
 
 import java.util.ArrayList;

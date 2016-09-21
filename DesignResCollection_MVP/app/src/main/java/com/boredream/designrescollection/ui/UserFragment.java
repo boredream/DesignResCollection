@@ -1,4 +1,4 @@
-package com.boredream.designrescollection.ui.user;
+package com.boredream.designrescollection.ui;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,11 +14,9 @@ import com.boredream.bdcodehelper.utils.TitleBuilder;
 import com.boredream.bdcodehelper.view.DividerItemDecoration;
 import com.boredream.bdcodehelper.view.EmptyItemDecoration;
 import com.boredream.designrescollection.R;
-import com.boredream.designrescollection.ui.AboutActivity;
-import com.boredream.designrescollection.ui.SettingActivity;
-import com.boredream.designrescollection.ui.userinfoedit.UserInfoEditActivity;
 import com.boredream.designrescollection.adapter.MoreRecyclerAdapter;
 import com.boredream.designrescollection.base.BaseFragment;
+import com.boredream.designrescollection.ui.userinfoedit.UserInfoEditActivity;
 import com.boredream.designrescollection.utils.UserInfoKeeper;
 
 import java.util.ArrayList;

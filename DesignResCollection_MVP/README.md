@@ -1,18 +1,3 @@
-项目启发来自谷歌的同类框架项目  android-architecture
-利用一个相同的项目，使用不同的框架实现之
-
-这里我找了个自己练手的App作为基础项目，然后尝试不同框架实现它
-Github地址如下，其中有详细完全的介绍文档：
-https://github.com/boredream/DesignResCollection  
-
-#### 已开发完成的示例
-
-  * [DesignResCollection_MVC/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVC) - Model-View-Controller 结构。
-  * [DesignResCollection_MVP/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP) - Model-View-Presenter 结构。
-  其中包含了针对P层的junit逻辑测试代码以及针对V层的Espresso页面测试代码。
-  
----
-
 ## 为什么选择MVP？
 
 相信大部分人都听过这个框架，或者已经使用过。

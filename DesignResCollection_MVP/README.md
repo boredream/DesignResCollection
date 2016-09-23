@@ -195,15 +195,15 @@ public class FeedBackActivity extends BaseActivity implements FeedBackContract.V
 然后在presenter里的接口返回数据后，判断view是否被销毁然后再控制显示，因为接口是异步的，所以返回数据后视图可能已经销毁，那就没必要更新了，更新反而还会崩溃报错。
 
 **好了，现在再回头看看MVP的几个优点，可能就有更好的理解了（当然，还是要自己撸过一遍最好）**
-  1. 更好的拓展性。
+  1. 更好的拓展性。  
     * 某天页面需要加功能了，协议类中先写好对应的P逻辑方法、V页面方法，然后在实现类中分别编写具体代码即可。
     * 某天突然改功能了，说所有错误提示我们不用Toast，用Dialog吧，那直接在showTip处修改即可。
     * 某天产品突然告诉你说意见反馈，失败我们也让用户觉得成功，那直接在Error回调里调用view抽象方法即可。
-  2. 解耦、更好的代码结构。
+  2. 解耦、更好的代码结构。  
     * 业务逻辑 和 页面UI 代码分开，不揉在一起，改逻辑的时候不用关心UI，反之亦然。
     * 想了解某个模块功能时，直接在协议类中看一个个抽象方法，不用关心代码，清晰明了。
     * 还有代码可以分工合作，核心业务逻辑你在P中自己写，UI的具体实现直接给其他人合作写。
-  3. 可复用性。
+  3. 可复用性。  
   比如本项目中的注册功能，注册步骤1和步骤2页面中都有发送验证码功能，那就可以使用同一个P了，在其中调用获取验证码接口。然后各自实现具体View显示，步骤1页面获取验证码成功后跳转到页面2，页面2获取成功后开始数字倒计时。
 
 ---
@@ -257,10 +257,9 @@ UI测试虽然接近真实场景，但是有个缺点是要运行应用到模拟
 编写步骤按照以下进行
 
 **1. 新建Presenter的测试类**  
-右键Presenter类 -> Go To -> Test -> create new test
-![](http://upload-images.jianshu.io/upload_images/1513977-d4e327220c223843.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)
-弹出一个创建测试类对话框，然后勾选需要测试的方法（当然也可以自己手动创建方法）。
-然后OK，选择test文件夹完成测试类创建。
+右键Presenter类 -> Go To -> Test -> create new test  
+![](http://upload-images.jianshu.io/upload_images/1513977-d4e327220c223843.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)  
+弹出一个创建测试类对话框，然后勾选需要测试的方法（当然也可以自己手动创建方法）。然后OK，选择test文件夹完成测试类创建。  
 ![](http://upload-images.jianshu.io/upload_images/1513977-91538231b56a4d2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)
 
 **2. 测试类的初始化**  
@@ -374,7 +373,7 @@ public void testAddFeedback_Success() throws Exception {
 
   注意，真实接口由于是异步的，所以如果不做任何处理是无法测试通过的，接口数据还没返回就运行下面的验证了，自然失败。因此需要对回调做一个处理，将其修改为同步请求，这样就能一条线下来了，运行完接口再进行验证。项目是基于Retrofit框架的，使用RxJava处理回调，我这里所有的回调都会用一个ObservableDecorator处理一下，而在其中我会判断，如果当前是测试状态（也就是Before中的那个isUnitTest 参数），就将回调设置为同步，具体代码参考项目中。
 
-** 4. 运行单元测试用例 **  
+* **4. 运行单元测试用例**  
 * 右键方法，run 测试单个用例方法
 * 右键类，run 测试该类中包含的全部用例方法
 
@@ -405,21 +404,21 @@ public void testAddFeedback_Success() throws Exception {
 
 ####使用LiveTemplate模板
 先展示下该功能的强大，这里我以前提前写好过几个模板了。拿协议类举例。
-1. 右键需要生成的位置 -> New -> 选择模板（如下图的MvpContract）
-![](http://upload-images.jianshu.io/upload_images/1513977-01bbba5d35b7cbd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-2. 然后弹出对话框，为模板输入需要的变量，OK生成
-![](http://upload-images.jianshu.io/upload_images/1513977-7ddead582f672c79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-3. 这样就按照我们的模板创建了一个文件，右侧文件代码全部都是自动生成的，然后按需修改加入方法即可。
-![](http://upload-images.jianshu.io/upload_images/1513977-8dbb18d5fc8bddff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+1. 右键需要生成的位置 -> New -> 选择模板（如下图的MvpContract）  
+![](http://upload-images.jianshu.io/upload_images/1513977-01bbba5d35b7cbd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
+2. 然后弹出对话框，为模板输入需要的变量，OK生成  
+![](http://upload-images.jianshu.io/upload_images/1513977-7ddead582f672c79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
+3. 这样就按照我们的模板创建了一个文件，右侧文件代码全部都是自动生成的，然后按需修改加入方法即可。  
+![](http://upload-images.jianshu.io/upload_images/1513977-8dbb18d5fc8bddff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
 
 那么模板哪里来的呢~下面介绍
 
 ####编辑/创建LiveTemplate模板
-1. **编辑已有模板**： New -> 选择模板的时候，模板底部有个Edit File Template，点击之。参见上面使用步骤1的图。
-2. **创建新的模板**：打开你希望生成模板的文件，选择工具栏中的Tool -> Save File as Template
-3. 步骤1、 2都会打开下面这样一个编辑页面，区别在于创建比编辑少个左侧的已有模板列表
-给模板起个名字，然后在内容页面里根据需要删删改改即可，模板里所有${NAME}的地方都会替换成你创建模板时候输入的文件名，其他的${XXX}的作用可参考下面Description里的描述。最后OK保存模板。
-![](http://upload-images.jianshu.io/upload_images/1513977-4b5be95db3d361d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+1. **编辑已有模板**： New -> 选择模板的时候，模板底部有个Edit File Template，点击之。参见上面使用步骤1的图。  
+2. **创建新的模板**：打开你希望生成模板的文件，选择工具栏中的Tool -> Save File as Template  
+3. 步骤1、 2都会打开下面这样一个编辑页面，区别在于创建比编辑少个左侧的已有模板列表  
+给模板起个名字，然后在内容页面里根据需要删删改改即可，模板里所有${NAME}的地方都会替换成你创建模板时候输入的文件名，其他的${XXX}的作用可参考下面Description里的描述。最后OK保存模板。  
+![](http://upload-images.jianshu.io/upload_images/1513977-4b5be95db3d361d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
 
 LiveTemplate虽然无法替你搞定绝大部分代码，但是这样一个快捷的模板，可以灵活的随时编辑还是很方便的，还是能节省相当代码量的。
 

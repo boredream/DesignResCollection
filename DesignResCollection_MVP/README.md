@@ -33,7 +33,7 @@
 MVP就是正规大餐厅，P则是后厨中心，海绵宝宝做好蟹黄堡后放到窗口处，叮一下通知前台好了可以送餐了，不用关心菜是怎么送到客户手里的。然后由服务员章鱼哥在窗口处取了餐，再或跑或跳或踩着轱辘鞋最后送到客户手里，合作完成。**
 
 所以这里也可以看出来，MVP最重要的特点就是：
-** 将 Model业务逻辑处理 和 View页面处理 分开！！！ **
+**将 Model业务逻辑处理 和 View页面处理 分开！！！**
 
 MVP的良好拓展性、解耦、利于单元测试等优点基本都是来源于此。
 
@@ -43,7 +43,7 @@ MVP的良好拓展性、解耦、利于单元测试等优点基本都是来源�
 
 ## MVP结构代码怎么写？
 示例项目中的MVP结构参考了[谷歌官方MVP示例项目](https://github.com/googlesamples/android-architecture/tree/todo-mvp/)中的写法。每个功能模块都包含以下几部分：
-* **Contact协议类**
+* **Contact协议类**  
 这个Contact协议类不是MVP中的任何一个模块，是把所有View和Presenter的方法都提取成了接口放在这里，作为一个总的规则、协议，方便统一管理。
 比如下面的代码，就是示例项目中意见反馈页面的Contact协议类，提供了View和Presenter的接口。
 其中BaseView和BasePresenter是提供了一些基础方法，比如显示进度showProgress等，自己可以按需添加。
@@ -222,7 +222,7 @@ public class FeedBackActivity extends BaseActivity implements FeedBackContract.V
 
 ## 怎么写测试代码呢？
 我们先介绍下Android中的两种测试
-* **UI测试（本项目中使用框架Espresso）**
+* **UI测试（本项目中使用框架Espresso）**  
 UI测试其实就是模拟机器上的操作行为，让它自动进行的“点击某个位置”、“输入某些字符串”等行为。
 是依赖安卓设备的，测试的时候可以在手机或模拟器屏幕上看到页面被各种点点点，输输输，跳来跳去。
 
@@ -230,13 +230,13 @@ UI测试其实就是模拟机器上的操作行为，让它自动进行的“点
 
   项目中androidTest文件夹里的就是UI测试代码，而test文件夹才是Junit部分的单元测试代码。
 
-* **对Presenter进行Junit单元测试（本项目中使用框架Mockito）**
+* **对Presenter进行Junit单元测试（本项目中使用框架Mockito）**  
 UI测试虽然接近真实场景，但是有个缺点是要运行应用到模拟器上，所以速度就会有影响，慢~
 而且开发中也会常有这样一个需要，调试接口时，我不想点点点跳转到那个页面再输入东西再点按钮，费时间啊~而用postman啥的工具也麻烦，header还要重新写，如果有参数加密就更蛋疼了。
 
   所以，这个时候你就需要Junit单元测试了，最大的特点就是**不用运行安卓设备，直接run代码，速度飞快！**
 
-* **单元测试代码示例**
+* **单元测试代码示例**  
 正式开始介绍怎么写之前，先感受下单元测试是什么样的，如下图
 
 ![意见反馈Presenter代码截图](http://upload-images.jianshu.io/upload_images/1513977-e63720e22dbfd3c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -256,14 +256,14 @@ UI测试虽然接近真实场景，但是有个缺点是要运行应用到模拟
 ##如何写单元测试代码
 编写步骤按照以下进行
 
-**1. 新建Presenter的测试类**
+**1. 新建Presenter的测试类**  
 右键Presenter类 -> Go To -> Test -> create new test
 ![](http://upload-images.jianshu.io/upload_images/1513977-d4e327220c223843.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)
 弹出一个创建测试类对话框，然后勾选需要测试的方法（当然也可以自己手动创建方法）。
 然后OK，选择test文件夹完成测试类创建。
 ![](http://upload-images.jianshu.io/upload_images/1513977-91538231b56a4d2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)
 
-**2. 测试类的初始化**
+**2. 测试类的初始化**  
   代码如下（mockito的gradle配置等参考项目中build.gradle）
 
 ```java
@@ -298,9 +298,9 @@ public void setupMocksAndView() {
 
 这里用到了一个很重要的框架 Mockito。
 #### Mockito框架介绍
-* **Mockito框架是干什么的？**
+* **Mockito框架是干什么的？**  
 mockito框架是用来模拟数据和情景的，方便我们的测试工作进行。
-* **为什么要用Mockito框架？**
+* **为什么要用Mockito框架？**  
 比如我们MVP结构中P的测试，有个问题是：创建Presenter对象的时候这个View怎么办？传入null会空指针啊。还有很多接口调用等逻辑，很多奇怪的失败情况怎么测试？
 这个时候就可以用mockito了~ 直接模拟一个view接口对象，不用关心它的具体实现；失败情况直接用when方法搞定；此外还提供了其他一系列方便测试的方法，比如verify用于判断某对象是否执行了某个方法等。后面会根据例子挨个介绍。
 
@@ -316,7 +316,7 @@ when(view.isActive()).thenReturn(true);
 这个是mockito框架提供的一个方法，看英文基本就能了解什么意思了，当xx方法调用时就返回xx
 因为我们的view的模拟的，所以没有实现isActive方法，则p中数据返回后就无法继续走下去了，因此这里when处理一下。只要调用这个方法就返回true。
   
-**3. 测试方法编写**
+**3. 测试方法编写**  
 通常Presenter中的一个业务方法会对应至少一个测试方法。
 比如这里的意见反馈业务，就分别对应意见提交成功、失败两种情景。
 方法名字可以随便定，有个@Test标签即可，推荐方法取名为：test+待测方法原名+测试场景
@@ -353,7 +353,7 @@ public void testAddFeedback_Mock_Error() throws Exception {
 最后运行测试，成功，完美~
 
 
-* **真实接口测试方法示例 - 提交成功**
+* **真实接口测试方法示例 - 提交成功**  
 ```java
 @Test
 public void testAddFeedback_Success() throws Exception {
@@ -374,7 +374,7 @@ public void testAddFeedback_Success() throws Exception {
 
   注意，真实接口由于是异步的，所以如果不做任何处理是无法测试通过的，接口数据还没返回就运行下面的验证了，自然失败。因此需要对回调做一个处理，将其修改为同步请求，这样就能一条线下来了，运行完接口再进行验证。项目是基于Retrofit框架的，使用RxJava处理回调，我这里所有的回调都会用一个ObservableDecorator处理一下，而在其中我会判断，如果当前是测试状态（也就是Before中的那个isUnitTest 参数），就将回调设置为同步，具体代码参考项目中。
 
-** 4. 运行单元测试用例 **
+** 4. 运行单元测试用例 **  
 * 右键方法，run 测试单个用例方法
 * 右键类，run 测试该类中包含的全部用例方法
 
@@ -390,13 +390,13 @@ public void testAddFeedback_Success() throws Exception {
 这一点估计是最重要的原因把绝大部分人阻挡在门外。
 毕竟平常普通的撸就那么累了，还要这么麻烦，没时间啊没精力啊！！！
 
-* **不一定所有功能都用MVP**
+* **不一定所有功能都用MVP**  
 就像之前例子举得那样，大排档和正规餐厅。你在一个超级偏远没人流量生意差到爆的地方还整个后厨中心，就过了。同理，如果你有的功能业务逻辑比较简单，自然就没必要MVP了，简单的关于页面你也一顿MVP可能就有点猛了，所以不一定所有功能都使用MVP。
 
-* **单元测试利于开发**
+* **单元测试利于开发**  
 代码结构啥的就不说了，单元测试这个有时候真的很方便，尤其是运行快。相信大部分人都有经验，遇到个不靠谱后台的时候，经常要陪他们调接口，再遇到那种特别深的页面简直是浪费人生。单元测试代码，run，唰~秒搞定。自测某些逻辑功能时也很有用，这一点上看来绝对是节省时间的。
 
-* **LiveTemplate（干货！！！一键生成模板代码，模板可自定义！！！）**
+* **LiveTemplate（干货！！！一键生成模板代码，模板可自定义！！！）**  
 我通常撸的时候特别特别注重速度效率。之前也开发过很多插件工作，比如已经发布的自动生成代码布局的开源AndroidStudio插件。https://github.com/boredream/BorePlugin
 
   然后就寻思，写这种特别有规律的MVP各种类，还有测试类等的时候，要不也弄个插件生成下？

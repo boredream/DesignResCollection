@@ -194,8 +194,7 @@ public class FeedBackActivity extends BaseActivity implements FeedBackContract.V
   注意，这里BaseView中会有一个isActivite方法，用于判断视图是否被销毁。我在BaseActivity中会统一处理，添加一个isActivite变量，onStart时设为true，onStop时设为false。
 然后在presenter里的接口返回数据后，判断view是否被销毁然后再控制显示，因为接口是异步的，所以返回数据后视图可能已经销毁，那就没必要更新了，更新反而还会崩溃报错。
 
-
-  ** 好了，现在再回头看看MVP的几个优点，可能就有更好的理解了（当然，还是要自己撸过一遍最好）。**
+**好了，现在再回头看看MVP的几个优点，可能就有更好的理解了（当然，还是要自己撸过一遍最好）**
   1. 更好的拓展性。
     * 某天页面需要加功能了，协议类中先写好对应的P逻辑方法、V页面方法，然后在实现类中分别编写具体代码即可。
     * 某天突然改功能了，说所有错误提示我们不用Toast，用Dialog吧，那直接在showTip处修改即可。
@@ -223,7 +222,7 @@ public class FeedBackActivity extends BaseActivity implements FeedBackContract.V
 
 ## 怎么写测试代码呢？
 我们先介绍下Android中的两种测试
-* ####UI测试（本项目中使用框架Espresso）
+* **UI测试（本项目中使用框架Espresso）**
 UI测试其实就是模拟机器上的操作行为，让它自动进行的“点击某个位置”、“输入某些字符串”等行为。
 是依赖安卓设备的，测试的时候可以在手机或模拟器屏幕上看到页面被各种点点点，输输输，跳来跳去。
 
@@ -231,13 +230,13 @@ UI测试其实就是模拟机器上的操作行为，让它自动进行的“点
 
   项目中androidTest文件夹里的就是UI测试代码，而test文件夹才是Junit部分的单元测试代码。
 
-* #### 对Presenter进行Junit单元测试（本项目中使用框架Mockito）
+* **对Presenter进行Junit单元测试（本项目中使用框架Mockito）**
 UI测试虽然接近真实场景，但是有个缺点是要运行应用到模拟器上，所以速度就会有影响，慢~
 而且开发中也会常有这样一个需要，调试接口时，我不想点点点跳转到那个页面再输入东西再点按钮，费时间啊~而用postman啥的工具也麻烦，header还要重新写，如果有参数加密就更蛋疼了。
 
   所以，这个时候你就需要Junit单元测试了，最大的特点就是**不用运行安卓设备，直接run代码，速度飞快！**
 
-* ####单元测试代码示例
+* **单元测试代码示例**
 正式开始介绍怎么写之前，先感受下单元测试是什么样的，如下图
 
 ![意见反馈Presenter代码截图](http://upload-images.jianshu.io/upload_images/1513977-e63720e22dbfd3c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -299,9 +298,9 @@ public void setupMocksAndView() {
 
 这里用到了一个很重要的框架 Mockito。
 #### Mockito框架介绍
-* ######Mockito框架是干什么的？
+* **Mockito框架是干什么的？**
 mockito框架是用来模拟数据和情景的，方便我们的测试工作进行。
-* ######为什么要用Mockito框架？
+* **为什么要用Mockito框架？**
 比如我们MVP结构中P的测试，有个问题是：创建Presenter对象的时候这个View怎么办？传入null会空指针啊。还有很多接口调用等逻辑，很多奇怪的失败情况怎么测试？
 这个时候就可以用mockito了~ 直接模拟一个view接口对象，不用关心它的具体实现；失败情况直接用when方法搞定；此外还提供了其他一系列方便测试的方法，比如verify用于判断某对象是否执行了某个方法等。后面会根据例子挨个介绍。
 
@@ -317,7 +316,7 @@ when(view.isActive()).thenReturn(true);
 这个是mockito框架提供的一个方法，看英文基本就能了解什么意思了，当xx方法调用时就返回xx
 因为我们的view的模拟的，所以没有实现isActive方法，则p中数据返回后就无法继续走下去了，因此这里when处理一下。只要调用这个方法就返回true。
   
-** 3. 测试方法编写 **
+**3. 测试方法编写**
 通常Presenter中的一个业务方法会对应至少一个测试方法。
 比如这里的意见反馈业务，就分别对应意见提交成功、失败两种情景。
 方法名字可以随便定，有个@Test标签即可，推荐方法取名为：test+待测方法原名+测试场景
@@ -331,7 +330,7 @@ when(view.isActive()).thenReturn(true);
 
 下面挨个介绍测试方法，模拟成功和失败差不多就只介绍失败了。
 
-* ######模拟接口测试方法示例 - 模拟提交失败
+* **模拟接口测试方法示例 - 模拟提交失败**
 ```java
 @Test
 public void testAddFeedback_Mock_Error() throws Exception {
@@ -354,7 +353,7 @@ public void testAddFeedback_Mock_Error() throws Exception {
 最后运行测试，成功，完美~
 
 
-* ######真实接口测试方法示例 - 提交成功
+* **真实接口测试方法示例 - 提交成功**
 ```java
 @Test
 public void testAddFeedback_Success() throws Exception {
@@ -391,13 +390,13 @@ public void testAddFeedback_Success() throws Exception {
 这一点估计是最重要的原因把绝大部分人阻挡在门外。
 毕竟平常普通的撸就那么累了，还要这么麻烦，没时间啊没精力啊！！！
 
-* ####不一定所有功能都用MVP
+* **不一定所有功能都用MVP**
 就像之前例子举得那样，大排档和正规餐厅。你在一个超级偏远没人流量生意差到爆的地方还整个后厨中心，就过了。同理，如果你有的功能业务逻辑比较简单，自然就没必要MVP了，简单的关于页面你也一顿MVP可能就有点猛了，所以不一定所有功能都使用MVP。
 
-* ####单元测试利于开发
+* **单元测试利于开发**
 代码结构啥的就不说了，单元测试这个有时候真的很方便，尤其是运行快。相信大部分人都有经验，遇到个不靠谱后台的时候，经常要陪他们调接口，再遇到那种特别深的页面简直是浪费人生。单元测试代码，run，唰~秒搞定。自测某些逻辑功能时也很有用，这一点上看来绝对是节省时间的。
 
-* ####LiveTemplate（干货！！！一键生成模板代码，模板可自定义！！！）
+* **LiveTemplate（干货！！！一键生成模板代码，模板可自定义！！！）**
 我通常撸的时候特别特别注重速度效率。之前也开发过很多插件工作，比如已经发布的自动生成代码布局的开源AndroidStudio插件。https://github.com/boredream/BorePlugin
 
   然后就寻思，写这种特别有规律的MVP各种类，还有测试类等的时候，要不也弄个插件生成下？

@@ -373,7 +373,7 @@ public void testAddFeedback_Success() throws Exception {
 
   注意，真实接口由于是异步的，所以如果不做任何处理是无法测试通过的，接口数据还没返回就运行下面的验证了，自然失败。因此需要对回调做一个处理，将其修改为同步请求，这样就能一条线下来了，运行完接口再进行验证。项目是基于Retrofit框架的，使用RxJava处理回调，我这里所有的回调都会用一个ObservableDecorator处理一下，而在其中我会判断，如果当前是测试状态（也就是Before中的那个isUnitTest 参数），就将回调设置为同步，具体代码参考项目中。
 
-* **4. 运行单元测试用例**  
+**4. 运行单元测试用例**  
 * 右键方法，run 测试单个用例方法
 * 右键类，run 测试该类中包含的全部用例方法
 
@@ -403,7 +403,7 @@ public void testAddFeedback_Success() throws Exception {
 最后突然想起来了AndroidStudio里自带的LiveTemplate这东西，是AS中自带的一个模板代码系统。
 
 ####使用LiveTemplate模板
-先展示下该功能的强大，这里我以前提前写好过几个模板了。拿协议类举例。
+先展示下该功能的强大，这里我以前提前写好过几个模板了。拿协议类举例。  
 1. 右键需要生成的位置 -> New -> 选择模板（如下图的MvpContract）  
 ![](http://upload-images.jianshu.io/upload_images/1513977-01bbba5d35b7cbd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
 2. 然后弹出对话框，为模板输入需要的变量，OK生成  

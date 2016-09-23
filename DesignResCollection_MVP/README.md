@@ -2,11 +2,11 @@
 
 相信大部分人都听过这个框架，或者已经使用过。
 了解和简单运用的过程中大家一定会有这样几个问题或者痛点：
-* ####MVP有什么好处，为什么要用它？
-* ####MVP结构代码怎么写？
-* ####为什么MVP结构利于单元测试？而且我为什么要写测试代码呢？
-* ####好了你说服我了，但是我不会写单元测试啊！
-* ####MVP多了好多类，还要写测试代码，写起来好累啊！老娘不想这么麻烦啊！
+* **MVP有什么好处，为什么要用它？**
+* **MVP结构代码怎么写？**
+* **为什么MVP结构利于单元测试？而且我为什么要写测试代码呢？**
+* **好了你说服我了，但是我不会写单元测试啊！**
+* **MVP多了好多类，还要写测试代码，写起来好累啊！老娘不想这么麻烦啊！**
 
 这里班门弄斧的分享下我的经验，挨个解决这几个问题。
 
@@ -43,7 +43,7 @@ MVP的良好拓展性、解耦、利于单元测试等优点基本都是来源�
 
 ## MVP结构代码怎么写？
 示例项目中的MVP结构参考了[谷歌官方MVP示例项目](https://github.com/googlesamples/android-architecture/tree/todo-mvp/)中的写法。每个功能模块都包含以下几部分：
-* ######Contact协议类  
+* **Contact协议类**
 这个Contact协议类不是MVP中的任何一个模块，是把所有View和Presenter的方法都提取成了接口放在这里，作为一个总的规则、协议，方便统一管理。
 比如下面的代码，就是示例项目中意见反馈页面的Contact协议类，提供了View和Presenter的接口。
 其中BaseView和BasePresenter是提供了一些基础方法，比如显示进度showProgress等，自己可以按需添加。
@@ -58,10 +58,10 @@ public interface FeedBackContract {
     }
 }
 ```
-* ######Model
+* **Model**  
 数据层，和MVC结构中的无区别，没啥好说的。
 
-* ######Presenter
+* **Presenter**  
 负责处理业务逻辑代码，处理Model数据，然后分发给View层的抽象接口。
 注意，这里是将处理好的数据派发给View的抽象接口，是一个简单的中转分发出去，并不负责具体展示
 ```java
@@ -121,7 +121,7 @@ public class FeedBackPresenter implements FeedBackContract.Presenter {
 }
 ```
 
-* ######View
+* **View**  
 负责UI具体实现展现。比如Presenter派发过来一个动作是showProgress显示进度命令，那由我这个View负责实现具体UI，是显示进度框还是显示一个下拉刷新圈圈等，都是View这里自行控制。
 Google的例子中，每个Activity中都会添加一个Fragment作为View实现，Activity仅仅作为一个容器，包含一个Fragment在其中显示各种控件。我觉得其实也可以直接将Activity作为View。本示例代码中两种方式都有，可以根据需要自行选择方式~ 
 ```java

@@ -43,6 +43,7 @@ MVP的良好拓展性、解耦、利于单元测试等优点基本都是来源�
 
 ## MVP结构代码怎么写？
 示例项目中的MVP结构参考了[谷歌官方MVP示例项目](https://github.com/googlesamples/android-architecture/tree/todo-mvp/)中的写法。每个功能模块都包含以下几部分：
+
 * ######Contact协议类
 这个Contact协议类不是MVP中的任何一个模块，是把所有View和Presenter的方法都提取成了接口放在这里，作为一个总的规则、协议，方便统一管理。
 比如下面的代码，就是示例项目中意见反馈页面的Contact协议类，提供了View和Presenter的接口。

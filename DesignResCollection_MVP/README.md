@@ -2,11 +2,11 @@
 
 相信大部分人都听过这个框架，或者已经使用过。
 了解和简单运用的过程中大家一定会有这样几个问题或者痛点：
-* [**MVP有什么好处，为什么要用它？**](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP#MVP有什么好处，为什么要用它？)  
+* [**MVP有什么好处，为什么要用它？**](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP#MVP有什么好处，为什么要用它)  
 * [**MVP结构代码怎么写？**](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP#mvp结构代码怎么写) 
-* [**为什么MVP结构利于单元测试？而且我为什么要写测试代码呢？**](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP#我为什么要写测试代码呢？不是浪费时间吗？) 
-* [**好了你说服我了，但是我不会写单元测试啊！**](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP#怎么写测试代码呢？) 
-* [**MVP多了好多类，还要写测试代码，写起来好累啊！老娘不想这么麻烦啊！**](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP#MVP多了好多类，还要写测试代码，写起来好累啊！老娘不想这么麻烦啊！) 
+* [**为什么MVP结构利于单元测试？而且我为什么要写测试代码呢？**](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP#我为什么要写测试代码呢？不是浪费时间吗) 
+* [**好了你说服我了，但是我不会写单元测试啊！**](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP#怎么写测试代码呢) 
+* [**MVP多了好多类，还要写测试代码，写起来好累啊！老娘不想这么麻烦啊！**](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP#MVP多了好多类，还要写测试代码，写起来好累啊！老娘不想这么麻烦啊) 
 
 这里班门弄斧的分享下我的经验，挨个解决这几个问题。
 

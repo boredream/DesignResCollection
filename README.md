@@ -28,6 +28,10 @@
   
 
 ## 开发计划
+
+* 2016.8.15 ~ 8.17（已完成）
+[DesignResCollection_MVC/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVC)
+
 * 2016.8.17 ~ 9.20（已完成）
 [DesignResCollection_MVP/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP)
 

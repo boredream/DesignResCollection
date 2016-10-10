@@ -80,7 +80,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
         user.setPassword(password);
         user.setSmsCode(code);
         Observable<User> observable = HttpRequest.getInstance().service.register(user);
-        observable.subscribe(new Subscriber<User>() {
+        ObservableDecorator.decorate(observable).subscribe(new Subscriber<User>() {
                     @Override
                     public void onCompleted() {
 

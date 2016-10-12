@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">DesignResCollection</string>
+    <string name="action_settings">Settings</string>
+    <string name="tab1">首页</string>
+    <string name="tab2">搜索</string>
+    <string name="tab3">收藏</string>
+    <string name="tab4">我</string>
+    <string name="about">
+        使用LeanCloud的Restful API作为后端支持\n
+        使用LeanCloud的定时云代码，自动按时爬取数据并保存至LeanCloud中\n
+        使用Retrofit2.0 + RxJava 实现网络请求部分\n
+        使用Glide实现图片部分\n
+        \n
+        开源项目, 地址为\n
+        %1$s\n
+        \n
+        欢迎follow我以及star项目\n
+        有任何应用问题可以在反馈中提出\n
+        对于项目代码有任何疑问,也可以在github项目中提issue
+    </string>
+    <string name="github">https://github.com/boredream/DesignResCollection</string>
+    <string name="update_info">
+        最新版本：%1$s
+        \n\n更新内容：\n%2$s
+    </string>
+    <string name="title_activity_main2">Main2Activity</string>
+</resources>

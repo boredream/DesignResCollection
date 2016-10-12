@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_titlebar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_vertical_margin">
+
+        <TextView
+            style="@style/TextViewBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="你会收到一条带验证码的短信，请输入验证码："
+            android:textColor="@color/txt_gray" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large">
+
+            <EditText
+                android:id="@+id/et_verification_code"
+                style="@style/EditTextSingleLine"
+                android:hint="请输入验证码"
+                android:inputType="number"
+                android:maxEms="10" />
+
+            <Button
+                android:id="@+id/btn_code_info"
+                style="@style/TextViewBody"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:text="60秒"
+                android:textColor="@color/txt_blue2gray_sel" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_next"
+            style="@style/ButtonPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large"
+            android:text="下一步" />
+    </LinearLayout>
+</LinearLayout>

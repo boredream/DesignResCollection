@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rg_bottom_tab"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:background="@android:color/white"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <com.boredream.bdcodehelper.view.DrawableRadioButton
+        android:id="@+id/rb1"
+        style="@style/RadioButtonBottomTab"
+        android:drawableTop="@drawable/ic_home_grey2black_sel"
+        app:drawableHeight="40dp"
+        app:drawableWidth="40dp" />
+
+    <com.boredream.bdcodehelper.view.DrawableRadioButton
+        android:id="@+id/rb2"
+        style="@style/RadioButtonBottomTab"
+        android:drawableTop="@drawable/ic_more_grey2black_sel"
+        app:drawableHeight="40dp"
+        app:drawableWidth="40dp" />
+</RadioGroup>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_vertical_margin">
+
+    <EditText
+        android:id="@+id/et_username"
+        style="@style/EditTextSingleLine"
+        android:layout_height="48dp"
+        android:hint="请输入手机号"
+        android:inputType="number"
+        android:maxEms="11" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small">
+
+        <EditText
+            android:id="@+id/et_password"
+            style="@style/EditTextSingleLine"
+            android:layout_height="48dp"
+            android:hint="请输入密码"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/tv_forget_psw"
+            style="@style/TextViewBody"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:padding="@dimen/margin_small"
+            android:text="忘记密码?"
+            android:textColor="@color/colorPrimary" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/ButtonPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_large"
+        android:text="登录" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/ll_regist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextViewBody"
+            android:text="还没有账号?  赶紧"
+            android:textColor="@color/txt_light_gray" />
+
+        <TextView
+            style="@style/TextViewBody"
+            android:text="注册"
+            android:textColor="@color/colorPrimary" />
+
+    </LinearLayout>
+</LinearLayout>

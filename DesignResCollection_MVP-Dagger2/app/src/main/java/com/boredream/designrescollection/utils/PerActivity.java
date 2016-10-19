@@ -9,5 +9,5 @@ import javax.inject.Scope;
 @Documented
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-public @interface FragmentScoped {
+public @interface PerActivity {
 }

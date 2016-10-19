@@ -6,8 +6,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.boredream.bdcodehelper.base.BoreBaseActivity;
-import com.boredream.designrescollection.ui.MainActivity;
 import com.boredream.designrescollection.constants.CommonConstants;
+import com.boredream.designrescollection.ui.MainActivity;
 
 import java.util.concurrent.TimeUnit;
 

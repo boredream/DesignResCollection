@@ -10,8 +10,11 @@ import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.base.BaseActivity;
 import com.boredream.designrescollection.ui.home.HomeFragment;
 import com.boredream.designrescollection.utils.UpdateUtils;
+import com.squareup.okhttp.OkHttpClient;
 
 import java.util.ArrayList;
+
+import javax.inject.Inject;
 
 
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
@@ -37,6 +40,9 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
         rg_bottom_tab.setOnCheckedChangeListener(this);
     }
+
+    @Inject
+    OkHttpClient httpClient;
 
     private void initData() {
         ArrayList<Fragment> fragments = new ArrayList<>();

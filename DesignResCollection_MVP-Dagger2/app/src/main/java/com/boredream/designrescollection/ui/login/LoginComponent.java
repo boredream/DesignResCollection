@@ -1,10 +1,10 @@
 package com.boredream.designrescollection.ui.login;
 
-import com.boredream.designrescollection.utils.FragmentScoped;
+import com.boredream.designrescollection.utils.PerActivity;
 
 import dagger.Component;
 
-@FragmentScoped
+@PerActivity
 @Component(modules = {LoginPresenterModule.class})
 public interface LoginComponent {
     void inject(LoginActivity activity);

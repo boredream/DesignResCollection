@@ -12,17 +12,14 @@ import com.boredream.designrescollection.entity.DesignRes;
 import com.boredream.designrescollection.entity.FeedBack;
 import com.boredream.designrescollection.entity.User;
 import com.boredream.designrescollection.utils.UserInfoKeeper;
-import com.squareup.okhttp.Interceptor;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
-import com.squareup.okhttp.logging.HttpLoggingInterceptor;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.inject.Inject;
 
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
@@ -39,48 +36,19 @@ import rx.functions.Action1;
 public class HttpRequest {
     // LeanCloud
     public static final String HOST = "https://api.leancloud.cn";
-    public static final String FILE_HOST = "";
-
-    private static final String APP_ID_NAME = "X-LC-Id";
-    private static final String API_KEY_NAME = "X-LC-Key";
-    public static final String SESSION_TOKEN_KEY = "X-LC-Session";
-
-    private static final String APP_ID_VALUE = "iaEH7ObIA4sPY8RSs3VCVXBg-gzGzoHsz";
-    private static final String API_KEY_VALUE = "dXfhXIVyeWMN2czJkd4ehwzs";
 
     public ApiService service;
 
-    private OkHttpClient httpClient;
-    public OkHttpClient getHttpClient() {
-        return httpClient;
-    }
+    @Inject OkHttpClient httpClient;
 
     private static HttpRequest ourInstance = new HttpRequest();
     public static HttpRequest getInstance() {
         return ourInstance;
     }
     private HttpRequest() {
-        // OkHttpClient
-        httpClient = new OkHttpClient();
-
-        // 统一添加的Header
-        httpClient.networkInterceptors().add(new Interceptor() {
-            @Override
-            public Response intercept(Chain chain) throws IOException {
-                Request request = chain.request().newBuilder()
-                        .addHeader("Content-Type", "application/json")
-                        .addHeader(APP_ID_NAME, APP_ID_VALUE)
-                        .addHeader(API_KEY_NAME, API_KEY_VALUE)
-                        .addHeader(SESSION_TOKEN_KEY, UserInfoKeeper.getToken())
-                        .build();
-                return chain.proceed(request);
-            }
-        });
-
-        // log
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        httpClient.interceptors().add(interceptor);
+        DaggerHttpComponent.builder()
+                .build()
+                .inject(this);
 
         // Retrofit
         Retrofit retrofit = new Retrofit.Builder()

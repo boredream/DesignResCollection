@@ -46,7 +46,7 @@ public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
                     @Override
                     public void onNext(FileUploadResponse fileUploadResponse) {
                         // 第二步,将上传图片返回的url地址更新至用户对象中
-                        updateUserAvatar(HttpRequest.FILE_HOST + fileUploadResponse.getUrl());
+                        updateUserAvatar(/*HttpRequest.FILE_HOST + */fileUploadResponse.getUrl());
                     }
 
                     @Override

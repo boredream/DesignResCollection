@@ -20,7 +20,6 @@ import com.boredream.bdcodehelper.utils.NetUtils;
 import com.boredream.bdcodehelper.utils.ToastUtils;
 import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.base.BaseActivity;
-import com.boredream.designrescollection.net.HttpRequest;
 import com.boredream.designrescollection.net.SimpleSubscriber;
 
 import java.util.ArrayList;
@@ -63,7 +62,9 @@ public class UpdateUtils {
      *                     true强制 - 无论什么网络环境都会提示更新
      *                     false非强制 - WiFi情况下才提示更新
      */
-    public static void checkUpdate(final BaseActivity context, final boolean isForceCheck) {
+    public static void checkUpdate(final BaseActivity context,
+                                   Observable<ListResponse<AppUpdateInfo>> observable,
+                                   final boolean isForceCheck) {
         if (!NetUtils.isConnected(context)) {
             // 无网络时
             if (isForceCheck) {
@@ -82,7 +83,6 @@ public class UpdateUtils {
             context.showProgressDialog();
         }
 
-        Observable<ListResponse<AppUpdateInfo>> observable = HttpRequest.getInstance().service.getAppUpdateInfo();
         ObservableDecorator.decorate(observable).subscribe(
                 new SimpleSubscriber<ListResponse<AppUpdateInfo>>(context) {
                     @Override

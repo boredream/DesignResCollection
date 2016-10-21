@@ -1,7 +1,5 @@
 package com.boredream.designrescollection.ui.login;
 
-import com.boredream.designrescollection.net.HttpRequest;
-
 import dagger.Module;
 import dagger.Provides;
 
@@ -17,11 +15,6 @@ public class LoginPresenterModule {
     @Provides
     LoginContract.View provideLoginContractView() {
         return mView;
-    }
-
-    @Provides
-    HttpRequest provideHttpRequest() {
-        return HttpRequest.getInstance();
     }
 
 }

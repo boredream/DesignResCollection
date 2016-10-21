@@ -3,8 +3,9 @@ package com.boredream.designrescollection.ui.home;
 import com.boredream.bdcodehelper.entity.ListResponse;
 import com.boredream.bdcodehelper.net.ObservableDecorator;
 import com.boredream.bdcodehelper.utils.ErrorInfoUtils;
+import com.boredream.designrescollection.constants.CommonConstants;
 import com.boredream.designrescollection.entity.DesignRes;
-import com.boredream.designrescollection.net.HttpRequest;
+import com.boredream.designrescollection.net.ApiService;
 
 import java.util.List;
 
@@ -14,10 +15,12 @@ import rx.Subscriber;
 public class HomePresenter implements HomeContract.Presenter {
 
     private final HomeContract.View view;
+    private final ApiService service;
     public List<DesignRes> datas;
 
-    public HomePresenter(HomeContract.View view) {
+    public HomePresenter(HomeContract.View view, ApiService service) {
         this.view = view;
+        this.service = service;
         this.view.setPresenter(this);
     }
 
@@ -36,7 +39,8 @@ public class HomePresenter implements HomeContract.Presenter {
     }
 
     private void loadData(final int page) {
-        Observable<ListResponse<DesignRes>> observable = HttpRequest.getInstance().getDesignRes(page);
+        Observable<ListResponse<DesignRes>> observable = service.getDesignRes(
+                CommonConstants.COUNT_OF_PAGE, (page - 1) * CommonConstants.COUNT_OF_PAGE);
         ObservableDecorator.decorate(observable).subscribe(
                 new Subscriber<ListResponse<DesignRes>>() {
                     @Override

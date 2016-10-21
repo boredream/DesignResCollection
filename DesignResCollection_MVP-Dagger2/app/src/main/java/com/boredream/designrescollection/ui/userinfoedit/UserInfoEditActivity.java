@@ -13,10 +13,12 @@ import com.boredream.bdcodehelper.utils.ImageUtils;
 import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.base.BaseActivity;
 import com.boredream.designrescollection.entity.User;
+import com.boredream.designrescollection.net.ApiService;
 import com.boredream.designrescollection.net.GlideHelper;
-import com.boredream.designrescollection.net.HttpRequest;
 import com.boredream.designrescollection.ui.modifytext.ModifyTextActivity;
 import com.boredream.designrescollection.utils.UserInfoKeeper;
+
+import javax.inject.Inject;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -26,6 +28,8 @@ public class UserInfoEditActivity extends BaseActivity implements View.OnClickLi
     private static final int REQUEST_CODE_MODIFY_NICKNAME = 110;
 
     private UserInfoEditContract.Presenter presenter;
+    @Inject ApiService service;
+
     private ImageView iv_avatar;
     private LinearLayout ll_avatar;
     private TextView tv_username;
@@ -49,8 +53,7 @@ public class UserInfoEditActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void initView() {
-        presenter = new UserInfoEditPresenter(this,
-                HttpRequest.getInstance(), UserInfoKeeper.getCurrentUser());
+        presenter = new UserInfoEditPresenter(this, service, UserInfoKeeper.getCurrentUser());
 
         initBackTitle("修改个人资料");
 

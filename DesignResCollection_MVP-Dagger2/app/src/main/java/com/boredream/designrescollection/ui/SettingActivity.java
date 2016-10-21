@@ -13,6 +13,7 @@ import com.boredream.bdcodehelper.utils.AppUtils;
 import com.boredream.bdcodehelper.view.DividerItemDecoration;
 import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.base.BaseActivity;
+import com.boredream.designrescollection.net.ApiService;
 import com.boredream.designrescollection.ui.feedback.FeedBackActivity;
 import com.boredream.designrescollection.utils.UpdateUtils;
 import com.boredream.designrescollection.utils.UserInfoKeeper;
@@ -20,8 +21,11 @@ import com.boredream.designrescollection.utils.UserInfoKeeper;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class SettingActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
+    @Inject ApiService service;
     private RecyclerView rv_setting;
     private Button btn_logout;
 
@@ -77,7 +81,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
             case 0:
                 showProgressDialog();
                 // 强制检查更新,并添加额外回调用于处理进度框
-                UpdateUtils.checkUpdate(this, true);
+                UpdateUtils.checkUpdate(this, service.getAppUpdateInfo(), true);
                 break;
             case 1:
                 if(UserInfoKeeper.checkLogin(this)) {

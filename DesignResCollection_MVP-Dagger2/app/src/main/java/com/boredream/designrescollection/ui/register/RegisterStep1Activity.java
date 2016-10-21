@@ -9,6 +9,9 @@ import android.widget.EditText;
 import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.base.BaseActivity;
 import com.boredream.designrescollection.entity.User;
+import com.boredream.designrescollection.net.ApiService;
+
+import javax.inject.Inject;
 
 /**
  * 注册页面步骤一
@@ -16,6 +19,8 @@ import com.boredream.designrescollection.entity.User;
 public class RegisterStep1Activity extends BaseActivity implements View.OnClickListener, RegisterContract.View {
 
     private RegisterContract.Presenter presenter;
+    @Inject ApiService service;
+
     private EditText et_username;
     private EditText et_password;
     private Button btn_next;
@@ -29,7 +34,7 @@ public class RegisterStep1Activity extends BaseActivity implements View.OnClickL
     }
 
     private void initView() {
-        presenter = new RegisterPresenter(this);
+        presenter = new RegisterPresenter(this, service);
         initBackTitle("注册");
 
         et_username = (EditText) findViewById(R.id.et_username);

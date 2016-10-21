@@ -4,7 +4,7 @@ import com.boredream.bdcodehelper.net.ObservableDecorator;
 import com.boredream.bdcodehelper.utils.ErrorInfoUtils;
 import com.boredream.bdcodehelper.utils.StringUtils;
 import com.boredream.designrescollection.entity.User;
-import com.boredream.designrescollection.net.HttpRequest;
+import com.boredream.designrescollection.net.ApiService;
 import com.boredream.designrescollection.utils.UserInfoKeeper;
 
 import rx.Observable;
@@ -12,10 +12,12 @@ import rx.Subscriber;
 
 public class RegisterPresenter implements RegisterContract.Presenter {
 
-    private final RegisterContract.View view;
+    private RegisterContract.View view;
+    private ApiService service;
 
-    public RegisterPresenter(RegisterContract.View view) {
+    public RegisterPresenter(RegisterContract.View view, ApiService service) {
         this.view = view;
+        this.service = service;
         this.view.setPresenter(this);
     }
 
@@ -79,7 +81,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
         user.setUsername(phone);
         user.setPassword(password);
         user.setSmsCode(code);
-        Observable<User> observable = HttpRequest.getInstance().service.register(user);
+        Observable<User> observable = service.register(user);
         ObservableDecorator.decorate(observable).subscribe(new Subscriber<User>() {
                     @Override
                     public void onCompleted() {

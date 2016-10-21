@@ -14,7 +14,10 @@ import com.boredream.bdcodehelper.utils.DateUtils;
 import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.base.BaseActivity;
 import com.boredream.designrescollection.entity.User;
+import com.boredream.designrescollection.net.ApiService;
 import com.boredream.designrescollection.ui.MainActivity;
+
+import javax.inject.Inject;
 
 /**
  * 注册页面步骤二
@@ -27,6 +30,8 @@ public class RegisterStep2Activity extends BaseActivity implements View.OnClickL
     private static final long COUNT_DOWN_INTERVAL = DateUtils.ONE_SECOND_MILLIONS;
 
     private RegisterContract.Presenter presenter;
+    @Inject ApiService service;
+
     private EditText et_verification_code;
     private Button btn_code_info;
     private Button btn_next;
@@ -51,7 +56,7 @@ public class RegisterStep2Activity extends BaseActivity implements View.OnClickL
     }
 
     private void initView() {
-        presenter = new RegisterPresenter(this);
+        presenter = new RegisterPresenter(this, service);
         initBackTitle("手机号验证");
 
         et_verification_code = (EditText) findViewById(R.id.et_verification_code);

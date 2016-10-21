@@ -4,7 +4,7 @@ import com.boredream.bdcodehelper.net.ObservableDecorator;
 import com.boredream.bdcodehelper.utils.StringUtils;
 import com.boredream.designrescollection.base.BaseEntity;
 import com.boredream.designrescollection.entity.FeedBack;
-import com.boredream.designrescollection.net.HttpRequest;
+import com.boredream.designrescollection.net.ApiService;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -12,9 +12,9 @@ import rx.Subscriber;
 public class FeedBackPresenter implements FeedBackContract.Presenter {
 
     private final FeedBackContract.View view;
-    private final HttpRequest.ApiService api;
+    private final ApiService api;
 
-    public FeedBackPresenter(FeedBackContract.View view, HttpRequest.ApiService api) {
+    public FeedBackPresenter(FeedBackContract.View view, ApiService api) {
         this.view = view;
         this.api = api;
         this.view.setPresenter(this);

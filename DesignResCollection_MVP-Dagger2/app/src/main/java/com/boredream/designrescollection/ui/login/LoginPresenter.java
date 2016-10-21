@@ -4,7 +4,7 @@ import com.boredream.bdcodehelper.net.ObservableDecorator;
 import com.boredream.bdcodehelper.utils.ErrorInfoUtils;
 import com.boredream.bdcodehelper.utils.StringUtils;
 import com.boredream.designrescollection.entity.User;
-import com.boredream.designrescollection.net.HttpRequest;
+import com.boredream.designrescollection.net.ApiService;
 
 import javax.inject.Inject;
 
@@ -14,12 +14,12 @@ import rx.Subscriber;
 public class LoginPresenter implements LoginContract.Presenter {
 
     private final LoginContract.View view;
-    private final HttpRequest httpRequest;
+    private final ApiService service;
 
     @Inject
-    public LoginPresenter(LoginContract.View view, HttpRequest httpRequest) {
+    public LoginPresenter(LoginContract.View view, ApiService service) {
         this.view = view;
-        this.httpRequest = httpRequest;
+        this.service = service;
         this.view.setPresenter(this);
     }
 
@@ -37,7 +37,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
         view.showProgress();
 
-        Observable<User> observable = httpRequest.login(username, password);
+        Observable<User> observable = service.login(username, password);
         ObservableDecorator.decorate(observable).subscribe(new Subscriber<User>() {
             @Override
             public void onCompleted() {

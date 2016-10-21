@@ -6,8 +6,9 @@ import com.boredream.bdcodehelper.utils.ErrorInfoUtils;
 import com.boredream.bdcodehelper.utils.StringUtils;
 import com.boredream.designrescollection.base.BaseEntity;
 import com.boredream.designrescollection.entity.User;
-import com.boredream.designrescollection.net.HttpRequest;
+import com.boredream.designrescollection.net.ApiService;
 import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.RequestBody;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,24 +19,24 @@ import rx.Subscriber;
 public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
 
     private final UserInfoEditContract.View view;
-    private final HttpRequest httpRequest;
+    private final ApiService service;
     private final User user;
 
     public UserInfoEditPresenter(UserInfoEditContract.View view,
-                                 HttpRequest httpRequest,
+                                 ApiService service,
                                  User user) {
         this.view = view;
-        this.httpRequest = httpRequest;
+        this.service = service;
         this.user = user;
         this.view.setPresenter(this);
     }
 
     @Override
     public void uploadAvatar(byte[] bytes) {
-        final String filename = "image_" + System.currentTimeMillis() + ".jpg";
-
         // 第一步,上传头像文件到服务器
-        Observable<FileUploadResponse> observable = httpRequest.fileUpload(bytes, filename, MediaType.parse("image/jpeg"));
+        String filename = "image_" + System.currentTimeMillis() + ".jpg";
+        RequestBody requestBody = RequestBody.create(MediaType.parse("image/jpeg"), bytes);
+        Observable<FileUploadResponse> observable = service.fileUpload(filename, requestBody);
         ObservableDecorator.decorate(observable).subscribe(
                 new Subscriber<FileUploadResponse>() {
                     @Override
@@ -65,7 +66,7 @@ public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
         Map<String, Object> updateMap = new HashMap<>();
         updateMap.put("avatar", avatarUrl);
 
-        Observable<BaseEntity> observable = httpRequest.service.updateUserById(
+        Observable<BaseEntity> observable = service.updateUserById(
                 user.getObjectId(), updateMap);
         ObservableDecorator.decorate(observable)
                 .subscribe(new Subscriber<BaseEntity>() {
@@ -105,8 +106,9 @@ public class UserInfoEditPresenter implements UserInfoEditContract.Presenter {
 
         view.showProgress();
 
-        Observable<BaseEntity> observable = httpRequest.updateNickname(
-                user.getObjectId(), nickname);
+        Map<String, Object> updateMap = new HashMap<>();
+        updateMap.put("nickname", nickname);
+        Observable<BaseEntity> observable = service.updateUserById(user.getObjectId(), updateMap);
         ObservableDecorator.decorate(observable)
                 .subscribe(new Subscriber<BaseEntity>() {
                     @Override

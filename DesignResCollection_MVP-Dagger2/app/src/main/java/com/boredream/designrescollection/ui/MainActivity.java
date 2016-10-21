@@ -8,9 +8,9 @@ import android.widget.RadioGroup;
 import com.boredream.bdcodehelper.fragment.FragmentController;
 import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.base.BaseActivity;
+import com.boredream.designrescollection.net.ApiService;
 import com.boredream.designrescollection.ui.home.HomeFragment;
 import com.boredream.designrescollection.utils.UpdateUtils;
-import com.squareup.okhttp.OkHttpClient;
 
 import java.util.ArrayList;
 
@@ -18,6 +18,8 @@ import javax.inject.Inject;
 
 
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
+
+    @Inject ApiService service;
 
     private RadioGroup rg_bottom_tab;
     private RadioButton rb1;
@@ -41,9 +43,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         rg_bottom_tab.setOnCheckedChangeListener(this);
     }
 
-    @Inject
-    OkHttpClient httpClient;
-
     private void initData() {
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
@@ -55,7 +54,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         rb1.setChecked(true);
         controller.showFragment(0);
 
-        UpdateUtils.checkUpdate(this, false);
+        UpdateUtils.checkUpdate(this, service.getAppUpdateInfo(), false);
     }
 
     @Override

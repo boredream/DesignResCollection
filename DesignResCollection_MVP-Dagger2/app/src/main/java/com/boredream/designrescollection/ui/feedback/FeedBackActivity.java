@@ -7,13 +7,16 @@ import android.widget.EditText;
 
 import com.boredream.designrescollection.R;
 import com.boredream.designrescollection.base.BaseActivity;
-import com.boredream.designrescollection.net.HttpRequest;
+import com.boredream.designrescollection.net.ApiService;
+
+import javax.inject.Inject;
 
 public class FeedBackActivity extends BaseActivity implements FeedBackContract.View {
 
     private FeedBackContract.Presenter presenter;
     private EditText et_content;
     private EditText et_email;
+    @Inject ApiService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +28,7 @@ public class FeedBackActivity extends BaseActivity implements FeedBackContract.V
     }
 
     private void initView() {
-        presenter = new FeedBackPresenter(this, HttpRequest.getInstance().service);
+        presenter = new FeedBackPresenter(this, service);
 
         initBackTitle("意见反馈")
                 .setRightText("提交")

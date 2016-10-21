@@ -1,18 +1,16 @@
 package com.boredream.designrescollection.net;
 
 import com.boredream.designrescollection.base.BaseApplication;
-import com.boredream.designrescollection.utils.PerActivity;
+import com.boredream.designrescollection.utils.PerApplication;
 
 import javax.inject.Singleton;
 
 import dagger.Component;
 
-@PerActivity
+@PerApplication
 @Singleton
-@Component(modules = {OkHttpModule.class})
-public interface HttpComponent {
-
-    void inject(HttpRequest request);
+@Component(modules = {ApiModule.class})
+public interface AppComponent {
 
     void inject(BaseApplication request);
 

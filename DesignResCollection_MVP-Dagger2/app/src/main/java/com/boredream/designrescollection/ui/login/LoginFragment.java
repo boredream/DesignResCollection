@@ -15,6 +15,7 @@ import com.boredream.designrescollection.base.BaseFragment;
 import com.boredream.designrescollection.entity.User;
 import com.boredream.designrescollection.ui.MainActivity;
 import com.boredream.designrescollection.ui.register.RegisterStep1Activity;
+import com.boredream.designrescollection.utils.UserInfoKeeper;
 
 public class LoginFragment extends BaseFragment implements LoginContract.View, View.OnClickListener {
 
@@ -94,6 +95,8 @@ public class LoginFragment extends BaseFragment implements LoginContract.View, V
     @Override
     public void loginSuccess(User user) {
         dismissProgressDialog();
+
+        UserInfoKeeper.setCurrentUser(user);
 
         if (checkLogin) {
             activity.finish();

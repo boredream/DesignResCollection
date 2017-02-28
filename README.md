@@ -16,7 +16,6 @@
   
 ### 待开发的示例
 
-  * [DesignResCollection_MVP-Dagger2/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP-Dagger2) - 基于 Model-View-Presenter 结构，添加Dagger2框架。
   * [DesignResCollection_LeanCloud/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP-Dagger2) - 基于 LeanCloud 服务，不用自己写后台服务端代码，非全栈开发也可以完成完整网络应用。
   * [DesignResCollection_IM/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP-Dagger2) - 基于 LeanCloud 服务，实现IM及时聊天业务，提供最基本的IM相关功能。
   * [DesignResCollection_Espresso/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP-Dagger2) - 单独抽取出来一个项目，详细介绍Espresso针对各种常用场景的测试写法。
@@ -34,9 +33,6 @@
 
 * 2016.8.17 ~ 9.20（已完成）
 [DesignResCollection_MVP/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP)
-
-* 2016.9.20 ~
-[DesignResCollection_MVP-Dagger2/](https://github.com/boredream/DesignResCollection/tree/master/DesignResCollection_MVP-Dagger2)
 
 
 ## 通用依赖框架
